@@ -323,6 +323,108 @@
 }
 
 /* ============================================
+   PHONE FRAME — Mockup de teléfono
+   ============================================ */
+.phone-frame {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  border-radius: 36px;
+  border: 2.5px solid rgba(201, 169, 78, 0.2);
+  background: #060d06;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.55),
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(201, 169, 78, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  flex-shrink: 0;
+}
+
+/* Dynamic Island */
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 8px;
+  background: #060d06;
+  border-radius: 4px;
+  z-index: 3;
+}
+
+.phone-frame--hero {
+  max-width: 260px;
+  border-radius: 40px;
+  border-color: rgba(201, 169, 78, 0.28);
+  box-shadow:
+    0 48px 96px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(201, 169, 78, 0.08),
+    0 0 60px rgba(201, 169, 78, 0.06);
+}
+.phone-frame--hero::before {
+  width: 80px;
+}
+
+.phone-frame__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+}
+.phone-frame__icon {
+  font-size: 1.75rem;
+  opacity: 0.25;
+  display: block;
+}
+.phone-frame__filename {
+  font-family: 'Courier New', monospace;
+  font-size: 0.58rem;
+  color: rgba(201, 169, 78, 0.28);
+  text-align: center;
+  word-break: break-all;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.phone-frame__screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-radius: 34px;
+}
+
+/* ============================================
+   PRO BADGE
+   ============================================ */
+.pro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201, 169, 78, 0.08);
+  border: 1px solid rgba(201, 169, 78, 0.22);
+  color: var(--color-oro-light);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ============================================
    DIVIDER — Línea decorativa Teamgeist
    ============================================ */
 .divider {
@@ -331,9 +433,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--glass-border) 20%,
-    rgba(201, 169, 78, 0.25) 50%,
-    var(--glass-border) 80%,
+    rgba(201, 169, 78, 0.12) 10%,
+    rgba(201, 169, 78, 0.45) 50%,
+    rgba(201, 169, 78, 0.12) 90%,
     transparent 100%
   );
   margin: 0;

@@ -123,16 +123,25 @@
               Ver cómo funciona ↓
             </a>
           </div>
+
+          <!-- Pro badge -->
+          <div class="hero__pro reveal">
+            <span class="hero__pro-text">⭐ Pro gratis · Solo por tiempo limitado</span>
+          </div>
         </div>
 
-        <!-- Hero image -->
-        <div class="hero__image-wrap reveal">
-          <picture>
-            <source srcset="assets/images/hero.webp" type="image/webp">
-            <img src="assets/images/hero.png"
-              alt="Ilustración de dos pibes en un potrero eligiendo cracks del fútbol mundial para armar sus equipos — la esencia del fulbito"
-              class="hero__image" loading="eager" fetchpriority="high">
-          </picture>
+        <!-- Hero visual — phone frame -->
+        <div class="hero__visual reveal">
+          <div class="phone-frame phone-frame--hero">
+            <div class="phone-frame__placeholder">
+              <span class="phone-frame__icon">⚽</span>
+              <span class="phone-frame__filename">mockup-equipos.webp</span>
+            </div>
+            <img src="assets/screenshots/mockup-equipos.webp"
+              alt="Pantalla de Fulbito mostrando los dos equipos balanceados listos para jugar"
+              class="phone-frame__screen" onerror="this.style.display='none'"
+              loading="eager">
+          </div>
         </div>
       </div>
     </section>
@@ -147,39 +156,74 @@
           <p>Tres pasos. Cero peleas por los equipos.</p>
         </div>
 
-        <div class="steps-grid reveal-stagger" style="position: relative;">
-          <div class="step-card reveal">
-            <div class="step-card__header">
-              <span class="step-card__number">1</span>
-              <span class="step-card__emoji" aria-hidden="true">📋</span>
+        <div class="steps-showcase">
+
+          <!-- Paso 1 -->
+          <div class="step-showcase reveal">
+            <div class="step-showcase__content">
+              <span class="step-showcase__number" aria-hidden="true">1</span>
+              <h3 class="step-showcase__title">Pegá la lista</h3>
+              <p class="step-showcase__desc">
+                Copiá la lista del grupo de WhatsApp y pegala. Fulbito reconoce a los pibes automáticamente. Sin tipear uno por uno.
+              </p>
             </div>
-            <h3 class="step-card__title">Pegá la lista</h3>
-            <p class="step-card__desc">
-              Copiá la lista del grupo de WhatsApp y pegala. Fulbito reconoce a los pibes automáticamente.
-            </p>
+            <div class="step-showcase__phone">
+              <div class="phone-frame">
+                <div class="phone-frame__placeholder">
+                  <span class="phone-frame__icon">📋</span>
+                  <span class="phone-frame__filename">mockup-convocatoria.webp</span>
+                </div>
+                <img src="assets/screenshots/mockup-convocatoria.webp"
+                  alt="Pantalla de convocatoria: pegá la lista del grupo de WhatsApp"
+                  class="phone-frame__screen" onerror="this.style.display='none'" loading="lazy">
+              </div>
+            </div>
           </div>
 
-          <div class="step-card reveal">
-            <div class="step-card__header">
-              <span class="step-card__number">2</span>
-              <span class="step-card__emoji" aria-hidden="true">⚡</span>
+          <!-- Paso 2 -->
+          <div class="step-showcase step-showcase--reverse reveal">
+            <div class="step-showcase__content">
+              <span class="step-showcase__number" aria-hidden="true">2</span>
+              <h3 class="step-showcase__title">Armá equipos</h3>
+              <p class="step-showcase__desc">
+                El algoritmo arma equipos justos en 30 segundos. Sin peleas, sin moneda al aire, sin "yo elijo a Messi".
+              </p>
             </div>
-            <h3 class="step-card__title">Armá equipos</h3>
-            <p class="step-card__desc">
-              El algoritmo arma equipos justos en 30 segundos. Sin peleas, sin moneda al aire, sin "yo elijo a Messi".
-            </p>
+            <div class="step-showcase__phone">
+              <div class="phone-frame">
+                <div class="phone-frame__placeholder">
+                  <span class="phone-frame__icon">⚡</span>
+                  <span class="phone-frame__filename">mockup-equipos.webp</span>
+                </div>
+                <img src="assets/screenshots/mockup-equipos.webp"
+                  alt="Resultado del armado: los dos equipos balanceados sobre la cancha"
+                  class="phone-frame__screen" onerror="this.style.display='none'" loading="lazy">
+              </div>
+            </div>
           </div>
 
-          <div class="step-card reveal">
-            <div class="step-card__header">
-              <span class="step-card__number">3</span>
-              <span class="step-card__emoji" aria-hidden="true">📱</span>
+          <!-- Paso 3 -->
+          <div class="step-showcase reveal">
+            <div class="step-showcase__content">
+              <span class="step-showcase__number" aria-hidden="true">3</span>
+              <h3 class="step-showcase__title">Compartí al grupo</h3>
+              <p class="step-showcase__desc">
+                Mandá los equipos al grupo de WhatsApp con un tap. Listo, a jugar.
+              </p>
             </div>
-            <h3 class="step-card__title">Compartí al grupo</h3>
-            <p class="step-card__desc">
-              Mandá los equipos al grupo de WhatsApp con un tap. Listo, a jugar.
-            </p>
+            <div class="step-showcase__phone">
+              <div class="phone-frame">
+                <div class="phone-frame__placeholder">
+                  <span class="phone-frame__icon">📱</span>
+                  <span class="phone-frame__filename">mockup-partido.webp</span>
+                </div>
+                <img src="assets/screenshots/mockup-partido.webp"
+                  alt="Compartir los equipos por WhatsApp con un tap"
+                  class="phone-frame__screen" onerror="this.style.display='none'" loading="lazy">
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -202,7 +246,9 @@
           </div>
           <div class="features-grid reveal-stagger">
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">🧬</div>
+              <div class="feature-card__icon">
+                <span style="font-size:2.5rem;line-height:1">🧬</span>
+              </div>
               <h3 class="feature-card__title">Tu ADN Futbolístico</h3>
               <p class="feature-card__desc">
                 Armás una sola vez tu perfil eligiendo qué crack histórico te representa y respondé una rápida
@@ -211,14 +257,18 @@
               </p>
             </div>
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">📲</div>
+              <div class="feature-card__icon">
+                <img src="assets/stickers/charla-tecnica.png" alt="" width="56" height="56" loading="lazy">
+              </div>
               <h3 class="feature-card__title">Convocatoria inteligente</h3>
               <p class="feature-card__desc">
                 Pegá la lista del grupo y Fulbito reconoce quién es quién. Sin tipear uno por uno.
               </p>
             </div>
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">⚖️</div>
+              <div class="feature-card__icon">
+                <img src="assets/stickers/jogo-bonito.png" alt="" width="56" height="56" loading="lazy">
+              </div>
               <h3 class="feature-card__title">Equipos balanceados</h3>
               <p class="feature-card__desc">
                 Con el crack asociado y la autoevaluación privada, el algoritmo balancea por posición, nivel y
@@ -226,7 +276,9 @@
               </p>
             </div>
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">✏️</div>
+              <div class="feature-card__icon">
+                <img src="assets/stickers/a-jugar.png" alt="" width="56" height="56" loading="lazy">
+              </div>
               <h3 class="feature-card__title">Editá los equipos</h3>
               <p class="feature-card__desc">
                 ¿No te convence el sorteo? Siempre podés mover jugadores a mano antes de jugar.
@@ -244,14 +296,18 @@
           </div>
           <div class="features-grid reveal-stagger">
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">🏆</div>
+              <div class="feature-card__icon">
+                <img src="assets/stickers/win_streak_3.png" alt="" width="56" height="56" loading="lazy">
+              </div>
               <h3 class="feature-card__title">Resultado y goles</h3>
               <p class="feature-card__desc">
                 Cargá el resultado y quién hizo los goles. Todo queda en el historial del grupo.
               </p>
             </div>
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">👑</div>
+              <div class="feature-card__icon">
+                <img src="assets/stickers/superclasico.png" alt="" width="56" height="56" loading="lazy">
+              </div>
               <h3 class="feature-card__title">Votaciones</h3>
               <p class="feature-card__desc">
                 MVP 👑, Caudillo 🛡️ y Rústico 🪵(opcional). Que el grupo vote quién fue el crack, quién fue el caudillo
@@ -260,7 +316,9 @@
               </p>
             </div>
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">📊</div>
+              <div class="feature-card__icon">
+                <img src="assets/stickers/archirrival.png" alt="" width="56" height="56" loading="lazy">
+              </div>
               <h3 class="feature-card__title">Rankings y stats</h3>
               <p class="feature-card__desc">
                 Quién ganó más, quién tiene a quién de hijo, quién es el archirival de quién. Todo el historial en un
@@ -268,15 +326,19 @@
               </p>
             </div>
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">🤖</div>
-              <h3 class="feature-card__title">Resumen IA</h3>
+              <div class="feature-card__icon">
+                <img src="assets/stickers/relator-fulbito.png" alt="" width="56" height="56" loading="lazy">
+              </div>
+              <h3 class="feature-card__title">Resumen con Relator IA</h3>
               <p class="feature-card__desc">
-                Un resumen del partido generado por IA con humor barrial. Para mandar al grupo y revivir la épica del
+                Un relato del partido generado por IA con humor barrial. Para mandar al grupo y revivir la épica del
                 partido.
               </p>
             </div>
             <div class="feature-card reveal">
-              <div class="feature-card__icon" aria-hidden="true">⭐</div>
+              <div class="feature-card__icon">
+                <img src="assets/stickers/messi_mode.png" alt="" width="56" height="56" loading="lazy">
+              </div>
               <h3 class="feature-card__title">La Card de los Cracks</h3>
               <p class="feature-card__desc">
                 El premio MVP y Caudillo como card compartible tipo Spotify Wrapped. Para mostrarla con orgullo en el
@@ -291,125 +353,33 @@
     <hr class="divider">
 
     <!-- ════════════════════════════════════════════════════
-         LA PREVIA — Sección emocional
+         LA PREVIA — Identidad
          ════════════════════════════════════════════════════ -->
     <section class="section previa-section" id="la-previa" aria-label="La identidad de Fulbito">
       <div class="container">
         <div class="section-title reveal">
-          <h2>Fulbito es el grupo de WhatsApp de <br>tu fulbito semanal, hecho app.</h2>
+          <h2>No es una app corporativa.<br>Es el grupo del jueves, hecho producto.</h2>
         </div>
 
         <!-- Ilustración potrero -->
         <div class="previa__image-wrap reveal">
           <img src="assets/images/potrero.webp"
-            alt="Ilustración estilo Teamgeist 2006: dos pibes eligiendo su equipo de cracks en un potrero"
+            alt="Ilustración: dos pibes eligiendo su equipo de cracks en un potrero"
             class="previa__image" loading="lazy">
         </div>
 
-        <!-- Stickers showcase (Temporalmente oculto) -->
-        <!--
-        <div class="previa__stickers reveal-stagger">
-          <div class="sticker-card reveal">
-            <img src="assets/stickers/messi_mode.png" alt="Sticker Modo Messi" class="sticker-card__img" loading="lazy"
-              width="64" height="64">
-            <p class="sticker-card__phrase">"Activó modo Messi 🐐. ¿Quién lo frena?"</p>
-          </div>
-          <div class="sticker-card reveal">
-            <img src="assets/stickers/mufa.png" alt="Sticker Mufa" class="sticker-card__img" loading="lazy" width="64"
-              height="64">
-            <p class="sticker-card__phrase">"Cuidado, trae la mufa encima. Necesita un amuleto urgente."</p>
-          </div>
-          <div class="sticker-card reveal">
-            <img src="assets/stickers/padre_hijo.png" alt="Sticker Padre e Hijo" class="sticker-card__img"
-              loading="lazy" width="64" height="64">
-            <p class="sticker-card__phrase">"Ya le sacó DNI como hijo. No somos rivales."</p>
-          </div>
-          <div class="sticker-card reveal">
-            <img src="assets/stickers/compadre.png" alt="Sticker Compadre" class="sticker-card__img" loading="lazy"
-              width="64" height="64">
-            <p class="sticker-card__phrase">"La dupla letal. Cuando juegan juntos, ganan."</p>
-          </div>
-          <div class="sticker-card reveal">
-            <img src="assets/stickers/archirrival.png" alt="Sticker Archirival" class="sticker-card__img"
-              loading="lazy" width="64" height="64">
-            <p class="sticker-card__phrase">"Esto ya es personal. River-Boca les queda chico."</p>
-          </div>
-          <div class="sticker-card reveal">
-            <img src="assets/stickers/win_streak_3.png" alt="Sticker Racha Ganadora" class="sticker-card__img"
-              loading="lazy" width="64" height="64">
-            <p class="sticker-card__phrase">"Viene de racha. ¡No lo paren!"</p>
-          </div>
+        <!-- Identity pills -->
+        <div class="previa__pills reveal">
+          <span class="previa__pill">Sin peleas por los equipos</span>
+          <span class="previa__pill">Sin moneda al aire</span>
+          <span class="previa__pill">Sin "yo elijo a Messi"</span>
+          <span class="previa__pill">Sin planillas de Excel</span>
+          <span class="previa__pill">Sin discutir quién quedó en qué equipo</span>
         </div>
-        -->
 
         <p class="previa__closing reveal">
-          No es ESPN. No es TyC.<br>
-          <em>Es el arma secreta del que arma el fulbito de la semana.</em>
+          <em>El arma secreta del que organiza el fulbito de la semana.</em>
         </p>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- ════════════════════════════════════════════════════
-         TUTORIALES — Guías rápidas
-         ════════════════════════════════════════════════════ -->
-    <section class="section" id="tutoriales" aria-label="Guías y Tutoriales">
-      <div class="container">
-        <div class="section-title reveal">
-          <h2>Guías rápidas</h2>
-          <p>Cómo sacarle todo el jugo a Fulbito en dos minutos.</p>
-        </div>
-
-        <div class="faq-list reveal-stagger">
-          <details class="faq-item reveal">
-            <summary class="faq-item__question">
-              📲 Cómo instalar la app en Android y iPhone
-              <i class="faq-item__icon" aria-hidden="true">+</i>
-            </summary>
-            <div class="faq-item__answer">
-              Fulbito es una aplicación web progresiva y no necesita pasar por tiendas de apps.<br><br>
-              <strong>En iPhone (iOS):</strong><br>
-              1. Abrí <em>fulbito.futbol</em> en <strong>Safari</strong>.<br>
-              2. Tocá el botón <strong>Compartir</strong> (el cuadrado con la flecha).<br>
-              3. Tocá <strong>"Agregar a inicio"</strong> ➕.<br><br>
-              <strong>En Android:</strong><br>
-              1. Abrí <em>fulbito.futbol</em> en <strong>Chrome</strong>.<br>
-              2. Tocá los <strong>3 puntitos</strong> (⋮) del menú de opciones.<br>
-              3. Seleccioná <strong>"Agregar a la pantalla principal"</strong> (o Instalar aplicación).
-            </div>
-          </details>
-
-          <details class="faq-item reveal">
-            <summary class="faq-item__question">
-              👥 Cómo crear un grupo e invitar a los pibes
-              <i class="faq-item__icon" aria-hidden="true">+</i>
-            </summary>
-            <div class="faq-item__answer">
-              1. Registrate gratis en <em>fulbito.futbol</em>.<br>
-              2. En la pantalla principal, tocá <strong>"Crear un grupo"</strong> (ej: "Futbol Jueves").<br>
-              3. Dentro del grupo, buscá la opción de <strong>compartir enlace de invitación</strong> a través de
-              WhatsApp.<br>
-              4. Listo. Cuando entren al link, se suman a tu plantel y pueden armar su perfil de crack con su propia
-              autoevaluación.
-            </div>
-          </details>
-
-          <details class="faq-item reveal">
-            <summary class="faq-item__question">
-              ⚡ Cómo funciona el armado inteligente
-              <i class="faq-item__icon" aria-hidden="true">+</i>
-            </summary>
-            <div class="faq-item__answer">
-              1. Dentro de tu grupo, tocá "⚽ Crear Partido".<br>
-              2. Completá la convocatoria copiando y pegando la lista de WhatsApp.<br>
-              3. Le das a "Analizar". La app comprobará qué jugadores están anotados para este partido. Revisás y
-              <strong>Confirmás Lista</strong>.<br>
-              4. Tocá el botón <strong>"Armar Equipos"</strong>.<br>
-              5. En 30 segundos tenés los equipos nivelados. Confirmás Equipos y ya podés compartir por WhatsApp.
-            </div>
-          </details>
-        </div>
       </div>
     </section>
 
@@ -485,16 +455,78 @@
       </div>
     </section>
 
+    <hr class="divider">
+
+    <!-- ════════════════════════════════════════════════════
+         TUTORIALES — Guías rápidas (después del FAQ)
+         ════════════════════════════════════════════════════ -->
+    <section class="section" id="tutoriales" aria-label="Guías y Tutoriales">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Guías rápidas</h2>
+          <p>Cómo sacarle todo el jugo a Fulbito en dos minutos.</p>
+        </div>
+
+        <div class="faq-list reveal-stagger">
+          <details class="faq-item reveal">
+            <summary class="faq-item__question">
+              📲 Cómo instalar la app en Android y iPhone
+              <i class="faq-item__icon" aria-hidden="true">+</i>
+            </summary>
+            <div class="faq-item__answer">
+              Fulbito es una aplicación web progresiva y no necesita pasar por tiendas de apps.<br><br>
+              <strong>En iPhone (iOS):</strong><br>
+              1. Abrí <em>fulbito.futbol</em> en <strong>Safari</strong>.<br>
+              2. Tocá el botón <strong>Compartir</strong> (el cuadrado con la flecha).<br>
+              3. Tocá <strong>"Agregar a inicio"</strong> ➕.<br><br>
+              <strong>En Android:</strong><br>
+              1. Abrí <em>fulbito.futbol</em> en <strong>Chrome</strong>.<br>
+              2. Tocá los <strong>3 puntitos</strong> (⋮) del menú de opciones.<br>
+              3. Seleccioná <strong>"Agregar a la pantalla principal"</strong> (o Instalar aplicación).
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary class="faq-item__question">
+              👥 Cómo crear un grupo e invitar a los pibes
+              <i class="faq-item__icon" aria-hidden="true">+</i>
+            </summary>
+            <div class="faq-item__answer">
+              1. Registrate gratis en <em>fulbito.futbol</em>.<br>
+              2. En la pantalla principal, tocá <strong>"Crear un grupo"</strong> (ej: "Futbol Jueves").<br>
+              3. Dentro del grupo, buscá la opción de <strong>compartir enlace de invitación</strong> a través de WhatsApp.<br>
+              4. Listo. Cuando entren al link, se suman a tu plantel y pueden armar su perfil de crack con su propia autoevaluación.
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary class="faq-item__question">
+              ⚡ Cómo funciona el armado inteligente
+              <i class="faq-item__icon" aria-hidden="true">+</i>
+            </summary>
+            <div class="faq-item__answer">
+              1. Dentro de tu grupo, tocá "⚽ Crear Partido".<br>
+              2. Completá la convocatoria copiando y pegando la lista de WhatsApp.<br>
+              3. Le das a "Analizar". Revisás los jugadores detectados y <strong>Confirmás Lista</strong>.<br>
+              4. Tocá <strong>"Armar Equipos"</strong>.<br>
+              5. En 30 segundos tenés los equipos nivelados. Confirmás y compartís por WhatsApp.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- ════════════════════════════════════════════════════
          CTA FINAL
          ════════════════════════════════════════════════════ -->
     <section class="section cta-final" id="cta-final" aria-label="Empezá a usar Fulbito">
       <div class="container reveal">
         <h2>¿Listo para armar<br>los equipos?</h2>
-        <p class="cta-final__sub">Registrate gratis y armá los equipos del próximo partido.</p>
+        <p class="cta-final__sub">Registrate ahora y accedé a Pro gratis. Sin tarjeta, sin trampa.</p>
         <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg" id="cta-bottom">
           ⚽ Probar Fulbito
         </a>
+        <span class="cta-final__badge">⭐ Pro gratis para los primeros en registrarse</span>
       </div>
     </section>
 
@@ -510,7 +542,14 @@
         <span class="logo__text">Fulbito</span>
       </a>
       <p class="site-footer__tagline">El arma secreta del que organiza el fulbito semanal.</p>
-      <p class="site-footer__made">Hecho con ♥️⚽ en Mendoza, Argentina</p>
+      <nav class="site-footer__links" aria-label="Links del footer">
+        <a href="https://fulbito.futbol" class="site-footer__link">Ir a la app</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="https://fulbito.futbol/#privacidad" class="site-footer__link">Privacidad</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="mailto:hola@fulbito.futbol" class="site-footer__link">Contacto</a>
+      </nav>
+      <p class="site-footer__made">Hecho con ♥️⚽ en Mendoza · © 2026 Fulbito</p>
     </div>
   </footer>
 
