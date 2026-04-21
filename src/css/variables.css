@@ -1,0 +1,69 @@
+/* variables.css — Design tokens del sitio Fulbito (heredados de la app) */
+:root {
+  /* ── Colores primarios ── */
+  --color-cesped: #2D5016;
+  --color-cesped-light: #4A7A2E;
+  --color-noche: #0D1B0F;
+  --color-oro: #C9A94E;
+  --color-oro-light: #E8D48B;
+
+  /* ── Neutros ── */
+  --color-cal: #F0EDE4;
+  --color-tierra: #8B7355;
+  --color-sombra: rgba(0,0,0,0.4);
+
+  /* ── Glassmorphism ── */
+  --glass-bg: rgba(13, 27, 15, 0.6);
+  --glass-border: rgba(201, 169, 78, 0.15);
+  --glass-blur: blur(16px);
+
+  /* ── Tipografía ── */
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* ── Escala tipográfica ── */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.5rem;
+  --text-4xl: 3.5rem;
+
+  /* ── Spacing ── */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* ── Border radius ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
+
+  /* ── Sombras ── */
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.3);
+  --shadow-elevated: 0 16px 48px rgba(0,0,0,0.4);
+  --shadow-glow-oro: 0 0 24px rgba(201, 169, 78, 0.3);
+
+  /* ── Transiciones ── */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* ── Z-index ── */
+  --z-base: 1;
+  --z-header: 50;
+  --z-modal: 200;
+
+  /* ── Contenedor ── */
+  --max-width: 1120px;
+  --max-width-narrow: 720px;
+}

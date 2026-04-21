@@ -1,0 +1,382 @@
+/* components.css — Componentes reutilizables del sitio Fulbito */
+
+/* ============================================
+   BOTÓN PRIMARIO — CTA dorado
+   ============================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  background: var(--color-oro);
+  color: var(--color-noche);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 16px 32px;
+  cursor: pointer;
+  min-height: 48px;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+.btn-primary:hover {
+  background: var(--color-oro-light);
+  box-shadow: var(--shadow-glow-oro);
+  color: var(--color-noche);
+}
+.btn-primary:active { transform: scale(0.97); }
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-cal);
+  outline-offset: 2px;
+}
+
+.btn-primary--lg {
+  font-size: var(--text-lg);
+  padding: 18px 40px;
+  min-height: 56px;
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================
+   BOTÓN SECUNDARIO — outline dorado
+   ============================================ */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  background: transparent;
+  color: var(--color-oro);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--color-oro);
+  border-radius: var(--radius-md);
+  padding: 14px 28px;
+  cursor: pointer;
+  min-height: 48px;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+.btn-secondary:hover {
+  background: rgba(201, 169, 78, 0.1);
+  color: var(--color-oro-light);
+}
+.btn-secondary:active { transform: scale(0.97); }
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--color-cal);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   GLASS CARD
+   ============================================ */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-lg);
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-normal);
+}
+.glass-card:hover {
+  border-color: rgba(201, 169, 78, 0.3);
+}
+
+/* ============================================
+   FEATURE CARD — Glass card con sticker
+   ============================================ */
+.feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-normal);
+}
+.feature-card:hover {
+  border-color: rgba(201, 169, 78, 0.3);
+  transform: translateY(-4px);
+}
+.feature-card__icon {
+  width: 56px;
+  height: 56px;
+  font-size: 2.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-card__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.feature-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-cal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.feature-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-tierra);
+  line-height: 1.6;
+}
+
+/* ============================================
+   STEP CARD — Paso del "Cómo funciona"
+   ============================================ */
+.step-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-normal);
+}
+.step-card:hover {
+  border-color: rgba(201, 169, 78, 0.3);
+  transform: translateY(-4px);
+}
+.step-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+.step-card__number {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-oro);
+  line-height: 1;
+}
+.step-card__emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+.step-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-cal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.step-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-tierra);
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+/* ============================================
+   FIELD LINE LABEL — Texto con línea de cancha
+   ============================================ */
+.field-line-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+.field-line-label__text {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-cal);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+.field-line-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(240, 237, 228, 0.25) 0%, rgba(240, 237, 228, 0.05) 100%);
+}
+
+/* ============================================
+   STICKER CARD — Card emocional con sticker
+   ============================================ */
+.sticker-card {
+  background: rgba(13, 27, 15, 0.45);
+  border: 1px solid rgba(201, 169, 78, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  transition: border-color var(--transition-fast);
+}
+.sticker-card:hover {
+  border-color: rgba(201, 169, 78, 0.25);
+}
+.sticker-card__img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+}
+.sticker-card__phrase {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-cal);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ============================================
+   FAQ ACCORDION
+   ============================================ */
+.faq-item {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+.faq-item:hover {
+  border-color: rgba(201, 169, 78, 0.25);
+}
+.faq-item__question {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--color-cal);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 500;
+  text-align: left;
+  padding: var(--space-md) var(--space-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-height: 56px;
+  transition: color var(--transition-fast);
+}
+.faq-item__question:hover {
+  color: var(--color-oro-light);
+}
+.faq-item__question:focus-visible {
+  outline: 2px solid var(--color-oro);
+  outline-offset: -2px;
+  border-radius: var(--radius-lg);
+}
+.faq-item__icon {
+  color: var(--color-oro);
+  font-size: var(--text-lg);
+  transition: transform var(--transition-normal);
+  flex-shrink: 0;
+  font-style: normal;
+}
+.faq-item[open] .faq-item__icon {
+  transform: rotate(45deg);
+}
+.faq-item__answer {
+  padding: 0 var(--space-lg) var(--space-lg);
+  font-size: var(--text-sm);
+  color: var(--color-tierra);
+  line-height: 1.7;
+}
+
+/* ============================================
+   DIVIDER — Línea decorativa Teamgeist
+   ============================================ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--glass-border) 20%,
+    rgba(201, 169, 78, 0.25) 50%,
+    var(--glass-border) 80%,
+    transparent 100%
+  );
+  margin: 0;
+  border: none;
+}
+
+/* ============================================
+   SECTION TITLE
+   ============================================ */
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+.section-title h2 {
+  color: var(--color-cal);
+  margin-bottom: var(--space-sm);
+}
+.section-title p {
+  color: var(--color-tierra);
+  font-size: var(--text-base);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   LOGO
+   ============================================ */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+.logo__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+}
+.logo__text {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-oro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
