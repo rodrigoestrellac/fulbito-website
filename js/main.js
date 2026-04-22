@@ -97,12 +97,51 @@
   }
 
   // ════════════════════════════════════════════════
+  // Lightbox — tap para ver screenshots en grande
+  // ════════════════════════════════════════════════
+  function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+
+    const img = lightbox.querySelector('.lightbox__img');
+    const closeBtn = lightbox.querySelector('.lightbox__close');
+
+    function open(src, alt) {
+      img.src = src;
+      img.alt = alt || '';
+      lightbox.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lightbox.classList.remove('is-active');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.phone-frame__screen').forEach(screen => {
+      screen.style.cursor = 'zoom-in';
+      screen.addEventListener('click', () => {
+        open(screen.src, screen.alt);
+      });
+    });
+
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('is-active')) close();
+    });
+  }
+
+  // ════════════════════════════════════════════════
   // Init
   // ════════════════════════════════════════════════
   document.addEventListener('DOMContentLoaded', () => {
     initReveal();
     initHeader();
     initSmoothScroll();
+    initLightbox();
   });
 
 })();
