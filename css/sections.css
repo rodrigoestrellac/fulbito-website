@@ -296,6 +296,17 @@
   max-width: 400px;
 }
 
+.step-showcase__note {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-oro-light);
+  line-height: 1.6;
+  margin-top: var(--space-sm);
+  padding-left: var(--space-md);
+  border-left: 2px solid rgba(201, 169, 78, 0.35);
+  max-width: 400px;
+}
+
 /* ============================================
    FEATURES
    ============================================ */
