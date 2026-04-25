@@ -44,6 +44,13 @@
   border-radius: var(--radius-lg);
 }
 
+@media (max-width: 480px) {
+  .btn-primary--lg {
+    font-size: var(--text-base);
+    padding: 16px 24px;
+  }
+}
+
 /* ============================================
    BOTÓN SECUNDARIO — outline dorado
    ============================================ */

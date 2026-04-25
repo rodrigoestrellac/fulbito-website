@@ -171,6 +171,11 @@
   .hero__actions {
     width: 100%;
   }
+  .hero__btn {
+    white-space: normal;
+    height: auto;
+    min-height: 56px;
+  }
 }
 
 .hero__pro {
@@ -552,7 +557,12 @@
    ============================================ */
 .section-cta {
   text-align: center;
-  padding: var(--space-2xl) 0 var(--space-xl);
+  padding: var(--space-2xl) var(--space-md) var(--space-xl);
+}
+
+.section-cta .btn-primary {
+  max-width: 100%;
+  white-space: normal;
 }
 
 /* ============================================
