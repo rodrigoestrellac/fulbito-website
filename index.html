@@ -9,8 +9,8 @@
     content="Pegá la lista de WhatsApp, el algoritmo arma equipos justos y compartí al grupo. Gratis. Para fútbol amateur entre amigos.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/fulbito-icon.png">
-  <link rel="apple-touch-icon" href="assets/icons/fulbito-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/fulbito-icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icons/fulbito-icon-192.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
   <meta property="og:title" content="Fulbito — Armá los equipos del fulbito semanal en 30 segundos">
   <meta property="og:description"
     content="Pegá la lista de WhatsApp, el algoritmo arma equipos justos y compartí al grupo. El arma secreta del capitán del fulbito.">
-  <meta property="og:image" content="https://web.fulbito.futbol/assets/images/hero.png">
+  <meta property="og:image" content="https://web.fulbito.futbol/assets/images/og-cover.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="es_AR">
@@ -46,8 +46,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fulbito — Armá los equipos del fulbito semanal en 30 segundos">
   <meta name="twitter:description"
-    content="Pegá la lista de WhatsApp, el algoritmo arma equipos justos y compartí al grupo.">
-  <meta name="twitter:image" content="https://web.fulbito.futbol/assets/images/hero.png">
+    content="Pegá la lista de WhatsApp, el algoritmo arma equipos justos y compartí al grupo. El arma secreta del que organiza.">
+  <meta name="twitter:image" content="https://web.fulbito.futbol/assets/images/og-cover.jpg">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -81,7 +81,7 @@
   <header class="site-header" id="site-header">
     <div class="container site-header__inner">
       <a href="/" class="logo" aria-label="Fulbito — Inicio">
-        <img src="assets/icons/fulbito-icon.png" alt="" class="logo__icon" width="40" height="40">
+        <img src="assets/icons/fulbito-icon-80.png" alt="" class="logo__icon" width="40" height="40">
         <span class="logo__text">Fulbito</span>
       </a>
       <a href="https://fulbito.futbol" class="btn-primary site-header__cta" id="cta-header">
@@ -117,7 +117,7 @@
           <!-- CTAs -->
           <div class="hero__actions">
             <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg hero__btn" id="cta-hero">
-              ⚽ Probar Fulbito
+              ⚽ Armá tu primer partido
             </a>
             <a href="#como-funciona" class="btn-secondary hero__btn" id="cta-how">
               Ver cómo funciona ↓
@@ -128,6 +128,7 @@
           <div class="hero__pro reveal">
             <span class="hero__pro-text">⭐ Pro gratis · Solo por tiempo limitado</span>
           </div>
+          <p class="hero__footnote">Registrate vos y compartí el link. Los pibes pueden sumarse al toque.</p>
         </div>
 
         <!-- Hero visual — phone frame -->
@@ -136,7 +137,7 @@
             <img src="assets/screenshots/screen_grupo.webp"
               alt="Pantalla principal del grupo Fulbito Semanal: partidos, plantel y acciones rápidas"
               class="phone-frame__screen"
-              loading="eager">
+              loading="eager" fetchpriority="high">
           </div>
         </div>
       </div>
@@ -233,6 +234,13 @@
       </div>
     </section>
 
+    <!-- CTA intermedio -->
+    <div class="section-cta reveal">
+      <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg" id="cta-mid">
+        ⚽ Probalo con tu grupo
+      </a>
+    </div>
+
     <hr class="divider">
 
     <!-- ════════════════════════════════════════════════════
@@ -263,7 +271,7 @@
             </div>
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/charla-tecnica.png" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/charla-tecnica.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Convocatoria inteligente</h3>
               <p class="feature-card__desc">
@@ -272,7 +280,7 @@
             </div>
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/jogo-bonito.png" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/jogo-bonito.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Equipos balanceados</h3>
               <p class="feature-card__desc">
@@ -282,7 +290,7 @@
             </div>
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/a-jugar.png" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/a-jugar.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Editá los equipos</h3>
               <p class="feature-card__desc">
@@ -302,7 +310,7 @@
           <div class="features-grid reveal-stagger">
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/win_streak_3.png" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/win_streak_3.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Resultado y goles</h3>
               <p class="feature-card__desc">
@@ -311,7 +319,7 @@
             </div>
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/superclasico.png" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/superclasico.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Votaciones</h3>
               <p class="feature-card__desc">
@@ -322,7 +330,7 @@
             </div>
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/archirrival.png" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/archirrival.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Rankings y stats</h3>
               <p class="feature-card__desc">
@@ -332,7 +340,7 @@
             </div>
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/relator-fulbito.png" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/relator-fulbito.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Resumen con Relator IA</h3>
               <p class="feature-card__desc">
@@ -342,7 +350,7 @@
             </div>
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/messi_mode.png" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/messi_mode.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">La Card de los Cracks</h3>
               <p class="feature-card__desc">
@@ -456,6 +464,27 @@
         <p class="previa__closing reveal">
           <em>El arma secreta del que organiza el fulbito de la semana</em>
         </p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ════════════════════════════════════════════════════
+         SOCIAL PROOF — Origen real
+         ════════════════════════════════════════════════════ -->
+    <section class="section social-proof-section" id="social-proof" aria-label="Origen de Fulbito">
+      <div class="container">
+        <div class="social-proof reveal">
+          <blockquote class="social-proof__quote">
+            "Antes tardábamos más en armar los equipos que en calentar. Ahora pegás la lista y en 30 segundos está. Y nadie se queja porque lo armó el algoritmo, no vos."
+          </blockquote>
+          <p class="social-proof__author">
+            — Un organizador de fulbito de los jueves, Mendoza
+          </p>
+          <p class="social-proof__origin">
+            Fulbito nació para resolver un problema real: el quilombo de armar equipos justos en nuestro grupo de los jueves. Si a nosotros nos cambió la previa, a tu grupo también.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -600,7 +629,7 @@
         <h2>¿Listo para armar<br>los equipos?</h2>
         <p class="cta-final__sub">Registrate ahora y accedé a Pro gratis. Sin tarjeta, sin trampa.</p>
         <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg" id="cta-bottom">
-          ⚽ Probar Fulbito
+          ⚽ Sumate — es gratis
         </a>
         <span class="cta-final__badge">⭐ Pro gratis para los primeros en registrarse</span>
       </div>
@@ -614,7 +643,7 @@
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <a href="/" class="logo" aria-label="Fulbito — Inicio">
-        <img src="assets/icons/fulbito-icon.png" alt="" class="logo__icon" width="40" height="40">
+        <img src="assets/icons/fulbito-icon-80.png" alt="" class="logo__icon" width="40" height="40">
         <span class="logo__text">Fulbito</span>
       </a>
       <p class="site-footer__tagline">El arma secreta del que organiza el fulbito semanal.</p>

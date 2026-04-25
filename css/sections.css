@@ -216,7 +216,10 @@
 
 @media (max-width: 860px) {
   .hero__visual {
-    display: none;
+    justify-content: center;
+  }
+  .hero__visual .phone-frame {
+    max-width: 200px;
   }
 }
 
@@ -524,6 +527,84 @@
   flex-direction: column;
   gap: var(--space-sm);
   max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   HERO FOOTNOTE — Línea de baja fricción
+   ============================================ */
+.hero__footnote {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-tierra);
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .hero__footnote {
+    text-align: center;
+  }
+}
+
+/* ============================================
+   CTA INTERMEDIO — Entre secciones
+   ============================================ */
+.section-cta {
+  text-align: center;
+  padding: var(--space-2xl) 0 var(--space-xl);
+}
+
+/* ============================================
+   SOCIAL PROOF — Testimonio + origen
+   ============================================ */
+.social-proof-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(13, 27, 15, 0.3) 50%, transparent 100%);
+}
+
+.social-proof {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.social-proof__quote {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-cal);
+  font-style: italic;
+  line-height: 1.7;
+  margin: 0 0 var(--space-md);
+  position: relative;
+  padding: 0 var(--space-lg);
+}
+
+.social-proof__quote::before {
+  content: '\201C';
+  position: absolute;
+  left: -4px;
+  top: -8px;
+  font-size: 3rem;
+  color: var(--color-oro);
+  opacity: 0.3;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
+.social-proof__author {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-oro-light);
+  font-weight: 500;
+  margin-bottom: var(--space-xl);
+}
+
+.social-proof__origin {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-tierra);
+  line-height: 1.7;
+  max-width: 520px;
   margin: 0 auto;
 }
 
