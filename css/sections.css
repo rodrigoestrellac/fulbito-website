@@ -670,7 +670,7 @@
 }
 
 .site-footer__tagline {
-  color: #9e8565;
+  color: var(--color-tierra);
   font-size: var(--text-sm);
 }
 
@@ -683,7 +683,7 @@
 }
 
 .site-footer__link {
-  color: #9e8565;
+  color: var(--color-tierra);
   font-size: var(--text-xs);
   text-decoration: none;
   transition: color var(--transition-fast);
@@ -699,7 +699,7 @@
 }
 
 .site-footer__made {
-  color: #9e8565;
+  color: var(--color-tierra);
   font-size: var(--text-xs);
 }
 

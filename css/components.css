@@ -338,7 +338,7 @@
   max-width: 220px;
   border-radius: 36px;
   border: 2.5px solid rgba(180, 185, 190, 0.25);
-  background: #0a1a0c;
+  background: var(--color-noche);
   overflow: hidden;
   aspect-ratio: 9 / 19.5;
   box-shadow:
