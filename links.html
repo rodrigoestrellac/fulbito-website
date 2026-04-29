@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D5016">
+  <meta name="description" content="Fulbito — Links útiles. Armá equipos justos para tu fulbito semanal.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/fulbito-icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icons/fulbito-icon-192.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Design tokens -->
+  <link rel="stylesheet" href="css/variables.css">
+
+  <title>Fulbito — Links</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://web.fulbito.futbol/links">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://web.fulbito.futbol/links">
+  <meta property="og:title" content="Fulbito — Links">
+  <meta property="og:description" content="Armá equipos justos para tu fulbito semanal en 30 segundos. Gratis.">
+  <meta property="og:image" content="https://web.fulbito.futbol/assets/images/og-cover.jpg">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="Fulbito">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-cal);
+      background: linear-gradient(180deg, var(--color-noche) 0%, #142a10 50%, var(--color-cesped) 100%);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Césped stripes */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 80px,
+        rgba(255,255,255,0.008) 80px,
+        rgba(255,255,255,0.008) 160px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .links-page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    /* ── Profile ── */
+    .links-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .links-profile__icon {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 2.5px solid rgba(201, 169, 78, 0.35);
+      box-shadow: 0 0 32px rgba(201, 169, 78, 0.15);
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 32px rgba(201, 169, 78, 0.15); }
+      50% { box-shadow: 0 0 48px rgba(201, 169, 78, 0.25); }
+    }
+
+    .links-profile__name {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-oro);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .links-profile__bio {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--color-tierra);
+      line-height: 1.5;
+      max-width: 320px;
+    }
+
+    /* ── Links list ── */
+    .links-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .links-list__item a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 16px 20px;
+      background: rgba(13, 27, 15, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(201, 169, 78, 0.15);
+      border-radius: 12px;
+      color: var(--color-cal);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      transition:
+        border-color 150ms ease,
+        background 150ms ease,
+        transform 150ms ease,
+        box-shadow 150ms ease;
+    }
+
+    .links-list__item a:hover {
+      border-color: rgba(201, 169, 78, 0.4);
+      background: rgba(13, 27, 15, 0.75);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .links-list__item a:active {
+      transform: scale(0.98);
+    }
+
+    .links-list__item a:focus-visible {
+      outline: 2px solid var(--color-oro);
+      outline-offset: 2px;
+    }
+
+    .links-list__icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+
+    .links-list__text {
+      flex: 1;
+    }
+
+    .links-list__label {
+      display: block;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .links-list__desc {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--color-tierra);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .links-list__arrow {
+      color: var(--color-oro);
+      opacity: 0.4;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .links-list__item a:hover .links-list__arrow {
+      opacity: 0.8;
+      transform: translateX(2px);
+    }
+
+    /* ── CTA destacado ── */
+    .links-list__item--primary a {
+      background: var(--color-oro);
+      color: var(--color-noche);
+      border-color: var(--color-oro);
+      font-weight: 600;
+    }
+
+    .links-list__item--primary .links-list__label {
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .links-list__item--primary a:hover {
+      background: var(--color-oro-light);
+      border-color: var(--color-oro-light);
+      box-shadow: 0 0 24px rgba(201, 169, 78, 0.3);
+    }
+
+    .links-list__item--primary .links-list__desc {
+      color: rgba(13, 27, 15, 0.6);
+    }
+
+    .links-list__item--primary .links-list__arrow {
+      color: var(--color-noche);
+      opacity: 0.3;
+    }
+
+    .links-list__item--primary a:hover .links-list__arrow {
+      opacity: 0.6;
+    }
+
+    /* ── Footer ── */
+    .links-footer {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .links-footer__made {
+      font-size: 0.75rem;
+      color: var(--color-tierra);
+      opacity: 0.6;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .links-profile__icon {
+        animation: none;
+      }
+      .links-list__item a {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="links-page">
+
+    <!-- Profile -->
+    <div class="links-profile">
+      <img src="assets/icons/fulbito-icon.png" alt="Fulbito" class="links-profile__icon" width="88" height="88">
+      <h1 class="links-profile__name">Fulbito</h1>
+      <p class="links-profile__bio">Armá equipos justos para tu fulbito semanal en 30 segundos. El arma secreta del que organiza.</p>
+    </div>
+
+    <!-- Links -->
+    <ul class="links-list">
+      <li class="links-list__item links-list__item--primary">
+        <a href="https://fulbito.futbol">
+          <span class="links-list__icon">⚽</span>
+          <span class="links-list__text">
+            <span class="links-list__label">Abrir Fulbito</span>
+            <span class="links-list__desc">Entrá a la app y armá tu partido</span>
+          </span>
+          <span class="links-list__arrow">→</span>
+        </a>
+      </li>
+      <li class="links-list__item">
+        <a href="https://web.fulbito.futbol">
+          <span class="links-list__icon"><img src="assets/icons/icon-512.png" alt="" width="28" height="28" style="border-radius:6px"></span>
+          <span class="links-list__text">
+            <span class="links-list__label">Conocé Fulbito</span>
+            <span class="links-list__desc">Mirá todo lo que podés hacer</span>
+          </span>
+          <span class="links-list__arrow">→</span>
+        </a>
+      </li>
+      <li class="links-list__item">
+        <a href="https://web.fulbito.futbol/#como-funciona">
+          <span class="links-list__icon">📖</span>
+          <span class="links-list__text">
+            <span class="links-list__label">¿Cómo funciona?</span>
+            <span class="links-list__desc">4 pasos, cero peleas por los equipos</span>
+          </span>
+          <span class="links-list__arrow">→</span>
+        </a>
+      </li>
+      <li class="links-list__item">
+        <a href="mailto:fulbitosemanal.app@gmail.com">
+          <span class="links-list__icon">✉️</span>
+          <span class="links-list__text">
+            <span class="links-list__label">Contacto</span>
+            <span class="links-list__desc">fulbitosemanal.app@gmail.com</span>
+          </span>
+          <span class="links-list__arrow">→</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Footer -->
+    <div class="links-footer">
+      <p class="links-footer__made">Hecho con ♥️⚽ en Mendoza</p>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
