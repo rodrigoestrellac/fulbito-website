@@ -100,15 +100,13 @@
     .links-profile__icon {
       width: 88px;
       height: 88px;
-      border-radius: 50%;
-      border: 2.5px solid rgba(201, 169, 78, 0.35);
-      box-shadow: 0 0 32px rgba(201, 169, 78, 0.15);
+      filter: drop-shadow(0 0 24px rgba(201, 169, 78, 0.25));
       animation: pulse-glow 3s ease-in-out infinite;
     }
 
     @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 32px rgba(201, 169, 78, 0.15); }
-      50% { box-shadow: 0 0 48px rgba(201, 169, 78, 0.25); }
+      0%, 100% { filter: drop-shadow(0 0 24px rgba(201, 169, 78, 0.25)); }
+      50% { filter: drop-shadow(0 0 40px rgba(201, 169, 78, 0.4)); }
     }
 
     .links-profile__name {
@@ -290,7 +288,7 @@
     <ul class="links-list">
       <li class="links-list__item links-list__item--primary">
         <a href="https://fulbito.futbol">
-          <span class="links-list__icon">⚽</span>
+          <span class="links-list__icon"><img src="assets/icons/icon-512.png" alt="" width="28" height="28" style="border-radius:6px"></span>
           <span class="links-list__text">
             <span class="links-list__label">Abrir Fulbito</span>
             <span class="links-list__desc">Entrá a la app y armá tu partido</span>
@@ -300,7 +298,7 @@
       </li>
       <li class="links-list__item">
         <a href="https://web.fulbito.futbol">
-          <span class="links-list__icon"><img src="assets/icons/icon-512.png" alt="" width="28" height="28" style="border-radius:6px"></span>
+          <span class="links-list__icon">🌐</span>
           <span class="links-list__text">
             <span class="links-list__label">Conocé Fulbito</span>
             <span class="links-list__desc">Mirá todo lo que podés hacer</span>
