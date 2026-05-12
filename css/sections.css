@@ -606,6 +606,18 @@
   line-height: 1;
 }
 
+.social-proof__quote::after {
+  content: '\201D';
+  position: absolute;
+  right: -4px;
+  bottom: -32px;
+  font-size: 3rem;
+  color: var(--color-oro);
+  opacity: 0.3;
+  font-family: var(--font-display);
+  line-height: 1;
+}
+
 .social-proof__author {
   font-family: var(--font-body);
   font-size: var(--text-sm);
