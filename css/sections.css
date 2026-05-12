@@ -10,7 +10,8 @@
   right: 0;
   z-index: var(--z-header);
   padding: var(--space-md) 0;
-  transition: background-color var(--transition-normal), box-shadow var(--transition-normal);
+  background: linear-gradient(180deg, rgba(13, 27, 15, 0.55) 0%, rgba(13, 27, 15, 0.2) 70%, transparent 100%);
+  transition: background var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .site-header.scrolled {
