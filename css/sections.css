@@ -203,6 +203,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow-x: clip;
 }
 
 /* Glow detrás del phone */
@@ -344,6 +345,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-md);
+  align-items: start;
 }
 
 @media (max-width: 640px) {
@@ -598,7 +600,7 @@
 .social-proof__quote::before {
   content: '\201C';
   position: absolute;
-  left: -4px;
+  left: 0;
   top: -8px;
   font-size: 3rem;
   color: var(--color-oro);
@@ -610,7 +612,7 @@
 .social-proof__quote::after {
   content: '\201D';
   position: absolute;
-  right: -4px;
+  right: 0;
   bottom: -32px;
   font-size: 3rem;
   color: var(--color-oro);
