@@ -355,6 +355,18 @@
   color: var(--color-tierra);
   line-height: 1.7;
 }
+.faq-item__figure {
+  margin: var(--space-md) 0 0;
+  max-width: 380px;
+}
+.faq-item__figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(201, 169, 78, 0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
 
 /* ============================================
    PHONE FRAME — Mockup de teléfono
