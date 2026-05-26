@@ -37,13 +37,32 @@
 .js-anim .reveal--blur  { transform: translateY(var(--reveal-shift)); filter: blur(14px); }
 .js-anim .reveal--rise  { transform: translateY(calc(var(--reveal-shift) * 2)) scale(0.97); }
 
+/* Flip 3D: la pieza gira para "revelarse" al entrar */
+.js-anim .reveal--flip {
+  transform: perspective(1200px) rotateY(-38deg) translateY(26px);
+  transform-origin: center;
+}
+
 .js-anim .reveal--left.is-inview,
 .js-anim .reveal--right.is-inview,
 .js-anim .reveal--scale.is-inview,
 .js-anim .reveal--blur.is-inview,
-.js-anim .reveal--rise.is-inview {
+.js-anim .reveal--rise.is-inview,
+.js-anim .reveal--flip.is-inview {
   transform: none;
   filter: none;
+}
+
+/* En mobile, los slides horizontales se vuelven verticales para que nada
+   se salga de pantalla; el flip usa un ángulo más suave. */
+@media (max-width: 760px) {
+  .js-anim .reveal--left,
+  .js-anim .reveal--right {
+    transform: translateY(var(--reveal-shift));
+  }
+  .js-anim .reveal--flip {
+    transform: perspective(1000px) rotateY(-24deg) translateY(20px);
+  }
 }
 
 /* ============================================================
