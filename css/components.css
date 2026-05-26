@@ -647,8 +647,9 @@
 .fut-card__photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
+  object-position: center bottom;
+  padding: 6px;
 }
 .fut-card__name {
   font-family: var(--font-display);

@@ -132,6 +132,42 @@
   }
 
   // ════════════════════════════════════════════════
+  // 3b. Scroll-spin: la card gira en 3D ligada al scroll
+  //     (toda la pieza, sticker incluido). Funciona en iOS
+  //     Safari, donde animation-timeline de CSS no existe.
+  // ════════════════════════════════════════════════
+  function initScrollSpin() {
+    if (reduceMotion) return;
+    const els = document.querySelectorAll('[data-scroll-spin]');
+    if (!els.length) return;
+
+    const SPIN = 150; // grados totales de barrido (±75°)
+    let ticking = false;
+
+    function update() {
+      ticking = false;
+      const vh = window.innerHeight;
+      els.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom < -120 || rect.top > vh + 120) return;
+        const center = rect.top + rect.height / 2;
+        // 0 cuando el centro está al fondo del viewport, 1 cuando llega arriba
+        let p = 1 - (center / vh);
+        p = Math.max(0, Math.min(1, p));
+        const deg = (0.5 - p) * SPIN; // +75 (entra) → 0 (centro) → -75 (sale)
+        el.style.transform = 'perspective(1100px) rotateY(' + deg.toFixed(1) + 'deg)';
+      });
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    window.addEventListener('resize', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  }
+
+  // ════════════════════════════════════════════════
   // 4. Parallax fallback (sin animation-timeline)
   // ════════════════════════════════════════════════
   function initParallaxFallback() {
@@ -237,6 +273,7 @@
     safe(initReveal);
     safe(initHowto);
     safe(initTilt);
+    safe(initScrollSpin);
     safe(initParallaxFallback);
     safe(initHeader);
     safe(initSmoothScroll);
