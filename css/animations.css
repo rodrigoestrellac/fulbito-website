@@ -1,0 +1,185 @@
+/* animations.css — Motor de animación cinematográfico del sitio Fulbito
+   ────────────────────────────────────────────────────────────────────
+   Arquitectura en 3 capas, todas con degradación elegante:
+   1. Reveals de entrada  → universal vía IntersectionObserver (clase .is-inview)
+   2. Efectos continuos   → CSS scroll-driven (animation-timeline) bajo @supports
+   3. Secciones pinned    → position: sticky (universal) + progreso JS para el morph
+
+   Sin JS, el contenido se ve completo (progressive enhancement).
+   Con <html class="js-anim">, los elementos .reveal arrancan ocultos.
+   prefers-reduced-motion desactiva todo movimiento.
+   ──────────────────────────────────────────────────────────────────── */
+
+/* ============================================================
+   CAPA 1 — REVEALS DE ENTRADA (universal)
+   ============================================================ */
+.js-anim .reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-shift));
+  transition:
+    opacity var(--reveal-dur) var(--ease-out-soft),
+    transform var(--reveal-dur) var(--ease-out-soft),
+    filter var(--reveal-dur) var(--ease-out-soft);
+  transition-delay: calc(var(--i, 0) * 90ms);
+  will-change: opacity, transform;
+}
+
+.js-anim .reveal.is-inview {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Variantes direccionales */
+.js-anim .reveal--left  { transform: translateX(calc(-1 * var(--reveal-shift) * 1.4)); }
+.js-anim .reveal--right { transform: translateX(calc(var(--reveal-shift) * 1.4)); }
+.js-anim .reveal--scale { transform: scale(0.92); }
+.js-anim .reveal--blur  { transform: translateY(var(--reveal-shift)); filter: blur(14px); }
+.js-anim .reveal--rise  { transform: translateY(calc(var(--reveal-shift) * 2)) scale(0.97); }
+
+.js-anim .reveal--left.is-inview,
+.js-anim .reveal--right.is-inview,
+.js-anim .reveal--scale.is-inview,
+.js-anim .reveal--blur.is-inview,
+.js-anim .reveal--rise.is-inview {
+  transform: none;
+  filter: none;
+}
+
+/* ============================================================
+   LINE REVEAL — headlines que entran línea por línea
+   ============================================================ */
+.line-reveal { display: block; }
+.line-reveal__line {
+  display: block;
+  overflow: hidden;
+}
+.line-reveal__inner {
+  display: block;
+}
+.js-anim .line-reveal__inner {
+  transform: translateY(110%);
+  opacity: 0;
+  transition:
+    transform 0.9s var(--ease-out-soft),
+    opacity 0.9s var(--ease-out-soft);
+  transition-delay: calc(var(--line, 0) * 110ms);
+}
+.js-anim .line-reveal.is-inview .line-reveal__inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ============================================================
+   CAPA 2 — EFECTOS CONTINUOS (scroll-driven, additive)
+   Solo donde haya soporte; si no, quedan estáticos.
+   ============================================================ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+
+    /* Parallax: el elemento sube más lento que el scroll */
+    .parallax {
+      animation: parallax-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+    .parallax--strong { --parallax-shift: 80px; }
+    .parallax--soft   { --parallax-shift: 34px; }
+
+    @keyframes parallax-drift {
+      from { transform: translateY(var(--parallax-shift, 56px)); }
+      to   { transform: translateY(calc(-1 * var(--parallax-shift, 56px))); }
+    }
+
+    /* Glow / atmósfera que respira con el scroll de su sección */
+    .scroll-fade {
+      animation: scroll-fade-band linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 40%;
+    }
+    @keyframes scroll-fade-band {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Barra de progreso de sección (cancha) */
+    .field-progress__fill {
+      transform-origin: left center;
+      animation: field-fill linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 85%;
+    }
+    @keyframes field-fill {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+  }
+}
+
+/* ============================================================
+   IDLE — animaciones que no dependen del scroll
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Pelota que rebota (hero) */
+  @keyframes ballBounce {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-12px) rotate(8deg); }
+  }
+
+  /* Flotación suave del phone del hero */
+  @keyframes phoneFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-14px); }
+  }
+
+  /* Indicador de scroll */
+  @keyframes scrollCue {
+    0%   { transform: translateY(0); opacity: 0.9; }
+    50%  { transform: translateY(8px); opacity: 0.4; }
+    100% { transform: translateY(0); opacity: 0.9; }
+  }
+
+  /* Marquee infinito de stickers */
+  @keyframes marquee-l {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes marquee-r {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* Waveform del relator */
+  @keyframes wave {
+    0%, 100% { transform: scaleY(0.25); }
+    50%      { transform: scaleY(1); }
+  }
+
+  /* Halo dorado pulsante */
+  @keyframes haloPulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50%      { opacity: 0.85; transform: scale(1.06); }
+  }
+
+  /* Notificación push que entra */
+  @keyframes pushIn {
+    0%   { transform: translateY(-140%) scale(0.9); opacity: 0; }
+    60%  { transform: translateY(6%) scale(1.02); opacity: 1; }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION — todo estático
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .js-anim .reveal,
+  .js-anim .reveal.is-inview,
+  .js-anim .line-reveal__inner {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}

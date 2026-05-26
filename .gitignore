@@ -2,6 +2,7 @@ WEBSITE_HANDOFF.md
 Dockerfile
 docker-compose.yml
 PLAN.md
+PLAN_REDISENO_2026-05-26.md
 nginx.conf
 docs/
 .claude/settings.local.json

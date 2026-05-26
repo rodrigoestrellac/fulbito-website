@@ -151,33 +151,21 @@ ul, ol { list-style: none; }
   top: var(--space-md);
 }
 
-/* ── Scroll reveal ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-  will-change: opacity, transform;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* ── Scroll reveal ──
+   El sistema de reveal vive en animations.css (clase .is-inview gateada por
+   .js-anim). Acá solo queda el stagger automático para hijos directos de
+   .reveal-stagger cuando no se setea --i a mano. */
+.reveal-stagger > *:nth-child(1) { --i: 0; }
+.reveal-stagger > *:nth-child(2) { --i: 1; }
+.reveal-stagger > *:nth-child(3) { --i: 2; }
+.reveal-stagger > *:nth-child(4) { --i: 3; }
+.reveal-stagger > *:nth-child(5) { --i: 4; }
+.reveal-stagger > *:nth-child(6) { --i: 5; }
+.reveal-stagger > *:nth-child(7) { --i: 6; }
+.reveal-stagger > *:nth-child(8) { --i: 7; }
 
-/* Stagger children */
-.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
-.reveal-stagger > .reveal:nth-child(2) { transition-delay: 80ms; }
-.reveal-stagger > .reveal:nth-child(3) { transition-delay: 160ms; }
-.reveal-stagger > .reveal:nth-child(4) { transition-delay: 240ms; }
-.reveal-stagger > .reveal:nth-child(5) { transition-delay: 320ms; }
-.reveal-stagger > .reveal:nth-child(6) { transition-delay: 400ms; }
-
-/* Reduced motion */
+/* Reduced motion global */
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
   html { scroll-behavior: auto; }
 }
 
