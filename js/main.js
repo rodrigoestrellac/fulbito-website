@@ -69,7 +69,9 @@
     function update() {
       ticking = false;
       const rect = track.getBoundingClientRect();
-      const scrollable = rect.height - window.innerHeight;
+      // El tramo pineable real = alto del track menos el alto del stage (que ya
+      // descuenta el header). Así el morph completa los 4 pasos justo dentro del pin.
+      const scrollable = rect.height - stage.offsetHeight;
       if (scrollable <= 0) { setActive(0); return; }
 
       // progreso 0..1 a lo largo del tramo pineable
@@ -201,6 +203,15 @@
   function initHeader() {
     const header = document.getElementById('site-header');
     if (!header) return;
+
+    // Exponer la altura real del header como var CSS (la usa la sección pinned
+    // para no quedar tapada por el header).
+    function setHeaderVar() {
+      document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    }
+    setHeaderVar();
+    window.addEventListener('resize', setHeaderVar, { passive: true });
+
     let ticking = false;
     function update() {
       header.classList.toggle('scrolled', window.scrollY > 60);
@@ -271,11 +282,11 @@
   function init() {
     // initReveal primero: si algo más fallara, el contenido igual se muestra.
     safe(initReveal);
+    safe(initHeader);
     safe(initHowto);
     safe(initTilt);
     safe(initScrollSpin);
     safe(initParallaxFallback);
-    safe(initHeader);
     safe(initSmoothScroll);
     safe(initLightbox);
   }

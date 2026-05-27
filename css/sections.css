@@ -873,13 +873,13 @@
 }
 .howto__track {
   position: relative;
-  height: 300vh; /* 100vh sticky + 200vh de scroll para los 4 pasos */
+  height: 260vh; /* stage pineado + scroll para los 4 pasos (más corto = no frena tanto) */
 }
 .howto__stage {
   position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
+  top: var(--header-h, 76px); /* pinea DEBAJO del header, no detrás */
+  height: calc(100vh - var(--header-h, 76px));
+  height: calc(100svh - var(--header-h, 76px));
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -968,18 +968,21 @@
 }
 .howto__phone {
   margin: 0 auto;
-  perspective: 1200px;
+  perspective: 1400px;
 }
-/* Cada pantalla entra girando en 3D (no es un simple fade) */
+/* Cada pantalla GIRA en 3D al cambiar de paso (no es un cross-fade):
+   la saliente se da vuelta hacia un lado y la entrante gira hasta quedar de frente. */
 .howto__screen {
   opacity: 0;
-  transition: opacity 0.6s var(--ease-out-soft), transform 0.6s var(--ease-out-soft);
-  transform: perspective(1200px) rotateY(18deg) scale(1.05);
-  transform-origin: left center;
+  transition: opacity 0.4s var(--ease-out-soft), transform 0.65s var(--ease-in-out-cine);
+  transform: rotateY(-78deg);
+  transform-origin: center center;
+  backface-visibility: hidden;
 }
 .howto__screen.is-active {
   opacity: 1;
-  transform: perspective(1200px) rotateY(0) scale(1);
+  transform: rotateY(0deg);
+  transition: opacity 0.5s var(--ease-out-soft) 0.1s, transform 0.65s var(--ease-in-out-cine);
 }
 .howto__progress {
   width: 160px;
@@ -998,6 +1001,7 @@
 }
 
 @media (max-width: 760px) {
+  .howto__track { height: 220vh; }
   .howto__grid {
     grid-template-columns: 1fr;
     gap: var(--space-xl);

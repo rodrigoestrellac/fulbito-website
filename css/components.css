@@ -648,8 +648,11 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center bottom;
-  padding: 6px;
+  object-position: center top;
+  /* Zoom intermedio: menos que cover (que recortaba a la cara),
+     pero más que contain (que lo dejaba chico). Muestra ~3/4 del jugador. */
+  transform: scale(1.45);
+  transform-origin: center top;
 }
 .fut-card__name {
   font-family: var(--font-display);
