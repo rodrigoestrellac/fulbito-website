@@ -41,6 +41,41 @@
   }
 
   // ════════════════════════════════════════════════
+  // 1b. Count-up de números (prueba social)
+  // ════════════════════════════════════════════════
+  function initCounters() {
+    const els = document.querySelectorAll('[data-count]');
+    if (!els.length) return;
+
+    const render = (el, val) =>
+      el.textContent = (el.dataset.prefix || '') + val + (el.dataset.suffix || '');
+
+    if (reduceMotion) {
+      els.forEach(el => render(el, parseInt(el.dataset.count, 10) || 0));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        const el = en.target;
+        const target = parseInt(el.dataset.count, 10) || 0;
+        const dur = 1100;
+        const start = performance.now();
+        (function tick(now) {
+          const p = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          render(el, Math.round(target * eased));
+          if (p < 1) requestAnimationFrame(tick);
+        })(start);
+      });
+    }, { threshold: 0.4 });
+
+    els.forEach(el => { render(el, 0); io.observe(el); });
+  }
+
+  // ════════════════════════════════════════════════
   // 2. Pinned "Cómo funciona" — morph ligado al scroll
   // ════════════════════════════════════════════════
   function initHowto() {
@@ -292,6 +327,7 @@
   function init() {
     // initReveal primero: si algo más fallara, el contenido igual se muestra.
     safe(initReveal);
+    safe(initCounters);
     safe(initHeader);
     safe(initHowto);
     safe(initTilt);
