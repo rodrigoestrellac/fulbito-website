@@ -973,18 +973,15 @@
   transform-origin: center center;
   will-change: transform;
 }
-/* La pantalla solo hace cross-fade; el giro lo hace el teléfono.
-   En los pasos "de espaldas" (teléfono a 180°) la captura se des-espeja. */
+/* La pantalla activa siempre legible: cross-fade + un leve scale (sin giro). */
 .howto__screen {
   opacity: 0;
-  transition: opacity 0.35s var(--ease-out-soft);
-  transform: scaleX(1);
+  transition: opacity 0.4s var(--ease-out-soft), transform 0.55s var(--ease-out-soft);
+  transform: scale(1.03);
 }
 .howto__screen.is-active {
   opacity: 1;
-}
-.howto__screen.is-flipped {
-  transform: scaleX(-1);
+  transform: scale(1);
 }
 .howto__progress {
   width: 160px;

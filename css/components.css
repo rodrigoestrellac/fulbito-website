@@ -154,26 +154,30 @@
   font-size: 6rem;
   line-height: 1;
 }
-/* Stickers de las feature cards: flotación sutil + pop al hover de la card */
-@keyframes stickerFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-7px) rotate(2.5deg); }
+/* Stickers de las feature cards: POP una sola vez, justo después de que la card
+   aparece al scrollear. Mobile-first: no depende de hover. */
+@keyframes stickerPop {
+  0%   { transform: scale(0.3) rotate(-12deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 @media (prefers-reduced-motion: no-preference) {
+  /* arrancan ocultos para que el pop se note cuando entra la card */
   .feature-card__icon img,
   .feature-card__emoji {
-    animation: stickerFloat 4.5s ease-in-out infinite;
+    opacity: 0;
   }
-  .features-grid .feature-card:nth-child(2) .feature-card__icon img { animation-delay: 0.6s; }
-  .features-grid .feature-card:nth-child(3) .feature-card__icon img { animation-delay: 1.2s; }
-  .features-grid .feature-card:nth-child(4) .feature-card__icon img { animation-delay: 1.8s; }
-  .features-grid .feature-card:nth-child(5) .feature-card__icon img { animation-delay: 2.4s; }
+  .feature-card.is-inview .feature-card__icon img,
+  .feature-card.is-inview .feature-card__emoji {
+    animation: stickerPop 0.55s ease-out 0.2s both;
+  }
 }
+/* Bonus en desktop (en mobile no aplica el hover) */
 .feature-card__icon {
   transition: transform 0.3s var(--ease-out-back);
 }
 .feature-card:hover .feature-card__icon {
-  transform: scale(1.14) rotate(-5deg);
+  transform: scale(1.1) rotate(-4deg);
 }
 .feature-card__title {
   grid-column: 1;
