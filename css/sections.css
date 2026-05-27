@@ -247,6 +247,13 @@
 .hero__phone-wrap {
   position: relative;
   z-index: 1;
+  width: clamp(190px, 64vw, 260px);
+  margin: 0 auto;
+}
+/* El wrapper define el ancho; el phone lo llena (si no, colapsa a ~5px). */
+.hero .hero__phone-wrap .phone-frame {
+  width: 100%;
+  max-width: none;
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero__phone-wrap {
