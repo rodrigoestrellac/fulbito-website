@@ -164,7 +164,9 @@
         // 0 cuando el centro está al fondo del viewport, 1 cuando llega arriba
         let p = 1 - (center / vh);
         p = Math.max(0, Math.min(1, p));
-        const deg = (0.5 - p) * SPIN; // +75 (entra) → 0 (centro) → -75 (sale)
+        // barrido configurable por elemento (data-spin-deg); default ±75°
+        const spin = parseFloat(el.getAttribute('data-spin-deg')) || SPIN;
+        const deg = (0.5 - p) * spin; // entra girado → de frente al centro → gira al salir
         el.style.transform = 'perspective(1100px) rotateY(' + deg.toFixed(1) + 'deg)';
       });
     }
