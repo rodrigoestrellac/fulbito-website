@@ -259,7 +259,6 @@
     const flip = root.querySelector('[data-fusion-flip]');
     const left = root.querySelector('[data-fusion-left]');
     const right = root.querySelector('[data-fusion-right]');
-    const ring = root.querySelector('.fusion__ring');
     const glow = root.querySelector('.fusion__glow');
     if (!stage || !flip || !left || !right) return;
 
@@ -277,14 +276,16 @@
       let p = 1 - (center - vh * 0.4) / (vh * 0.55);
       p = Math.max(0, Math.min(1, p));
 
-      const conv = Math.min(1, p / 0.55);              // juntar las mitades
-      const flipP = Math.max(0, (p - 0.55) / 0.45);    // dar vuelta la carta
-      const off = rect.width * 0.62;
+      const conv = Math.min(1, p / 0.55);              // solapar los círculos
+      const flipP = Math.max(0, (p - 0.55) / 0.45);    // girar la carta
 
-      left.style.transform = 'translateX(' + ((conv - 1) * off).toFixed(1) + 'px)';
-      right.style.transform = 'translateX(' + ((1 - conv) * off).toFixed(1) + 'px)';
+      // De separados (±apart) a solapados (±conved), sin llegar a centrarse
+      const apart = rect.width * 0.68;
+      const conved = rect.width * 0.24;
+      const xoff = apart - (apart - conved) * conv;
+      left.style.transform = 'translateX(' + (-xoff).toFixed(1) + 'px)';
+      right.style.transform = 'translateX(' + xoff.toFixed(1) + 'px)';
       flip.style.transform = 'rotateY(' + (flipP * 180).toFixed(1) + 'deg)';
-      if (ring) ring.style.opacity = Math.max(0, (conv - 0.45) / 0.55).toFixed(2);
       if (glow) glow.style.opacity = (conv * 0.85).toFixed(2);
     }
     window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });

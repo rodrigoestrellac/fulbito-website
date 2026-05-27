@@ -1163,8 +1163,8 @@
   flex-direction: column;
   align-items: center;
 }
-/* Fusión — animación scroll-driven: dos mitades (tu foto + tu crack) se juntan,
-   la carta hace un flip con glow y al darse vuelta se ve la fusión. */
+/* Fusión — animación scroll-driven: dos círculos completos (tu foto + tu crack)
+   se solapan y giran; la carta flipea con glow y revela la fusión. */
 .fusion {
   display: flex;
   flex-direction: column;
@@ -1173,17 +1173,17 @@
 }
 .fusion__stage {
   position: relative;
-  width: 280px;
-  max-width: 78vw;
-  aspect-ratio: 1;
-  perspective: 1200px;
+  width: 148px;
+  height: 148px;
+  margin: var(--space-lg) auto;
+  perspective: 1000px;
 }
 .fusion__glow {
   position: absolute;
-  inset: -18%;
+  inset: -45%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(201, 169, 78, 0.55) 0%, rgba(201, 169, 78, 0.12) 45%, transparent 70%);
-  filter: blur(12px);
+  background: radial-gradient(circle, rgba(201, 169, 78, 0.5) 0%, rgba(201, 169, 78, 0.12) 45%, transparent 70%);
+  filter: blur(14px);
   opacity: 0; /* lo maneja el JS */
   pointer-events: none;
   z-index: 0;
@@ -1205,36 +1205,31 @@
   overflow: hidden;
   transform: rotateY(180deg);
   background: var(--color-noche);
+  border: 3px solid var(--color-oro);
+  box-shadow: 0 0 26px rgba(201, 169, 78, 0.5);
 }
 .fusion__face--back img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.fusion__half {
+/* Dos círculos completos que se solapan (el crack queda encima) */
+.fusion__orb {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   overflow: hidden;
+  border: 3px solid var(--color-oro);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+  background: var(--color-noche);
   will-change: transform;
 }
-.fusion__half img {
+.fusion__orb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.fusion__half--left  { clip-path: inset(0 50% 0 0); }
-.fusion__half--right { clip-path: inset(0 0 0 50%); }
-.fusion__ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 3px solid var(--color-oro);
-  box-shadow: 0 0 28px rgba(201, 169, 78, 0.5), inset 0 0 18px rgba(201, 169, 78, 0.25);
-  opacity: 0; /* lo maneja el JS */
-  pointer-events: none;
-  z-index: 2;
-}
+.fusion__orb--crack { z-index: 1; }
 .fusion__caption {
   font-family: var(--font-body);
   font-size: var(--text-sm);
@@ -1242,9 +1237,8 @@
   text-align: center;
   max-width: 320px;
 }
-/* Fallback (sin JS / reduced-motion): se muestra la fusión ya revelada */
+/* Fallback (sin JS / reduced-motion): fusión ya revelada */
 .fusion--static .fusion__flip { transform: rotateY(180deg); }
-.fusion--static .fusion__ring,
 .fusion--static .fusion__glow { opacity: 1; }
 
 @media (max-width: 760px) {
