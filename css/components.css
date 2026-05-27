@@ -808,19 +808,24 @@
   .relator-wave span:nth-child(4n)   { animation-delay: 0.45s; }
   .relator-wave span:nth-child(5n)   { animation-delay: 0.6s;  animation-duration: 0.8s; }
 }
+/* Fila waveform + play, para que el play quede a la altura de las barras */
+.relator-player__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.relator-player__row .relator-wave {
+  flex: 1;
+}
+/* Play monocromático sin fondo, centrado verticalmente con la waveform */
 .relator-player__play {
-  width: 44px;
-  height: 44px;
   flex-shrink: 0;
-  border-radius: var(--radius-full);
-  background: var(--color-oro);
-  color: var(--color-noche);
+  color: var(--color-oro);
+  font-size: 1.6rem;
+  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--text-base);
-  padding-left: 3px;
-  box-shadow: var(--shadow-glow-oro);
 }
 
 /* ============================================
