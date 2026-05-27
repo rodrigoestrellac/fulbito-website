@@ -482,6 +482,32 @@
 }
 
 /* ============================================
+   PHONE 3D — volumen real para los mockups que giran.
+   La cara frontal (.phone-frame) flota sobre un cuerpo
+   oscuro (.phone-3d__body) → al rotar se ve grosor, no un plano.
+   ============================================ */
+.phone-3d {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.phone-3d .phone-frame {
+  width: 220px;
+  max-width: 72vw;
+  transform: translateZ(11px); /* cara frontal hacia adelante */
+}
+.phone-3d__body {
+  position: absolute;
+  inset: 0;
+  border-radius: 40px;
+  background: linear-gradient(110deg, #313640 0%, #161a1f 45%, #05070b 100%);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform: translateZ(-11px); /* cuerpo/back hacia atrás → 22px de grosor */
+}
+
+/* ============================================
    PRO BADGE
    ============================================ */
 .pro-badge {
