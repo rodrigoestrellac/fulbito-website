@@ -175,69 +175,100 @@
     </section>
 
     <!-- ════════════════════════════════════════════════════
-         CÓMO FUNCIONA — Pinned scroll-telling (centerpiece)
+         CÓMO FUNCIONA — 4 pasos, un mockup por paso
          ════════════════════════════════════════════════════ -->
-    <section class="howto" id="como-funciona" aria-label="Cómo funciona Fulbito">
-      <div class="howto__intro container">
+    <section class="section" id="como-funciona" aria-label="Cómo funciona Fulbito">
+      <div class="container">
         <div class="section-title reveal">
           <h2>¿Cómo funciona?</h2>
           <p>Cuatro pasos. Cero peleas por los equipos.</p>
         </div>
-      </div>
 
-      <div class="howto__track" data-howto-track="4">
-        <div class="howto__stage">
-          <div class="container howto__grid">
+        <div class="steps-showcase">
 
-            <!-- Copy que muta -->
-            <div class="howto__copy">
-              <div class="howto__step is-active" data-step="0">
-                <span class="howto__num" aria-hidden="true">01</span>
-                <h3 class="howto__title">Creá el partido</h3>
-                <p class="howto__desc">Elegí fecha, horario y cancha. En un toque ya tenés el partido creado y listo para convocar.</p>
+          <!-- Paso 1 -->
+          <div class="step-showcase">
+            <div class="step-showcase__content reveal reveal--left">
+              <div class="step-showcase__header">
+                <span class="step-showcase__number" aria-hidden="true">1</span>
+                <h3 class="step-showcase__title">Creá el partido</h3>
               </div>
-              <div class="howto__step" data-step="1">
-                <span class="howto__num" aria-hidden="true">02</span>
-                <h3 class="howto__title">Pegá la lista</h3>
-                <p class="howto__desc">Copiá la lista del grupo de WhatsApp y pegala. Fulbito reconoce a los pibes solo. ¿Cayó un invitado? Lo sumás sin drama.</p>
-              </div>
-              <div class="howto__step" data-step="2">
-                <span class="howto__num" aria-hidden="true">03</span>
-                <h3 class="howto__title">Armá equipos</h3>
-                <p class="howto__desc">El algoritmo arma equipos justos en 30 segundos. Sin peleas, sin moneda al aire, sin "yo elijo a Messi".</p>
-              </div>
-              <div class="howto__step" data-step="3">
-                <span class="howto__num" aria-hidden="true">04</span>
-                <h3 class="howto__title">Compartí al grupo</h3>
-                <p class="howto__desc">Mandá los equipos al grupo de WhatsApp con un tap. Listo, a jugar.</p>
-              </div>
-
-              <div class="howto__dots" aria-hidden="true">
-                <span class="howto__dot is-active" data-dot></span>
-                <span class="howto__dot" data-dot></span>
-                <span class="howto__dot" data-dot></span>
-                <span class="howto__dot" data-dot></span>
+              <p class="step-showcase__desc">
+                Elegí fecha, horario y cancha. En un toque ya tenés el partido creado y listo para convocar.
+              </p>
+            </div>
+            <div class="step-showcase__phone">
+              <div class="phone-frame reveal reveal--flip" data-zoom>
+                <img src="assets/screenshots/screen_crear_partido.webp"
+                  alt="Crear partido: elegí fecha, horario y cancha"
+                  class="phone-frame__screen" loading="lazy">
               </div>
             </div>
-
-            <!-- Phone que muta de pantalla -->
-            <div class="howto__device" data-zoom>
-              <div class="phone-frame phone-frame--hero howto__phone">
-                <img src="assets/screenshots/screen_crear_partido.webp" alt="Crear partido: elegí fecha, horario y cancha"
-                  class="phone-frame__screen howto__screen is-active" data-step="0" loading="lazy">
-                <img src="assets/screenshots/screen_armar_partido.webp" alt="Convocatoria: la lista de WhatsApp pegada y los jugadores detectados"
-                  class="phone-frame__screen howto__screen" data-step="1" loading="lazy">
-                <img src="assets/screenshots/armar_equipos.webp" alt="Armar equipos: Equipo A y B balanceados"
-                  class="phone-frame__screen howto__screen" data-step="2" loading="lazy">
-                <img src="assets/screenshots/compartir_equipos.webp" alt="Alineación lista para compartir al grupo"
-                  class="phone-frame__screen howto__screen" data-step="3" loading="lazy">
-              </div>
-              <div class="howto__progress" aria-hidden="true">
-                <span class="howto__progress-fill" data-howto-progress></span>
-              </div>
-            </div>
-
           </div>
+
+          <!-- Paso 2 -->
+          <div class="step-showcase step-showcase--reverse">
+            <div class="step-showcase__content reveal reveal--right">
+              <div class="step-showcase__header">
+                <span class="step-showcase__number" aria-hidden="true">2</span>
+                <h3 class="step-showcase__title">Pegá la lista</h3>
+              </div>
+              <p class="step-showcase__desc">
+                Copiá la lista del grupo de WhatsApp y pegala. Fulbito reconoce a los pibes solo.
+              </p>
+              <p class="step-showcase__note">
+                ¿Cayó un invitado de último momento? Marcalo como invitado y el algoritmo lo suma sin drama.
+              </p>
+            </div>
+            <div class="step-showcase__phone">
+              <div class="phone-frame reveal reveal--flip" data-zoom>
+                <img src="assets/screenshots/screen_armar_partido.webp"
+                  alt="Convocatoria: la lista de WhatsApp pegada y los jugadores detectados"
+                  class="phone-frame__screen" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="step-showcase">
+            <div class="step-showcase__content reveal reveal--left">
+              <div class="step-showcase__header">
+                <span class="step-showcase__number" aria-hidden="true">3</span>
+                <h3 class="step-showcase__title">Armá equipos</h3>
+              </div>
+              <p class="step-showcase__desc">
+                El algoritmo arma equipos justos en 30 segundos. Sin peleas, sin moneda al aire, sin "yo elijo a Messi".
+              </p>
+            </div>
+            <div class="step-showcase__phone">
+              <div class="phone-frame reveal reveal--flip" data-zoom>
+                <img src="assets/screenshots/armar_equipos.webp"
+                  alt="Armar equipos: Equipo A y B balanceados"
+                  class="phone-frame__screen" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 4 -->
+          <div class="step-showcase step-showcase--reverse">
+            <div class="step-showcase__content reveal reveal--right">
+              <div class="step-showcase__header">
+                <span class="step-showcase__number" aria-hidden="true">4</span>
+                <h3 class="step-showcase__title">Compartí al grupo</h3>
+              </div>
+              <p class="step-showcase__desc">
+                Mandá los equipos al grupo de WhatsApp con un tap. Listo, a jugar.
+              </p>
+            </div>
+            <div class="step-showcase__phone">
+              <div class="phone-frame reveal reveal--flip" data-zoom>
+                <img src="assets/screenshots/compartir_equipos.webp"
+                  alt="Alineación lista para compartir al grupo"
+                  class="phone-frame__screen" loading="lazy">
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
