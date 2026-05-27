@@ -88,8 +88,13 @@
           const el = document.querySelector('[data-stat="' + stat + '"]');
           if (el) el.dataset.count = String(val);
         };
-        // jugadores: redondeo honesto al múltiplo de 10 inferior, prefijo "+"
-        if (typeof d.players === 'number') setCount('players', Math.max(0, Math.floor(d.players / 10) * 10));
+        // jugadores: máx entre usuarios de la app y grupos×10 (cada grupo tiene
+        // ~10 jugadores que se benefician del armado aunque no todos usen la app).
+        // Redondeo honesto al múltiplo de 10 inferior, prefijo "+".
+        if (typeof d.players === 'number') {
+          const raw = Math.max(d.players, (d.groups || 0) * 10);
+          setCount('players', Math.max(0, Math.floor(raw / 10) * 10));
+        }
         setCount('groups', d.groups);
         setCount('matches', d.matches);
 
