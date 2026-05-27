@@ -229,6 +229,14 @@
     const SPIN = 150; // grados totales de barrido (±75°)
     let ticking = false;
 
+    // Los teléfonos de "Cómo funciona" alternan la dirección de giro.
+    let hi = 0;
+    els.forEach(el => {
+      if (el.closest('#como-funciona')) {
+        el.dataset.spinDir = (hi++ % 2 === 0) ? '1' : '-1';
+      }
+    });
+
     function update() {
       ticking = false;
       const vh = window.innerHeight;
@@ -241,7 +249,8 @@
         p = Math.max(0, Math.min(1, p));
         // barrido configurable por elemento (data-spin-deg); default ±75°
         const spin = parseFloat(el.getAttribute('data-spin-deg')) || SPIN;
-        const deg = (0.5 - p) * spin; // entra girado → de frente al centro → gira al salir
+        const dir = parseFloat(el.getAttribute('data-spin-dir')) || 1; // dirección alternada
+        const deg = (0.5 - p) * spin * dir; // entra girado → de frente al centro → gira al salir
         el.style.transform = 'perspective(1100px) rotateY(' + deg.toFixed(1) + 'deg)';
       });
     }
