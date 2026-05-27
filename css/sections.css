@@ -1192,6 +1192,7 @@
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   will-change: transform;
   z-index: 1;
 }
@@ -1200,6 +1201,7 @@
   inset: 0;
   border-radius: 50%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .fusion__face--back {
   overflow: hidden;
@@ -1207,16 +1209,17 @@
   background: var(--color-noche);
   border: 3px solid var(--color-oro);
   box-shadow: 0 0 26px rgba(201, 169, 78, 0.5);
+  opacity: 0; /* lo maneja el JS — evita que se vea junto a los orbs en iOS */
 }
 .fusion__face--back img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* Dos círculos completos que se solapan (el crack queda encima) */
+/* Dos círculos completos (10% más chicos que la fusión) que se solapan */
 .fusion__orb {
   position: absolute;
-  inset: 0;
+  inset: 5%;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid var(--color-oro);
@@ -1239,6 +1242,8 @@
 }
 /* Fallback (sin JS / reduced-motion): fusión ya revelada */
 .fusion--static .fusion__flip { transform: rotateY(180deg); }
+.fusion--static .fusion__face--back { opacity: 1; }
+.fusion--static .fusion__face--front { opacity: 0; }
 .fusion--static .fusion__glow { opacity: 1; }
 
 @media (max-width: 760px) {

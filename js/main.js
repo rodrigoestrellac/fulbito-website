@@ -259,6 +259,8 @@
     const flip = root.querySelector('[data-fusion-flip]');
     const left = root.querySelector('[data-fusion-left]');
     const right = root.querySelector('[data-fusion-right]');
+    const front = root.querySelector('.fusion__face--front');
+    const back = root.querySelector('.fusion__face--back');
     const glow = root.querySelector('.fusion__glow');
     if (!stage || !flip || !left || !right) return;
 
@@ -279,13 +281,18 @@
       const conv = Math.min(1, p / 0.55);              // solapar los círculos
       const flipP = Math.max(0, (p - 0.55) / 0.45);    // girar la carta
 
-      // De separados (±apart) a solapados (±conved), sin llegar a centrarse
-      const apart = rect.width * 0.68;
-      const conved = rect.width * 0.24;
-      const xoff = apart - (apart - conved) * conv;
+      // De separados (±apart) a solape COMPLETO (0): los dos círculos terminan
+      // apilados en el centro antes de girar.
+      const xoff = rect.width * 0.68 * (1 - conv);
       left.style.transform = 'translateX(' + (-xoff).toFixed(1) + 'px)';
       right.style.transform = 'translateX(' + xoff.toFixed(1) + 'px)';
       flip.style.transform = 'rotateY(' + (flipP * 180).toFixed(1) + 'deg)';
+
+      // Swap de caras al cruzar los 90° (a prueba de iOS: no dependemos solo de
+      // backface-visibility). Antes del cruce se ven los orbs; después, la fusión.
+      const showBack = flipP >= 0.5;
+      if (front) front.style.opacity = showBack ? '0' : '1';
+      if (back) back.style.opacity = showBack ? '1' : '0';
       if (glow) glow.style.opacity = (conv * 0.85).toFixed(2);
     }
     window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
