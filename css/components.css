@@ -881,10 +881,18 @@
   background: none;
   color: var(--color-oro);
   cursor: pointer;
-  transition: transform var(--transition-fast), color var(--transition-fast);
+  transition: color var(--transition-fast);
 }
-.relator-player__play:hover { color: var(--color-oro-light); transform: scale(1.08); }
-.relator-player__play:active { transform: scale(0.94); }
+/* Respira mientras está pausado (invita a tocar); quieto al reproducir */
+@media (prefers-reduced-motion: no-preference) {
+  .relator-player__play {
+    animation: playBreathe 1.8s ease-in-out infinite;
+  }
+  .relator-player.is-playing .relator-player__play {
+    animation: none;
+  }
+}
+.relator-player__play:hover { color: var(--color-oro-light); }
 .relator-player__ico { display: block; }
 .relator-player__ico--pause { display: none; }
 .relator-player.is-playing .relator-player__ico--play { display: none; }

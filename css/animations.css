@@ -194,6 +194,12 @@
     70%  { box-shadow: 0 0 0 9px rgba(63, 185, 80, 0); }
     100% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0); }
   }
+
+  /* Botón de play que "respira" para invitar a tocarlo */
+  @keyframes playBreathe {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.16); }
+  }
 }
 
 /* ============================================================
