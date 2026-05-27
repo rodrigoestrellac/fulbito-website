@@ -154,6 +154,27 @@
   font-size: 6rem;
   line-height: 1;
 }
+/* Stickers de las feature cards: flotación sutil + pop al hover de la card */
+@keyframes stickerFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(2.5deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .feature-card__icon img,
+  .feature-card__emoji {
+    animation: stickerFloat 4.5s ease-in-out infinite;
+  }
+  .features-grid .feature-card:nth-child(2) .feature-card__icon img { animation-delay: 0.6s; }
+  .features-grid .feature-card:nth-child(3) .feature-card__icon img { animation-delay: 1.2s; }
+  .features-grid .feature-card:nth-child(4) .feature-card__icon img { animation-delay: 1.8s; }
+  .features-grid .feature-card:nth-child(5) .feature-card__icon img { animation-delay: 2.4s; }
+}
+.feature-card__icon {
+  transition: transform 0.3s var(--ease-out-back);
+}
+.feature-card:hover .feature-card__icon {
+  transform: scale(1.14) rotate(-5deg);
+}
 .feature-card__title {
   grid-column: 1;
   grid-row: 1;
@@ -817,15 +838,15 @@
 .relator-player__row .relator-wave {
   flex: 1;
 }
-/* Play monocromático sin fondo, centrado verticalmente con la waveform */
+/* Play monocromático: triángulo dibujado en CSS (no emoji ▶, que en iOS sale
+   a color). Oro garantizado, sin fondo, centrado con la waveform. */
 .relator-player__play {
   flex-shrink: 0;
-  color: var(--color-oro);
-  font-size: 1.6rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 11px 0 11px 19px;
+  border-color: transparent transparent transparent var(--color-oro);
 }
 
 /* ============================================
