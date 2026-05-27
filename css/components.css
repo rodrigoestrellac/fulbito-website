@@ -885,6 +885,12 @@
   transition: color var(--transition-fast);
 }
 .relator-player__ico { width: 32px; height: 32px; }
+/* Puntas redondeadas en el play/pause */
+.relator-player__ico path {
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
 /* Respira mientras está pausado (invita a tocar); quieto al reproducir */
 @media (prefers-reduced-motion: no-preference) {
   .relator-player__play {
