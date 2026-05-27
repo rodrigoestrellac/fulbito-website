@@ -3,6 +3,7 @@ Dockerfile
 docker-compose.yml
 PLAN.md
 PLAN_REDISENO_2026-05-26.md
+fusion_iniesta_website.jpg
 nginx.conf
 docs/
 .claude/settings.local.json

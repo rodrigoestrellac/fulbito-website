@@ -1163,71 +1163,89 @@
   flex-direction: column;
   align-items: center;
 }
+/* Fusión — animación scroll-driven: dos mitades (tu foto + tu crack) se juntan,
+   la carta hace un flip con glow y al darse vuelta se ve la fusión. */
 .fusion {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-lg);
-}
-.fusion__cell {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-lg);
 }
-.fusion__avatar {
-  width: 150px;
-  height: 150px;
-  max-width: 32vw;
-  max-height: 32vw;
-  border-radius: var(--radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.fusion__stage {
+  position: relative;
+  width: 280px;
+  max-width: 78vw;
+  aspect-ratio: 1;
+  perspective: 1200px;
+}
+.fusion__glow {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 169, 78, 0.55) 0%, rgba(201, 169, 78, 0.12) 45%, transparent 70%);
+  filter: blur(12px);
+  opacity: 0; /* lo maneja el JS */
+  pointer-events: none;
+  z-index: 0;
+}
+.fusion__flip {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 1;
+}
+.fusion__face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  backface-visibility: hidden;
+}
+.fusion__face--back {
   overflow: hidden;
+  transform: rotateY(180deg);
+  background: var(--color-noche);
 }
-.fusion__avatar--silhouette {
-  background: rgba(13, 27, 15, 0.5);
-  border: 1px dashed rgba(240, 237, 228, 0.25);
-  color: var(--color-tierra);
-}
-.fusion__avatar--result {
-  border: 2px solid rgba(201, 169, 78, 0.6);
-  box-shadow: var(--shadow-glow-oro);
-}
-.fusion__avatar--result img {
+.fusion__face--back img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.fusion__label {
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-tierra);
+.fusion__half {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  will-change: transform;
 }
-.fusion__arrow {
-  width: 50px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: var(--radius-full);
-  background: var(--color-oro);
-  color: var(--color-noche);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-glow-oro);
+.fusion__half img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.fusion__arrow-spark {
-  font-family: var(--font-display);
-  font-weight: 700;
+.fusion__half--left  { clip-path: inset(0 50% 0 0); }
+.fusion__half--right { clip-path: inset(0 0 0 50%); }
+.fusion__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--color-oro);
+  box-shadow: 0 0 28px rgba(201, 169, 78, 0.5), inset 0 0 18px rgba(201, 169, 78, 0.25);
+  opacity: 0; /* lo maneja el JS */
+  pointer-events: none;
+  z-index: 2;
+}
+.fusion__caption {
+  font-family: var(--font-body);
   font-size: var(--text-sm);
-  letter-spacing: 0.04em;
+  color: var(--color-tierra);
+  text-align: center;
+  max-width: 320px;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .fusion__arrow { animation: haloPulse 2.6s ease-in-out infinite; }
-}
+/* Fallback (sin JS / reduced-motion): se muestra la fusión ya revelada */
+.fusion--static .fusion__flip { transform: rotateY(180deg); }
+.fusion--static .fusion__ring,
+.fusion--static .fusion__glow { opacity: 1; }
 
 @media (max-width: 760px) {
   .adn-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }

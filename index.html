@@ -453,30 +453,27 @@
             </ul>
           </div>
 
-          <div class="adn-visual reveal reveal--right">
-            <div class="fusion" data-fusion>
-              <figure class="fusion__cell fusion__cell--before">
-                <div class="fusion__avatar fusion__avatar--silhouette" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="64" height="64" fill="currentColor" aria-hidden="true">
-                    <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4 0-8 2-8 6v2h16v-2c0-4-4-6-8-6Z"/>
-                  </svg>
+          <div class="adn-visual">
+            <div class="fusion" data-fusion-anim>
+              <div class="fusion__stage">
+                <span class="fusion__glow" aria-hidden="true"></span>
+                <div class="fusion__flip" data-fusion-flip>
+                  <div class="fusion__face fusion__face--front">
+                    <div class="fusion__half fusion__half--left" data-fusion-left>
+                      <img src="assets/fusion/profile.webp" alt="Tu foto de perfil" loading="lazy" width="280" height="280">
+                    </div>
+                    <div class="fusion__half fusion__half--right" data-fusion-right>
+                      <img src="assets/fusion/iniesta.webp" alt="Tu crack" loading="lazy" width="280" height="280">
+                    </div>
+                  </div>
+                  <div class="fusion__face fusion__face--back">
+                    <img src="assets/fusion/fusion.webp" alt="Tu fusión con tu crack, generada por IA" loading="lazy" width="280" height="280">
+                  </div>
                 </div>
-                <figcaption class="fusion__label">Tu selfie</figcaption>
-              </figure>
-
-              <span class="fusion__arrow" aria-hidden="true">
-                <span class="fusion__arrow-spark">IA</span>
-              </span>
-
-              <figure class="fusion__cell fusion__cell--after">
-                <div class="fusion__avatar fusion__avatar--result">
-                  <img src="assets/stickers/messi_mode.webp" alt="Ejemplo de fusión generada con IA" loading="lazy" width="160" height="160">
-                </div>
-                <figcaption class="fusion__label">Tu fusión</figcaption>
-              </figure>
+                <span class="fusion__ring" aria-hidden="true"></span>
+              </div>
+              <p class="fusion__caption">Tu cara + tu crack = tu fusión, en un toque</p>
             </div>
-            <!-- TODO(Rodrigo): reemplazar messi_mode.webp por un before/after real de fusión cuando lo tengas -->
-            <p class="placeholder-note">Imagen de ejemplo · tu fusión sale de tu propia foto</p>
           </div>
         </div>
       </div>

@@ -96,10 +96,12 @@
         // actividad reciente
         const act = document.querySelector('.proof-activity');
         if (act && d.last_match_date) {
-          const last = new Date(d.last_match_date + 'T12:00:00');
-          const days = Math.floor((Date.now() - last.getTime()) / 86400000);
+          const today = new Date(); today.setHours(0, 0, 0, 0);
+          const last = new Date(d.last_match_date + 'T00:00:00');
+          const days = Math.round((today.getTime() - last.getTime()) / 86400000);
           let phrase = 'El último partido se armó esta semana';
-          if (days <= 1) phrase = 'El último partido se armó hoy';
+          if (days <= 0) phrase = 'El último partido se armó hoy';
+          else if (days === 1) phrase = 'El último partido se armó ayer';
           else if (days <= 7) phrase = 'El último partido se armó esta semana';
           else phrase = 'El último partido se armó hace ' + days + ' días';
           act.innerHTML = '<span class="proof-activity__dot" aria-hidden="true"></span>' + phrase;
@@ -248,6 +250,49 @@
   }
 
   // ════════════════════════════════════════════════
+  // 3c. Fusión — flip ligado al scroll (foto + crack → fusión)
+  // ════════════════════════════════════════════════
+  function initFusion() {
+    const root = document.querySelector('[data-fusion-anim]');
+    if (!root) return;
+    const stage = root.querySelector('.fusion__stage');
+    const flip = root.querySelector('[data-fusion-flip]');
+    const left = root.querySelector('[data-fusion-left]');
+    const right = root.querySelector('[data-fusion-right]');
+    const ring = root.querySelector('.fusion__ring');
+    const glow = root.querySelector('.fusion__glow');
+    if (!stage || !flip || !left || !right) return;
+
+    if (reduceMotion) { root.classList.add('fusion--static'); return; }
+
+    let ticking = false;
+    function update() {
+      ticking = false;
+      const rect = stage.getBoundingClientRect();
+      const vh = window.innerHeight;
+      if (rect.bottom < -80 || rect.top > vh + 80) return;
+
+      // progreso: 0 cuando el stage entra por abajo, 1 cuando su centro sube al ~40%
+      const center = rect.top + rect.height / 2;
+      let p = 1 - (center - vh * 0.4) / (vh * 0.55);
+      p = Math.max(0, Math.min(1, p));
+
+      const conv = Math.min(1, p / 0.55);              // juntar las mitades
+      const flipP = Math.max(0, (p - 0.55) / 0.45);    // dar vuelta la carta
+      const off = rect.width * 0.62;
+
+      left.style.transform = 'translateX(' + ((conv - 1) * off).toFixed(1) + 'px)';
+      right.style.transform = 'translateX(' + ((1 - conv) * off).toFixed(1) + 'px)';
+      flip.style.transform = 'rotateY(' + (flipP * 180).toFixed(1) + 'deg)';
+      if (ring) ring.style.opacity = Math.max(0, (conv - 0.45) / 0.55).toFixed(2);
+      if (glow) glow.style.opacity = (conv * 0.85).toFixed(2);
+    }
+    window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+    window.addEventListener('resize', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+    update();
+  }
+
+  // ════════════════════════════════════════════════
   // 4. Parallax fallback (sin animation-timeline)
   // ════════════════════════════════════════════════
   function initParallaxFallback() {
@@ -392,6 +437,7 @@
     safe(initHowto);
     safe(initTilt);
     safe(initScrollSpin);
+    safe(initFusion);
     safe(initParallaxFallback);
     safe(initSmoothScroll);
     safe(initLightbox);
