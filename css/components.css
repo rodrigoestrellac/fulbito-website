@@ -851,7 +851,9 @@
 @media (prefers-reduced-motion: no-preference) {
   .relator-wave span {
     animation: wave 1.1s ease-in-out infinite;
+    animation-play-state: paused; /* solo se mueve cuando el relato suena */
   }
+  .relator-player.is-playing .relator-wave span { animation-play-state: running; }
   .relator-wave span:nth-child(3n)   { animation-delay: 0.15s; animation-duration: 0.9s; }
   .relator-wave span:nth-child(3n+1) { animation-delay: 0.30s; animation-duration: 1.3s; }
   .relator-wave span:nth-child(4n)   { animation-delay: 0.45s; }
@@ -866,16 +868,27 @@
 .relator-player__row .relator-wave {
   flex: 1;
 }
-/* Play monocromático: triángulo dibujado en CSS (no emoji ▶, que en iOS sale
-   a color). Oro garantizado, sin fondo, centrado con la waveform. */
+/* Botón play/pause: SVG monocromático dorado (sin fondo). Reproduce un relato real. */
 .relator-player__play {
   flex-shrink: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 11px 0 11px 19px;
-  border-color: transparent transparent transparent var(--color-oro);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-oro);
+  cursor: pointer;
+  transition: transform var(--transition-fast), color var(--transition-fast);
 }
+.relator-player__play:hover { color: var(--color-oro-light); transform: scale(1.08); }
+.relator-player__play:active { transform: scale(0.94); }
+.relator-player__ico { display: block; }
+.relator-player__ico--pause { display: none; }
+.relator-player.is-playing .relator-player__ico--play { display: none; }
+.relator-player.is-playing .relator-player__ico--pause { display: block; }
 
 /* ============================================
    PUSH NOTIF — mock de notificación

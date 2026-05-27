@@ -539,12 +539,13 @@
         </div>
 
         <!-- Reproductor mock con waveform -->
-        <div class="relator-player reveal">
+        <div class="relator-player reveal" data-relato>
+          <audio class="relator-player__audio" src="assets/audio/relato-demo.mp3" preload="none"></audio>
           <div class="relator-player__avatar">
             <img src="assets/stickers/relator-fulbito.webp" alt="" width="72" height="72" loading="lazy">
           </div>
           <div class="relator-player__body">
-            <span class="relator-player__title">Relato — Fecha 12 · Fulbito Jueves</span>
+            <span class="relator-player__title">Relato del partido · narrado por IA</span>
             <div class="relator-player__row">
               <div class="relator-wave" aria-hidden="true">
                 <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -552,7 +553,10 @@
                 <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                 <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
               </div>
-              <div class="relator-player__play" aria-hidden="true"></div>
+              <button type="button" class="relator-player__play" data-relato-play aria-label="Reproducir relato">
+                <svg class="relator-player__ico relator-player__ico--play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="relator-player__ico relator-player__ico--pause" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+              </button>
             </div>
           </div>
         </div>

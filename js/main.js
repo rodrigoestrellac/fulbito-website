@@ -353,6 +353,32 @@
   // ════════════════════════════════════════════════
   // Init
   // ════════════════════════════════════════════════
+  // ════════════════════════════════════════════════
+  // 8. Reproductor del relato (audio real)
+  // ════════════════════════════════════════════════
+  function initRelatoPlayer() {
+    const player = document.querySelector('[data-relato]');
+    if (!player) return;
+    const audio = player.querySelector('.relator-player__audio');
+    const btn = player.querySelector('[data-relato-play]');
+    if (!audio || !btn) return;
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) audio.play().catch(() => {});
+      else audio.pause();
+    });
+    audio.addEventListener('play', () => {
+      player.classList.add('is-playing');
+      btn.setAttribute('aria-label', 'Pausar relato');
+    });
+    const stop = () => {
+      player.classList.remove('is-playing');
+      btn.setAttribute('aria-label', 'Reproducir relato');
+    };
+    audio.addEventListener('pause', stop);
+    audio.addEventListener('ended', stop);
+  }
+
   function safe(fn) {
     try { fn(); } catch (e) { if (window.console) console.error('[fulbito]', e); }
   }
@@ -369,6 +395,7 @@
     safe(initParallaxFallback);
     safe(initSmoothScroll);
     safe(initLightbox);
+    safe(initRelatoPlayer);
   }
 
   if (document.readyState === 'loading') {
