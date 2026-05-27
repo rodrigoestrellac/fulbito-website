@@ -198,7 +198,7 @@
   /* Botón de play que "respira" para invitar a tocarlo */
   @keyframes playBreathe {
     0%, 100% { transform: scale(1); }
-    50%      { transform: scale(1.16); }
+    50%      { transform: scale(1.32); }
   }
 }
 
