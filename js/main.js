@@ -76,6 +76,39 @@
   }
 
   // ════════════════════════════════════════════════
+  // 1c. Métricas en vivo desde el admin (con fallback)
+  // ════════════════════════════════════════════════
+  function fetchLiveStats() {
+    fetch('https://admin.fulbito.futbol/api/public/stats', { mode: 'cors' })
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (!d) return;
+        const setCount = (stat, val) => {
+          if (val == null || isNaN(val)) return;
+          const el = document.querySelector('[data-stat="' + stat + '"]');
+          if (el) el.dataset.count = String(val);
+        };
+        // jugadores: redondeo honesto al múltiplo de 10 inferior, prefijo "+"
+        if (typeof d.players === 'number') setCount('players', Math.max(0, Math.floor(d.players / 10) * 10));
+        setCount('groups', d.groups);
+        setCount('matches', d.matches);
+
+        // actividad reciente
+        const act = document.querySelector('.proof-activity');
+        if (act && d.last_match_date) {
+          const last = new Date(d.last_match_date + 'T12:00:00');
+          const days = Math.floor((Date.now() - last.getTime()) / 86400000);
+          let phrase = 'El último partido se armó esta semana';
+          if (days <= 1) phrase = 'El último partido se armó hoy';
+          else if (days <= 7) phrase = 'El último partido se armó esta semana';
+          else phrase = 'El último partido se armó hace ' + days + ' días';
+          act.innerHTML = '<span class="proof-activity__dot" aria-hidden="true"></span>' + phrase;
+        }
+      })
+      .catch(() => { /* el sitio ya tiene números de fallback en el HTML */ });
+  }
+
+  // ════════════════════════════════════════════════
   // 2. Pinned "Cómo funciona" — morph ligado al scroll
   // ════════════════════════════════════════════════
   function initHowto() {
@@ -327,6 +360,7 @@
   function init() {
     // initReveal primero: si algo más fallara, el contenido igual se muestra.
     safe(initReveal);
+    safe(fetchLiveStats);
     safe(initCounters);
     safe(initHeader);
     safe(initHowto);

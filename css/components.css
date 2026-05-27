@@ -410,8 +410,7 @@
   overflow: hidden;
   aspect-ratio: 9 / 19.5;
   box-shadow:
-    0 40px 80px rgba(0, 0, 0, 0.55),
-    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 22px 50px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(180, 185, 190, 0.08),
     inset 0 0 0 1px rgba(255, 255, 255, 0.04);
   flex-shrink: 0;
@@ -436,9 +435,8 @@
   border-radius: 40px;
   border-color: rgba(180, 185, 190, 0.3);
   box-shadow:
-    0 48px 96px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(180, 185, 190, 0.1),
-    0 0 60px rgba(0, 0, 0, 0.15);
+    0 24px 55px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(180, 185, 190, 0.1);
 }
 .phone-frame--hero::before {
   width: 30%;
@@ -503,7 +501,7 @@
   inset: 0;
   border-radius: 40px;
   background: linear-gradient(110deg, #313640 0%, #161a1f 45%, #05070b 100%);
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   transform: translateZ(-11px); /* cuerpo/back hacia atrás → 22px de grosor */
 }
 
