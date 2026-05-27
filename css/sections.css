@@ -959,30 +959,32 @@
   background: var(--color-oro);
 }
 
-/* Device — pantallas apiladas con cross-fade */
+/* Device — el TELÉFONO ENTERO gira (lo maneja el JS, ligado al scroll).
+   El perspective va en el contenedor para que la rotación tenga profundidad. */
 .howto__device {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-lg);
+  perspective: 1500px;
 }
 .howto__phone {
   margin: 0 auto;
-  perspective: 1400px;
+  transform-origin: center center;
+  will-change: transform;
 }
-/* Cada pantalla GIRA en 3D al cambiar de paso (no es un cross-fade):
-   la saliente se da vuelta hacia un lado y la entrante gira hasta quedar de frente. */
+/* La pantalla solo hace cross-fade; el giro lo hace el teléfono.
+   En los pasos "de espaldas" (teléfono a 180°) la captura se des-espeja. */
 .howto__screen {
   opacity: 0;
-  transition: opacity 0.4s var(--ease-out-soft), transform 0.65s var(--ease-in-out-cine);
-  transform: rotateY(-78deg);
-  transform-origin: center center;
-  backface-visibility: hidden;
+  transition: opacity 0.35s var(--ease-out-soft);
+  transform: scaleX(1);
 }
 .howto__screen.is-active {
   opacity: 1;
-  transform: rotateY(0deg);
-  transition: opacity 0.5s var(--ease-out-soft) 0.1s, transform 0.65s var(--ease-in-out-cine);
+}
+.howto__screen.is-flipped {
+  transform: scaleX(-1);
 }
 .howto__progress {
   width: 160px;

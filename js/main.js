@@ -48,6 +48,8 @@
     if (!track) return;
 
     const stage = track.querySelector('.howto__stage');
+    const phone = track.querySelector('.howto__phone');
+    const screens = Array.from(track.querySelectorAll('.howto__screen'));
     const steps = Array.from(track.querySelectorAll('[data-step]'));
     const dots = Array.from(track.querySelectorAll('[data-dot]'));
     const fill = track.querySelector('[data-howto-progress]');
@@ -60,8 +62,15 @@
     function setActive(idx) {
       if (idx === current) return;
       current = idx;
+      // En los pasos "de espaldas" (impares) el teléfono está rotado 180°, así que
+      // la captura se ve espejada → la des-espejamos con scaleX(-1).
+      const flipped = (idx % 2) === 1;
       steps.forEach(el => {
         el.classList.toggle('is-active', parseInt(el.getAttribute('data-step'), 10) === idx);
+      });
+      screens.forEach(s => {
+        const on = parseInt(s.getAttribute('data-step'), 10) === idx;
+        s.classList.toggle('is-flipped', on && flipped);
       });
       dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
     }
@@ -80,8 +89,16 @@
 
       if (fill) fill.style.transform = 'scaleX(' + p + ')';
 
-      // índice de paso (con un pequeño bias para que el último paso se complete)
-      const idx = Math.min(total - 1, Math.floor(p * total * 0.999));
+      // El TELÉFONO gira ligado al scroll: media vuelta (180°) por paso.
+      // Faces "de frente" en 0/180/360… → coinciden con cada paso asentado.
+      if (phone) {
+        const rot = p * (total - 1) * 180;
+        phone.style.transform = 'rotateY(' + rot.toFixed(1) + 'deg)';
+      }
+
+      // El paso cambia en los puntos "de canto" (90/270/450°), donde el teléfono
+      // está de perfil y no se ve el cambio de pantalla.
+      const idx = Math.round(p * (total - 1));
       setActive(idx);
     }
 
