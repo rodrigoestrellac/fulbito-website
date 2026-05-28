@@ -121,7 +121,6 @@
       <div class="hero__bg" aria-hidden="true">
         <span class="hero__floodlight hero__floodlight--l"></span>
         <span class="hero__floodlight hero__floodlight--r"></span>
-        <span class="hero__circle"></span>
       </div>
 
       <div class="container hero__inner">
@@ -178,7 +177,6 @@
          PARTIDO RÁPIDO — Gancho de fricción cero (sin cuenta)
          ════════════════════════════════════════════════════ -->
     <section class="section quick-section" id="partido-rapido" aria-label="Partido Rápido: armá equipos sin registrarte">
-      <div class="quick-section__bg" aria-hidden="true"></div>
       <div class="container">
         <div class="quick-card reveal">
           <img src="assets/stickers/a-jugar.webp" alt="" class="quick-card__sticker" aria-hidden="true" loading="lazy" width="120" height="120">
@@ -205,8 +203,9 @@
           </ol>
 
           <div class="quick-card__actions reveal">
-            <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg" id="cta-quick">
-              ⚡ Armar partido rápido
+            <a href="https://fulbito.futbol/?quick=1" class="btn-primary btn-primary--lg" id="cta-quick">
+              <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z"/></svg>
+              <span>Armar ahora</span>
             </a>
           </div>
           <p class="quick-card__note reveal">
@@ -222,8 +221,9 @@
     <section class="section" id="como-funciona" aria-label="Cómo funciona Fulbito">
       <div class="container">
         <div class="section-title reveal">
-          <h2>¿Cómo funciona?</h2>
-          <p>Cuatro pasos. Cero peleas por los equipos.</p>
+          <span class="eyebrow">👥 La experiencia completa, con tu grupo</span>
+          <h2>¿Y si te quedás?</h2>
+          <p>Creás tu grupo gratis una sola vez y Fulbito se encarga de todo el folklore: armás los equipos parejos, cargás el resultado y queda el historial, las stats y el relato de la temporada.</p>
         </div>
 
         <div class="steps-showcase">
@@ -353,16 +353,6 @@
           <div class="features-grid reveal-stagger">
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <span class="feature-card__emoji">🧬</span>
-              </div>
-              <h3 class="feature-card__title">Tu ADN Futbolístico</h3>
-              <p class="feature-card__desc">
-                Armás una sola vez tu perfil eligiendo qué crack histórico te representa y respondé una rápida
-                autoevaluación secreta sobre tu propio nivel. Después podés subir una foto de perfil y hacer una fusión con tu crack.
-              </p>
-            </div>
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
                 <img src="assets/stickers/charla-tecnica.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Convocatoria inteligente</h3>
@@ -425,24 +415,6 @@
               <p class="feature-card__desc">
                 Quién ganó más, quién tiene de hijo a quién, quién es el archirival de quién. Todo el historial en un
                 solo lugar.
-              </p>
-            </div>
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/relator-fulbito.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">Resumen con Relator IA</h3>
-              <p class="feature-card__desc">
-                La crónica del partido narrada por IA, con onda de relator de cancha. Pegala al grupo y reviven cada jugada.
-              </p>
-            </div>
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/balon_oro.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">La Card de los Cracks</h3>
-              <p class="feature-card__desc">
-                El MVP y el Caudillo del partido, votados por el grupo. Card compartible para cancherear en el grupo.
               </p>
             </div>
           </div>
@@ -738,88 +710,6 @@
                 <span class="push-notif__title">Ya está el relato</span>
                 <span class="push-notif__text">Escuchá la crónica de la Fecha 12 y pegala al grupo.</span>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════
-         SHOWCASE CAROUSEL — Mucho más que armar equipos
-         ════════════════════════════════════════════════════ -->
-    <section class="section showcase-section" aria-label="Más funcionalidades de Fulbito">
-      <div class="container">
-        <div class="section-title reveal">
-          <h2>Mucho más que armar equipos</h2>
-          <p>Todo lo que tu grupo necesita, en una sola app.</p>
-        </div>
-      </div>
-      <div class="showcase-carousel reveal">
-        <div class="showcase-carousel__track">
-          <div class="showcase-carousel__item">
-            <div class="phone-frame phone-frame--gallery">
-              <img src="assets/screenshots/screen_ranking.webp"
-                alt="Tabla de posiciones con estadísticas de cada jugador"
-                class="phone-frame__screen" loading="lazy">
-            </div>
-            <div class="showcase-carousel__info">
-              <h3 class="showcase-carousel__title">Rankings y tabla</h3>
-              <p class="showcase-carousel__desc">Posiciones, goleadores, rachas y stats partido a partido.</p>
-            </div>
-          </div>
-          <div class="showcase-carousel__item">
-            <div class="phone-frame phone-frame--gallery">
-              <img src="assets/screenshots/screen_premios.webp"
-                alt="Card de MVP del partido compartible al grupo"
-                class="phone-frame__screen" loading="lazy">
-            </div>
-            <div class="showcase-carousel__info">
-              <h3 class="showcase-carousel__title">La Card de los Cracks</h3>
-              <p class="showcase-carousel__desc">El MVP y el Caudillo del partido, votados por el grupo. Card compartible para cancherear en el grupo.</p>
-            </div>
-          </div>
-          <div class="showcase-carousel__item">
-            <div class="phone-frame phone-frame--gallery">
-              <img src="assets/screenshots/screen_zona_social.webp"
-                alt="Factos: paternidades, compadres, archirrivales y rachas del grupo"
-                class="phone-frame__screen" loading="lazy">
-            </div>
-            <div class="showcase-carousel__info">
-              <h3 class="showcase-carousel__title">Factos</h3>
-              <p class="showcase-carousel__desc">Paternidades, compadres, archirrivales y rachas. Ponele folklore a tu grupo.</p>
-            </div>
-          </div>
-          <div class="showcase-carousel__item">
-            <div class="phone-frame phone-frame--gallery">
-              <img src="assets/screenshots/screen_resumen_partido.webp"
-                alt="Relato del partido generado por IA con onda de relator de cancha"
-                class="phone-frame__screen" loading="lazy">
-            </div>
-            <div class="showcase-carousel__info">
-              <h3 class="showcase-carousel__title">Relator IA</h3>
-              <p class="showcase-carousel__desc">La crónica del partido narrada con onda de relator. Para mandar al grupo y revivir cada jugada.</p>
-            </div>
-          </div>
-          <div class="showcase-carousel__item">
-            <div class="phone-frame phone-frame--gallery">
-              <img src="assets/screenshots/screen_previa.webp"
-                alt="Notificación pre-partido con tema musical de Spotify"
-                class="phone-frame__screen" loading="lazy">
-            </div>
-            <div class="showcase-carousel__info">
-              <h3 class="showcase-carousel__title">La Previa</h3>
-              <p class="showcase-carousel__desc">El partido empieza antes del pitazo. Notificación pre-partido con el tema del día vía Spotify.</p>
-            </div>
-          </div>
-          <div class="showcase-carousel__item">
-            <div class="phone-frame phone-frame--gallery">
-              <img src="assets/screenshots/screen_playlist.webp"
-                alt="Playlist colaborativa del grupo con Spotify"
-                class="phone-frame__screen" loading="lazy">
-            </div>
-            <div class="showcase-carousel__info">
-              <h3 class="showcase-carousel__title">Playlist del grupo</h3>
-              <p class="showcase-carousel__desc">Playlist colaborativa de Spotify. Cada uno elige su tema.</p>
             </div>
           </div>
         </div>

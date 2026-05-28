@@ -95,16 +95,6 @@
   right: -15%;
   background: radial-gradient(ellipse at center, rgba(74, 122, 46, 0.30) 0%, transparent 60%);
 }
-.hero__circle {
-  position: absolute;
-  right: -120px;
-  bottom: -160px;
-  width: 420px;
-  height: 420px;
-  border: 1.5px solid rgba(240, 237, 228, 0.06);
-  border-radius: 50%;
-}
-
 .hero__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -649,15 +639,6 @@
    ============================================ */
 .quick-section {
   position: relative;
-  overflow: hidden;
-}
-.quick-section__bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(60% 50% at 50% 0%, rgba(201, 169, 78, 0.12), transparent 70%),
-    radial-gradient(50% 40% at 50% 100%, rgba(74, 122, 46, 0.18), transparent 70%);
-  pointer-events: none;
 }
 
 .quick-card {
@@ -745,6 +726,7 @@
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-cal);
+  text-align: left;
 }
 
 .quick-card__actions {
