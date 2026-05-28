@@ -446,6 +446,68 @@
     audio.addEventListener('ended', stop);
   }
 
+  // ════════════════════════════════════════════════
+  // 9. Showcase "Mucho más que armar equipos"
+  //    - Paneo horizontal ligado al scroll vertical (sin pin/scrolljacking)
+  //    - El swipe manual sigue funcionando (overflow-x)
+  //    - La card centrada se eleva (coverflow focus)
+  // ════════════════════════════════════════════════
+  function initShowcase() {
+    const carousel = document.querySelector('.showcase-carousel');
+    const track = carousel && carousel.querySelector('.showcase-carousel__track');
+    if (!track) return;
+    const items = Array.from(track.querySelectorAll('.showcase-carousel__item'));
+    if (!items.length) return;
+    const section = carousel.closest('.showcase-section') || carousel;
+
+    let focusIdx = -1;
+    function updateFocus() {
+      const cRect = track.getBoundingClientRect();
+      const cx = cRect.left + cRect.width / 2;
+      let best = 0, bestDist = Infinity;
+      items.forEach((it, i) => {
+        const r = it.getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - cx);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      if (best !== focusIdx) {
+        items.forEach((it, i) => it.classList.toggle('is-focus', i === best));
+        focusIdx = best;
+      }
+    }
+
+    function autoPan() {
+      if (reduceMotion) return;
+      const max = track.scrollWidth - track.clientWidth;
+      if (max <= 0) return;
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // progreso 0..1: 0 cuando el centro de la sección está abajo del viewport,
+      // 0.5 cuando está centrada, 1 cuando sube fuera por arriba.
+      const center = rect.top + rect.height / 2;
+      let p = (vh - center) / vh;
+      p = Math.max(0, Math.min(1, p));
+      track.scrollLeft = p * max;
+    }
+
+    let rafWin = false, rafTrack = false;
+    function onWinScroll() {
+      if (rafWin) return;
+      rafWin = true;
+      requestAnimationFrame(() => { rafWin = false; autoPan(); updateFocus(); });
+    }
+    function onTrackScroll() {
+      if (rafTrack) return;
+      rafTrack = true;
+      requestAnimationFrame(() => { rafTrack = false; updateFocus(); });
+    }
+
+    window.addEventListener('scroll', onWinScroll, { passive: true });
+    window.addEventListener('resize', onWinScroll, { passive: true });
+    track.addEventListener('scroll', onTrackScroll, { passive: true });
+    onWinScroll();
+  }
+
   function safe(fn) {
     try { fn(); } catch (e) { if (window.console) console.error('[fulbito]', e); }
   }
@@ -464,6 +526,7 @@
     safe(initSmoothScroll);
     safe(initLightbox);
     safe(initRelatoPlayer);
+    safe(initShowcase);
   }
 
   if (document.readyState === 'loading') {
