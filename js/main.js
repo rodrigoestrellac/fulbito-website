@@ -534,6 +534,7 @@
   // Platform CTA — en Android, descarga directa de Google Play
   // ════════════════════════════════════════════════
   const PLAY_URL = 'https://play.google.com/store/apps/details?id=futbol.fulbito.app';
+  const GPLAY_ICON = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20" height="20" aria-hidden="true"><path fill="#00d3ff" d="M48.1 27.2c-5 5.3-7.9 13.4-7.9 24v409.6c0 10.6 2.9 18.7 8.2 23.8l1.4 1.3 229.4-229.4v-5.1L49.5 25.9l-1.4 1.3z"/><path fill="#ffce00" d="M355 333.4l-76.6-76.6v-5.4l76.7-76.7 1.7 1 90.8 51.6c25.9 14.7 25.9 38.8 0 53.6l-90.8 51.6-1.8-.7z"/><path fill="#ff3a44" d="M356.7 332.4 278.4 254 48.1 484.3c8.5 9 22.6 10.1 38.5 1.2l270.1-153.1z"/><path fill="#00f076" d="M356.7 175.6 86.6 22.6C70.7 13.6 56.6 14.8 48.1 23.8L278.4 254l78.3-78.4z"/></svg>';
   function initPlatformCTA() {
     // Excluir Chrome OS (corre en "Android" pero no es un teléfono → mejor la PWA/web).
     const ua = navigator.userAgent || '';
@@ -546,7 +547,10 @@
     play.target = '_blank';
     play.rel = 'noopener';
     play.className = 'btn-primary btn-primary--lg hero__btn hero__btn--play';
-    play.innerHTML = '▶ Descargar en Google Play';
+    play.style.display = 'inline-flex';
+    play.style.alignItems = 'center';
+    play.style.gap = '.55em';
+    play.innerHTML = GPLAY_ICON + '<span>Descargar en Google Play</span>';
     // CTA primario para Android: lo ponemos primero.
     actions.insertBefore(play, actions.firstChild);
   }
