@@ -508,6 +508,27 @@
     onWinScroll();
   }
 
+  // ════════════════════════════════════════════════
+  // Platform CTA — en Android, descarga directa de Google Play
+  // ════════════════════════════════════════════════
+  const PLAY_URL = 'https://play.google.com/store/apps/details?id=futbol.fulbito.app';
+  function initPlatformCTA() {
+    // Excluir Chrome OS (corre en "Android" pero no es un teléfono → mejor la PWA/web).
+    const ua = navigator.userAgent || '';
+    if (!/Android/i.test(ua) || /CrOS/i.test(ua)) return;
+    const actions = document.getElementById('cta-hero')?.parentElement
+      || document.querySelector('.hero__actions');
+    if (!actions || actions.querySelector('.hero__btn--play')) return;
+    const play = document.createElement('a');
+    play.href = PLAY_URL;
+    play.target = '_blank';
+    play.rel = 'noopener';
+    play.className = 'btn-primary btn-primary--lg hero__btn hero__btn--play';
+    play.innerHTML = '▶ Descargar en Google Play';
+    // CTA primario para Android: lo ponemos primero.
+    actions.insertBefore(play, actions.firstChild);
+  }
+
   function safe(fn) {
     try { fn(); } catch (e) { if (window.console) console.error('[fulbito]', e); }
   }
@@ -527,6 +548,7 @@
     safe(initLightbox);
     safe(initRelatoPlayer);
     safe(initShowcase);
+    safe(initPlatformCTA);
   }
 
   if (document.readyState === 'loading') {
