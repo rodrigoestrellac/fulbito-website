@@ -280,20 +280,33 @@
 
     if (reduceMotion) { root.classList.add('fusion--static'); return; }
 
-    let ticking = false;
-    function update() {
-      ticking = false;
+    // Scrubbeado al scroll, pero suavizado para iOS: en vez de actualizar SOLO
+    // en cada evento de scroll (que iOS Safari manda salteado durante el fling →
+    // el flip de 180° se ve "a pocos frames"), corremos un rAF continuo mientras
+    // la sección está en pantalla. Lee la posición real cada frame (60fps en iOS
+    // 15+, sin depender de los eventos) e interpola el progreso (lerp) para limar
+    // cualquier salto. Un IntersectionObserver lo arranca/frena para no gastar
+    // frames cuando la fusión no se ve.
+    let rafId = null;
+    let inView = false;
+    let display = null;   // progreso mostrado (suavizado hacia el target)
+
+    function frame() {
       const rect = stage.getBoundingClientRect();
       const vh = window.innerHeight;
-      if (rect.bottom < -80 || rect.top > vh + 80) return;
-
       // progreso: 0 cuando el stage entra por abajo, 1 cuando su centro sube al ~40%
       const center = rect.top + rect.height / 2;
-      let p = 1 - (center - vh * 0.4) / (vh * 0.55);
-      p = Math.max(0, Math.min(1, p));
+      let target = 1 - (center - vh * 0.4) / (vh * 0.55);
+      target = Math.max(0, Math.min(1, target));
 
-      const conv = Math.min(1, p / 0.55);              // solapar los círculos
-      const flipP = Math.max(0, (p - 0.55) / 0.45);    // girar la carta
+      if (display === null) display = target;
+      else {
+        display += (target - display) * 0.25;          // lerp → suaviza los saltos
+        if (Math.abs(target - display) < 0.0015) display = target;
+      }
+
+      const conv = Math.min(1, display / 0.55);          // solapar los círculos
+      const flipP = Math.max(0, (display - 0.55) / 0.45); // girar la carta
 
       // De separados (±apart) a solape COMPLETO (0): los dos círculos terminan
       // apilados en el centro antes de girar.
@@ -308,10 +321,19 @@
       if (front) front.style.opacity = showBack ? '0' : '1';
       if (back) back.style.opacity = showBack ? '1' : '0';
       if (glow) glow.style.opacity = (conv * 0.85).toFixed(2);
+
+      rafId = inView ? requestAnimationFrame(frame) : null;
     }
-    window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
-    window.addEventListener('resize', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
-    update();
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        inView = e.isIntersecting;
+        if (inView && !rafId) rafId = requestAnimationFrame(frame);
+      });
+    }, { rootMargin: '120px 0px' });
+    io.observe(stage);
+
+    frame();   // estado inicial inmediato (sin agendar loop hasta que IO lo active)
   }
 
   // ════════════════════════════════════════════════
