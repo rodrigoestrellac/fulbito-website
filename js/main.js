@@ -43,15 +43,34 @@
   // ════════════════════════════════════════════════
   // 1b. Count-up de números (prueba social)
   // ════════════════════════════════════════════════
+  // Anima un número de su valor actual hasta `target`. Reutilizable: lo usan
+  // tanto el observer inicial (al entrar en pantalla) como fetchLiveStats
+  // cuando los datos reales del admin llegan TARDE — así el contador no queda
+  // pegado en el número de relleno del HTML. `animToken` cancela animaciones
+  // viejas si llega una nueva (evita que dos loops peleen por el mismo número).
+  function countUp(el, target) {
+    const prefix = el.dataset.prefix || '', suffix = el.dataset.suffix || '';
+    el.dataset.counted = '1';
+    if (reduceMotion) { el.textContent = prefix + target + suffix; return; }
+    const from = parseInt((el.textContent || '').replace(/\D/g, ''), 10) || 0;
+    const token = String((parseInt(el.dataset.animToken || '0', 10) || 0) + 1);
+    el.dataset.animToken = token;
+    const dur = 1100, start = performance.now();
+    (function tick(now) {
+      if (el.dataset.animToken !== token) return; // una animación más nueva tomó el control
+      const p = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(from + (target - from) * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    })(start);
+  }
+
   function initCounters() {
     const els = document.querySelectorAll('[data-count]');
     if (!els.length) return;
 
-    const render = (el, val) =>
-      el.textContent = (el.dataset.prefix || '') + val + (el.dataset.suffix || '');
-
     if (reduceMotion) {
-      els.forEach(el => render(el, parseInt(el.dataset.count, 10) || 0));
+      els.forEach(el => countUp(el, parseInt(el.dataset.count, 10) || 0));
       return;
     }
 
@@ -59,20 +78,14 @@
       entries.forEach(en => {
         if (!en.isIntersecting) return;
         io.unobserve(en.target);
-        const el = en.target;
-        const target = parseInt(el.dataset.count, 10) || 0;
-        const dur = 1100;
-        const start = performance.now();
-        (function tick(now) {
-          const p = Math.min(1, (now - start) / dur);
-          const eased = 1 - Math.pow(1 - p, 3);
-          render(el, Math.round(target * eased));
-          if (p < 1) requestAnimationFrame(tick);
-        })(start);
+        countUp(en.target, parseInt(en.target.dataset.count, 10) || 0);
       });
     }, { threshold: 0.4 });
 
-    els.forEach(el => { render(el, 0); io.observe(el); });
+    els.forEach(el => {
+      el.textContent = (el.dataset.prefix || '') + '0' + (el.dataset.suffix || '');
+      io.observe(el);
+    });
   }
 
   // ════════════════════════════════════════════════
@@ -86,7 +99,12 @@
         const setCount = (stat, val) => {
           if (val == null || isNaN(val)) return;
           const el = document.querySelector('[data-stat="' + stat + '"]');
-          if (el) el.dataset.count = String(val);
+          if (!el) return;
+          el.dataset.count = String(val);
+          // Si el contador ya se animó (ganó la carrera el scroll y agarró el
+          // número de relleno), lo re-animamos al valor real. Si todavía no se
+          // animó, el observer usará este data-count actualizado cuando dispare.
+          if (el.dataset.counted === '1') countUp(el, val);
         };
         // jugadores: máx entre usuarios de la app y grupos×10 (cada grupo tiene
         // ~10 jugadores que se benefician del armado aunque no todos usen la app).
