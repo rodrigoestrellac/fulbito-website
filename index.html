@@ -125,7 +125,9 @@
 
       <div class="container hero__inner">
         <div class="hero__content">
-          <img src="assets/icons/icon-512.png" alt="" class="hero__ball" width="72" height="72" aria-hidden="true">
+          <div class="hero__ball-stage" id="hero-ball-stage" aria-hidden="true">
+            <img src="assets/icons/icon-512.png" alt="" class="hero__ball" width="72" height="72">
+          </div>
 
           <h1 class="hero__logo-text reveal">Fulbito</h1>
 
@@ -353,7 +355,7 @@
           <div class="features-grid reveal-stagger">
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/charla-tecnica.webp" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/resultados_5.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Convocatoria inteligente</h3>
               <p class="feature-card__desc">
@@ -362,7 +364,7 @@
             </div>
             <div class="feature-card reveal">
               <div class="feature-card__icon">
-                <img src="assets/stickers/jogo-bonito.webp" alt="" width="56" height="56" loading="lazy">
+                <img src="assets/stickers/charla-tecnica.webp" alt="" width="56" height="56" loading="lazy">
               </div>
               <h3 class="feature-card__title">Equipos balanceados</h3>
               <p class="feature-card__desc">
@@ -802,6 +804,11 @@
             <blockquote class="testi-card__quote">"Muy divertida la app."</blockquote>
             <figcaption class="testi-card__author">— Diego</figcaption>
           </figure>
+          <a class="testi-card testi-card--cta reveal" href="https://www.instagram.com/fulbito.app/" target="_blank"
+            rel="noopener" id="cta-ig-testi">
+            <span class="testi-card__cta-text">¿Tu grupo ya juega con Fulbito?<br>Dejanos tu comentario y salís acá.</span>
+            <span class="testi-card__cta-handle">→ @fulbito.app</span>
+          </a>
         </div>
 
         <p class="social-proof__origin reveal">
@@ -1037,6 +1044,22 @@
 
   <!-- JS -->
   <script src="js/main.js" defer></script>
+
+  <!-- Pelota 3D del hero (experimental). Carga diferida: solo si hay
+       WebGL; si no, queda el icono 2D con su bounce CSS. -->
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three/three.module.min.js" } }
+  </script>
+  <script type="module">
+    const stage = document.getElementById('hero-ball-stage');
+    let gl = null;
+    try { const c = document.createElement('canvas'); gl = c.getContext('webgl2') || c.getContext('webgl'); } catch (_) {}
+    if (stage && gl) {
+      import('./js/bounce-ball.js')
+        .then((m) => m.initBounceBall(stage))
+        .catch((err) => console.warn('[fulbito] pelota 3D no disponible:', err));
+    }
+  </script>
 
 </body>
 

@@ -117,6 +117,22 @@
   gap: var(--space-lg);
 }
 
+/* Anchor de la pelota del hero: reserva 72×72; el canvas 3D (si carga)
+   se posiciona encima con lugar para el rebote. */
+.hero__ball-stage {
+  position: relative;
+  width: 72px;
+  height: 72px;
+}
+.hero__ball-stage canvas {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;            /* el "piso" del rebote ~ centro del anchor */
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.hero__ball-stage.is-3d .hero__ball { opacity: 0; } /* el 3D reemplaza al icono */
+
 .hero__ball {
   width: 72px;
   height: 72px;
@@ -126,9 +142,7 @@
 }
 
 @media (max-width: 860px) {
-  .hero__ball {
-    margin: 0 auto;
-  }
+  .hero__ball-stage { margin: 0 auto; }
 }
 
 .hero__logo-text {
@@ -947,8 +961,38 @@
   color: var(--color-oro);
   letter-spacing: 0.04em;
 }
+/* Card CTA: invita a comentar en Instagram (full-width, letra a mano) */
+.testi-card--cta {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  background: transparent;
+  border-style: dashed;
+  border-color: rgba(201, 169, 78, 0.3);
+  text-decoration: none;
+}
+.testi-card--cta:hover { border-color: var(--color-oro); transform: translateY(-4px); }
+.testi-card__cta-text {
+  font-family: var(--font-chalk);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+  color: rgba(240, 237, 228, 0.85);
+  line-height: 1.2;
+}
+.testi-card__cta-handle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-oro);
+  white-space: nowrap;
+}
 @media (max-width: 760px) {
   .testi-grid { grid-template-columns: 1fr; }
+  .testi-card--cta { flex-direction: column; align-items: flex-start; }
 }
 
 .social-proof__origin {
