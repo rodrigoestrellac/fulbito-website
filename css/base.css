@@ -20,7 +20,13 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--color-cal);
-  background: linear-gradient(180deg, var(--color-noche) 0%, #142a10 50%, var(--color-cesped) 100%);
+  /* Potrero de noche: base oscura pareja con luz de estadio entrando
+     de arriba-derecha y un brillo de césped abajo-izquierda. */
+  background:
+    radial-gradient(120% 80% at 82% 0%, rgba(74, 122, 46, 0.22) 0%, transparent 55%),
+    radial-gradient(100% 70% at 8% 100%, rgba(45, 80, 22, 0.18) 0%, transparent 60%),
+    #0A140B;
+  background-attachment: fixed;
   min-height: 100vh;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
@@ -75,6 +81,27 @@ h3 { font-size: var(--text-xl); }
 @media (max-width: 640px) {
   h1 { font-size: var(--text-3xl); }
   h2 { font-size: var(--text-xl); }
+}
+
+/* Acento "a mano" (tiza) — eyebrows y detalles, en blanco cal */
+.chalk {
+  font-family: var(--font-chalk);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: rgba(240, 237, 228, 0.85);
+  text-transform: none;
+}
+/* eyebrow a mano para encabezados de sección */
+.eyebrow-chalk {
+  display: block;
+  font-family: var(--font-chalk);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  line-height: 1.1;
+  color: rgba(240, 237, 228, 0.82);
+  margin-bottom: var(--space-xs);
 }
 
 a {

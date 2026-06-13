@@ -571,6 +571,29 @@
     actions.insertBefore(play, actions.firstChild);
   }
 
+  // ════════════════════════════════════════════════
+  // Hero — el texto pierde opacidad y sube al scrollear
+  // (la pelota/teléfono no se tocan; solo .hero__content)
+  // ════════════════════════════════════════════════
+  function initHeroFade() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const content = document.querySelector('.hero__content');
+    const hero = document.getElementById('hero');
+    if (!content || !hero) return;
+    let ticking = false;
+    function update() {
+      ticking = false;
+      const h = hero.offsetHeight || window.innerHeight;
+      const p = Math.min(1, Math.max(0, window.scrollY / (h * 0.55)));
+      content.style.opacity = String(1 - p);
+      content.style.transform = 'translateY(' + (-44 * p).toFixed(1) + 'px)';
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
+  }
+
   function safe(fn) {
     try { fn(); } catch (e) { if (window.console) console.error('[fulbito]', e); }
   }
@@ -591,6 +614,7 @@
     safe(initRelatoPlayer);
     safe(initShowcase);
     safe(initPlatformCTA);
+    safe(initHeroFade);
   }
 
   if (document.readyState === 'loading') {
