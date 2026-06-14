@@ -355,6 +355,23 @@
   }
 
   // ════════════════════════════════════════════════
+  // 3d. Flechas tácticas entre pasos — se dibujan al entrar en vista
+  // ════════════════════════════════════════════════
+  function initConnectorDraw() {
+    const cons = document.querySelectorAll('.step-connector');
+    if (!cons.length) return;
+    if (reduceMotion) { cons.forEach(c => c.classList.add('is-drawn')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-drawn');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.6 });
+    cons.forEach(c => io.observe(c));
+  }
+
+  // ════════════════════════════════════════════════
   // 4. Parallax fallback (sin animation-timeline)
   // ════════════════════════════════════════════════
   function initParallaxFallback() {
@@ -607,6 +624,7 @@
     safe(initHowto);
     safe(initTilt);
     safe(initScrollSpin);
+    safe(initConnectorDraw);
     safe(initFusion);
     safe(initParallaxFallback);
     safe(initSmoothScroll);

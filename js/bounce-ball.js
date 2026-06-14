@@ -35,7 +35,7 @@ export function initBounceBall(stage) {
   // canvas: chico/centrado en mobile (solo rebote); grande y ALTO en desktop
   // para que el tiro baje hasta el arquito en el espacio libre del hero.
   const CW = isMobile ? 110 : 340;
-  const CH = isMobile ? 150 : 420;
+  const CH = isMobile ? 150 : 580;
   // offset del canvas respecto del anchor de 72px (px)
   const offLeft = isMobile ? (72 - CW) / 2 : -8;
   // mobile: la pelota va DEBAJO de FULBITO, así que centramos el canvas
@@ -83,12 +83,12 @@ export function initBounceBall(stage) {
 
   // posición de reposo (fracción del canvas)
   const restX = isMobile ? wx(0.5) : wx(0.135);
-  const restY = isMobile ? wy(0.70) : wy(0.19);
+  const restY = isMobile ? wy(0.70) : wy(0.13);
 
   /* ── Arquito (solo desktop) al espacio libre abajo-derecha ── */
   const goal = new Group();
-  const gw = halfW * 0.5, gh = gw * 0.78, gDepth = gh * 0.6;
-  const goalPos = new Vector3(wx(0.49), wy(0.93), -1.7);  // espacio libre del hero (a la altura de los CTA), empujado al fondo
+  const gw = halfW * 0.58, gh = gw * 0.5, gDepth = gh * 0.72;  // más ancho que alto (arco rectangular real)
+  const goalPos = new Vector3(wx(0.51), wy(0.86), -1.7);  // espacio libre del hero (a la altura de los CTA), empujado al fondo
   goal.position.copy(goalPos);
   goal.rotation.y = -0.34;
   scene.add(goal);
