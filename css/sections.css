@@ -109,10 +109,12 @@
     text-align: center;
     gap: var(--space-2xl);
   }
-  /* baja el contenido lo justo: la pelota arranca abajo del header pero
-     el hero no queda demasiado abajo */
+  /* alinear arriba: con la pelota debajo de FULBITO el contenido es alto;
+     si se centra, el título se sube atrás del header. Lo anclamos con el
+     padding para que FULBITO quede siempre debajo del header. */
   .hero {
-    padding-top: clamp(98px, 13vh, 124px);
+    align-items: flex-start;
+    padding-top: clamp(138px, 17vh, 152px);
   }
 }
 
@@ -122,8 +124,8 @@
   gap: var(--space-lg);
 }
 
-/* La pelota va al lado del logotipo "FULBITO" en desktop; arriba y
-   centrada en mobile. */
+/* La pelota va al lado del logotipo "FULBITO" en desktop; debajo y
+   centrada en mobile (lejos del header, con aire para rebotar). */
 .hero__brand-row {
   display: flex;
   align-items: center;
@@ -131,9 +133,9 @@
 }
 @media (max-width: 860px) {
   .hero__brand-row {
-    flex-direction: column-reverse;  /* pelota arriba, FULBITO abajo */
+    flex-direction: column;  /* FULBITO arriba, pelota abajo */
     align-items: center;
-    gap: 4px;
+    gap: 8px;
   }
 }
 
@@ -145,13 +147,8 @@
   height: 72px;
   flex-shrink: 0;
 }
-.hero__ball-stage canvas {
-  position: absolute;
-  left: 50%;
-  bottom: -10px;           /* el "piso" del rebote, bien abajo del anchor */
-  transform: translateX(-50%);
-  pointer-events: none;
-}
+/* el canvas lo posiciona el JS (left/top/width/height) según viewport */
+.hero__ball-stage canvas { position: absolute; pointer-events: none; }
 /* El icono 2D arranca OCULTO: solo aparece como fallback si no hay
    WebGL (clase .is-2d). Así no se ve el "flash" del icono antes de la
    pelota 3D. */
