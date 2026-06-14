@@ -1492,10 +1492,23 @@
   margin-top: var(--space-lg);
 }
 .fut-card-wrap {
+  position: relative;
   display: flex;
   justify-content: center;
   perspective: 1000px;
 }
+/* stage del canvas 3D, encima de la card CSS (que queda de fallback) */
+.fut-card-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+.fut-card-wrap.has-3d .fut-card { opacity: 0; pointer-events: none; }
+.fut-card-stage canvas { pointer-events: auto; }
 @media (max-width: 760px) {
   .fut-grid { grid-template-columns: 1fr; gap: var(--space-2xl); }
   .fut-copy { text-align: center; }

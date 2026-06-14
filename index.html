@@ -512,7 +512,8 @@
           </p>
         </div>
 
-        <div class="fut-card-wrap" data-scroll-spin>
+        <div class="fut-card-wrap" id="fut-card-wrap">
+          <div class="fut-card-stage" id="fut-card-stage" aria-hidden="true"></div>
           <div class="fut-card" data-tilt>
             <div class="fut-card__shine" aria-hidden="true"></div>
             <div class="fut-card__glare" aria-hidden="true"></div>
@@ -1064,6 +1065,15 @@
         });
     } else if (stage) {
       stage.classList.add('is-2d');     // sin WebGL: icono 2D
+    }
+
+    // La Card del Crack en 3D (si hay WebGL; si no, queda la card CSS)
+    const cardStage = document.getElementById('fut-card-stage');
+    const cardWrap = document.getElementById('fut-card-wrap');
+    if (cardStage && cardWrap && gl) {
+      import('./js/fut-card.js')
+        .then((m) => m.initFutCard(cardStage, cardWrap))
+        .catch((err) => console.warn('[fulbito] card 3D no disponible:', err));
     }
   </script>
 
