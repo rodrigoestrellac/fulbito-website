@@ -1615,3 +1615,106 @@
   background: radial-gradient(ellipse 60% 50% at 50% 120%, rgba(201, 169, 78, 0.16) 0%, transparent 60%);
   pointer-events: none;
 }
+
+/* ============================================
+   Acentos a mano: rótulos tiza + garabatos tácticos
+   ============================================ */
+
+/* "este sos vos" → flechita manuscrita hacia la fusión */
+.fusion { position: relative; }
+.fusion-tag {
+  position: absolute;
+  top: -10px;
+  left: max(6px, calc(50% - 162px));
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  transform: rotate(-7deg);
+  pointer-events: none;
+  z-index: 4;
+}
+.fusion-tag__text {
+  font-family: var(--font-chalk);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+  line-height: 1;
+  color: var(--color-oro);
+  white-space: nowrap;
+  margin-top: 6px;
+}
+.fusion-tag__arrow {
+  width: 50px;
+  height: 40px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+.fusion-tag__arrow path {
+  stroke: var(--color-oro);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* "¡qué crack!" debajo de la Card FUT */
+.fut-card-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+.fut-card-tag {
+  font-family: var(--font-chalk);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  line-height: 1;
+  color: var(--color-oro);
+  text-align: center;
+  transform: rotate(-4deg);
+}
+.fut-card-tag__underline {
+  display: block;
+  width: 78%;
+  height: auto;
+  margin: 2px auto 0;
+  overflow: visible;
+}
+.fut-card-tag__underline path {
+  stroke: var(--color-oro);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.85;
+}
+
+/* Garabatos de pizarrón (cruces y círculos con flecha) — decorativos */
+.adn-section, .fut-section { position: relative; }
+.adn-section > .container,
+.fut-section > .container { position: relative; z-index: 1; }
+.tactics {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.tactics__doodle { position: absolute; overflow: visible; }
+.tactics__doodle path,
+.tactics__doodle circle {
+  stroke: var(--color-cal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.tactics__doodle--a { width: 56px; top: 14%; right: 7%;  opacity: 0.10; transform: rotate(8deg); }
+.tactics__doodle--b { width: 84px; bottom: 12%; left: 5%; opacity: 0.09; transform: rotate(-6deg); }
+.tactics__doodle--c { width: 88px; top: 18%; left: 4%;   opacity: 0.10; }
+.tactics__doodle--d { width: 52px; bottom: 16%; right: 6%; opacity: 0.10; transform: rotate(-10deg); }
+@media (max-width: 760px) {
+  /* en mobile los achicamos y los pegamos a los bordes para no chocar el contenido */
+  .tactics__doodle--a { width: 40px; top: 6%; right: 4%; }
+  .tactics__doodle--b { width: 56px; bottom: 8%; left: 3%; }
+  .tactics__doodle--c { width: 58px; top: 7%; left: 3%; }
+  .tactics__doodle--d { width: 38px; bottom: 9%; right: 4%; }
+}
