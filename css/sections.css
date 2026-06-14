@@ -1625,8 +1625,8 @@
 .fusion { position: relative; }
 .fusion-tag {
   position: absolute;
-  top: 232px;
-  left: max(4px, calc(50% - 118px));
+  top: 262px;
+  left: max(2px, calc(50% - 168px));
   font-family: var(--font-chalk);
   font-weight: 700;
   font-size: clamp(1.25rem, 2.6vw, 1.7rem);
@@ -1641,9 +1641,9 @@
 }
 .fusion-arrow {
   position: absolute;
-  top: 150px;
-  left: max(-12px, calc(50% - 150px));
-  width: 140px;
+  top: 176px;
+  left: max(-16px, calc(50% - 170px));
+  width: 138px;
   height: auto;
   pointer-events: none;
   overflow: visible;
