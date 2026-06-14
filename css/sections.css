@@ -1624,8 +1624,8 @@
 .fusion { position: relative; }
 .fusion-tag {
   position: absolute;
-  top: -10px;
-  left: max(6px, calc(50% - 162px));
+  top: -16px;
+  left: max(6px, calc(50% - 208px));
   display: flex;
   align-items: flex-start;
   gap: 0;
@@ -1685,6 +1685,35 @@
   stroke-linecap: round;
   fill: none;
   opacity: 0.85;
+}
+
+/* Flechas tácticas que conectan los pasos (tipo pizarrón) */
+.step-connector {
+  display: flex;
+  margin: calc(var(--space-3xl) * -0.6) 0;
+  pointer-events: none;
+}
+.step-connector svg {
+  width: 60px;
+  height: auto;
+  overflow: visible;
+}
+.step-connector svg path {
+  stroke: var(--color-cal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  opacity: 0.22;
+}
+.step-connector--right { justify-content: flex-start; padding-left: 16%; }
+.step-connector--left  { justify-content: flex-end;   padding-right: 16%; }
+.step-connector--left svg { transform: scaleX(-1); }
+@media (max-width: 680px) {
+  .step-connector { margin: calc(var(--space-md) * -1) 0; }
+  .step-connector--right, .step-connector--left {
+    justify-content: center; padding: 0;
+  }
 }
 
 /* Garabatos de pizarrón (cruces y círculos con flecha) — decorativos */
