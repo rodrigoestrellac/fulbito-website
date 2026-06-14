@@ -1625,8 +1625,8 @@
 .fusion { position: relative; }
 .fusion-tag {
   position: absolute;
-  top: 250px;
-  left: max(-58px, calc(50% - 178px));
+  top: 228px;
+  left: max(-74px, calc(50% - 194px));
   font-family: var(--font-chalk);
   font-weight: 700;
   font-size: clamp(1.25rem, 2.6vw, 1.7rem);
