@@ -340,6 +340,9 @@
       if (back) back.style.opacity = showBack ? '1' : '0';
       if (glow) glow.style.opacity = (conv * 0.85).toFixed(2);
 
+      // "este sos vos" + flecha aparecen recién cuando la fusión terminó
+      root.classList.toggle('is-fused', flipP >= 0.96);
+
       rafId = inView ? requestAnimationFrame(frame) : null;
     }
 
