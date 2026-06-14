@@ -355,14 +355,14 @@
 .steps-showcase {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4xl);
+  gap: var(--space-lg);
 }
 
 .step-showcase {
   display: grid;
   grid-template-columns: 1fr 220px;
   gap: var(--space-3xl);
-  align-items: start;
+  align-items: center;
 }
 
 .step-showcase--reverse {
@@ -1698,7 +1698,7 @@
    Se dibujan (stroke-dashoffset) al entrar en vista (.is-drawn vía JS). */
 .step-connector {
   width: 100%;
-  margin: -150px 0;
+  margin: -28px 0;
   pointer-events: none;
 }
 .step-connector svg {
@@ -1716,23 +1716,24 @@
   fill: none;
   opacity: 0.30;
 }
-.step-connector__line {
+/* línea y punta se dibujan con stroke-dashoffset; la punta arranca
+   recién cuando la línea TERMINÓ de dibujarse (delay > duración línea). */
+.step-connector__line,
+.step-connector__head {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
 .step-connector.is-drawn .step-connector__line {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1.1s ease;
+  transition: stroke-dashoffset 1s ease;
 }
-.step-connector__head { opacity: 0; }
-/* la punta aparece recién DESPUÉS de que la línea termina de dibujarse */
 .step-connector.is-drawn .step-connector__head {
-  opacity: 0.30;
-  transition: opacity 0.25s ease 1.35s;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s ease 1.35s;
 }
 @media (prefers-reduced-motion: reduce) {
-  .step-connector__line { stroke-dashoffset: 0; }
-  .step-connector__head { opacity: 0.30; }
+  .step-connector__line,
+  .step-connector__head { stroke-dashoffset: 0; }
 }
 /* en mobile los pasos se apilan centrados: el cruce diagonal no aplica */
 @media (max-width: 680px) {
