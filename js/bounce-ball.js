@@ -19,8 +19,8 @@ import { RoomEnvironment } from '../vendor/jsm/environments/RoomEnvironment.js';
 const CW = 90, CH = 118;     // tamaño lógico del canvas (px) — deja lugar al rebote
 const FOV = 30, CAM_Z = 4.4;
 const BALL_FRAC = 0.60;      // diámetro de la pelota ÷ alto del canvas (≈72px)
-const BOUNCE = 1.35;         // amplitud del rebote (en radios)
-const PERIOD = 1.15;         // segundos por rebote
+const BOUNCE = 0.95;        // amplitud del rebote (en radios) — sutil
+const PERIOD = 1.2;         // segundos por rebote
 
 export function initBounceBall(stage) {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -57,8 +57,10 @@ export function initBounceBall(stage) {
   const R = BALL_FRAC * halfH;
   const groundY = -halfH + R + 0.05;  // piso del rebote, cerca del fondo del canvas
 
-  let loaded = false, running = false, reduceMotion = false;
-  const clock = { last: 0, t: 0 };
+  let loaded = false, running = false, reduceMotion = false, rafId = 0;
+  // base de tiempo ABSOLUTA: el rebote es función del reloj de pared,
+  // así nunca se acelera al volver de otra pestaña/app (bug reportado).
+  const t0 = performance.now();
 
   reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -90,14 +92,12 @@ export function initBounceBall(stage) {
 
   function frame(now) {
     if (!running) return;
-    requestAnimationFrame(frame);
-    const dt = Math.min((now - clock.last) / 1000 || 0.016, 0.05);
-    clock.last = now;
-    clock.t += dt;
-    if (!loaded || reduceMotion) { renderer.render(scene, camera); return; }
+    rafId = requestAnimationFrame(frame);
+    if (!loaded) { renderer.render(scene, camera); return; }
 
+    const elapsed = (now - t0) / 1000;  // reloj de pared
     // rebote parabólico (toca el piso una vez por período → reversa seca)
-    const bp = (clock.t % PERIOD) / PERIOD;
+    const bp = (elapsed % PERIOD) / PERIOD;
     const hN = 1 - Math.pow(2 * bp - 1, 2);
     pivot.position.y = groundY + BOUNCE * R * hN;
 
@@ -106,9 +106,9 @@ export function initBounceBall(stage) {
     const s = 0.12 * contact;
     pivot.scale.set(R * (1 + s * 0.6), R * (1 - s), R * (1 + s * 0.6));
 
-    // gira mientras rebota
-    ball.rotation.y += dt * 1.2;
-    ball.rotation.z += dt * 0.5;
+    // gira mientras rebota (también ligado al reloj → sin saltos)
+    ball.rotation.y = -0.5 + elapsed * 1.2;
+    ball.rotation.z = 0.05 + elapsed * 0.5;
 
     renderer.render(scene, camera);
   }
@@ -116,10 +116,10 @@ export function initBounceBall(stage) {
   function start() {
     if (running || reduceMotion) return;
     running = true;
-    clock.last = performance.now();
-    requestAnimationFrame(frame);
+    cancelAnimationFrame(rafId);          // garantiza un solo loop
+    rafId = requestAnimationFrame(frame);
   }
-  function stop() { running = false; }
+  function stop() { running = false; cancelAnimationFrame(rafId); }
 
   // pausa el RAF cuando el hero no está a la vista / pestaña oculta
   const io = new IntersectionObserver((entries) => {

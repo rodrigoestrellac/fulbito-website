@@ -125,11 +125,12 @@
 
       <div class="container hero__inner">
         <div class="hero__content">
-          <div class="hero__ball-stage" id="hero-ball-stage" aria-hidden="true">
-            <img src="assets/icons/icon-512.png" alt="" class="hero__ball" width="72" height="72">
+          <div class="hero__brand-row">
+            <h1 class="hero__logo-text reveal">Fulbito</h1>
+            <div class="hero__ball-stage" id="hero-ball-stage" aria-hidden="true">
+              <img src="assets/icons/icon-512.png" alt="" class="hero__ball" width="72" height="72">
+            </div>
           </div>
-
-          <h1 class="hero__logo-text reveal">Fulbito</h1>
 
           <p class="hero__headline line-reveal">
             <span class="line-reveal__line"><span class="line-reveal__inner" style="--line:0">Armá los equipos</span></span>
@@ -1057,7 +1058,12 @@
     if (stage && gl) {
       import('./js/bounce-ball.js')
         .then((m) => m.initBounceBall(stage))
-        .catch((err) => console.warn('[fulbito] pelota 3D no disponible:', err));
+        .catch((err) => {
+          console.warn('[fulbito] pelota 3D no disponible:', err);
+          stage.classList.add('is-2d'); // fallback: icono 2D con bounce CSS
+        });
+    } else if (stage) {
+      stage.classList.add('is-2d');     // sin WebGL: icono 2D
     }
   </script>
 

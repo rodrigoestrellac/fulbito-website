@@ -117,21 +117,41 @@
   gap: var(--space-lg);
 }
 
+/* La pelota va al lado del logotipo "FULBITO" en desktop; arriba y
+   centrada en mobile. */
+.hero__brand-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.4vw, 18px);
+}
+@media (max-width: 860px) {
+  .hero__brand-row {
+    flex-direction: column-reverse;  /* pelota arriba, FULBITO abajo */
+    align-items: center;
+    gap: 4px;
+  }
+}
+
 /* Anchor de la pelota del hero: reserva 72×72; el canvas 3D (si carga)
    se posiciona encima con lugar para el rebote. */
 .hero__ball-stage {
   position: relative;
   width: 72px;
   height: 72px;
+  flex-shrink: 0;
 }
 .hero__ball-stage canvas {
   position: absolute;
   left: 50%;
-  bottom: -8px;            /* el "piso" del rebote ~ centro del anchor */
+  bottom: -10px;           /* el "piso" del rebote, bien abajo del anchor */
   transform: translateX(-50%);
   pointer-events: none;
 }
-.hero__ball-stage.is-3d .hero__ball { opacity: 0; } /* el 3D reemplaza al icono */
+/* El icono 2D arranca OCULTO: solo aparece como fallback si no hay
+   WebGL (clase .is-2d). Así no se ve el "flash" del icono antes de la
+   pelota 3D. */
+.hero__ball { opacity: 0; transition: opacity 0.3s ease; }
+.hero__ball-stage.is-2d .hero__ball { opacity: 1; }
 
 .hero__ball {
   width: 72px;
