@@ -1717,7 +1717,7 @@
   opacity: 0.30;
 }
 /* línea y punta se dibujan con stroke-dashoffset; la punta arranca
-   recién cuando la línea TERMINÓ de dibujarse (delay > duración línea). */
+   justo cuando la línea está terminando, para que se sienta continuo. */
 .step-connector__line,
 .step-connector__head {
   stroke-dasharray: 1;
@@ -1729,7 +1729,7 @@
 }
 .step-connector.is-drawn .step-connector__head {
   stroke-dashoffset: 0;
-  transition: stroke-dashoffset 0.3s ease 1.35s;
+  transition: stroke-dashoffset 0.25s ease 0.9s;
 }
 @media (prefers-reduced-motion: reduce) {
   .step-connector__line,
