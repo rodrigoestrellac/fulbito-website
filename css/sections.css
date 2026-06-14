@@ -1625,8 +1625,8 @@
 .fusion { position: relative; }
 .fusion-tag {
   position: absolute;
-  top: 262px;
-  left: max(2px, calc(50% - 168px));
+  top: 250px;
+  left: max(-58px, calc(50% - 178px));
   font-family: var(--font-chalk);
   font-weight: 700;
   font-size: clamp(1.25rem, 2.6vw, 1.7rem);
@@ -1641,9 +1641,9 @@
 }
 .fusion-arrow {
   position: absolute;
-  top: 176px;
-  left: max(-16px, calc(50% - 170px));
-  width: 138px;
+  top: 106px;
+  left: max(-60px, calc(50% - 195px));
+  width: 130px;
   height: auto;
   pointer-events: none;
   overflow: visible;
@@ -1735,9 +1735,11 @@
   .step-connector__line,
   .step-connector__head { stroke-dashoffset: 0; }
 }
-/* en mobile los pasos se apilan centrados: el cruce diagonal no aplica */
+/* en mobile los pasos se apilan centrados: el cruce diagonal no aplica.
+   Como no hay conector, hace falta más aire entre pasos. */
 @media (max-width: 680px) {
   .step-connector { display: none; }
+  .steps-showcase { gap: var(--space-4xl); }
 }
 
 /* Garabatos de pizarrón (cruces y círculos con flecha) — decorativos */
