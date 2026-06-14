@@ -340,6 +340,9 @@
       if (back) back.style.opacity = showBack ? '1' : '0';
       if (glow) glow.style.opacity = (conv * 0.85).toFixed(2);
 
+      // "este sos vos" + flecha aparecen recién cuando la fusión terminó
+      root.classList.toggle('is-fused', flipP >= 0.96);
+
       rafId = inView ? requestAnimationFrame(frame) : null;
     }
 
@@ -352,6 +355,23 @@
     io.observe(stage);
 
     frame();   // estado inicial inmediato (sin agendar loop hasta que IO lo active)
+  }
+
+  // ════════════════════════════════════════════════
+  // 3d. Flechas tácticas entre pasos — se dibujan al entrar en vista
+  // ════════════════════════════════════════════════
+  function initConnectorDraw() {
+    const cons = document.querySelectorAll('.step-connector');
+    if (!cons.length) return;
+    if (reduceMotion) { cons.forEach(c => c.classList.add('is-drawn')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-drawn');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.6 });
+    cons.forEach(c => io.observe(c));
   }
 
   // ════════════════════════════════════════════════
@@ -607,6 +627,7 @@
     safe(initHowto);
     safe(initTilt);
     safe(initScrollSpin);
+    safe(initConnectorDraw);
     safe(initFusion);
     safe(initParallaxFallback);
     safe(initSmoothScroll);

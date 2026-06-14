@@ -28,13 +28,14 @@ const PERIOD = 1.2;
 
 export function initBounceBall(stage) {
   const isMobile = window.matchMedia('(max-width: 860px)').matches;
-  // rebote más bajo en mobile para que nunca llegue a FULBITO (que está justo arriba)
-  const BOUNCE = isMobile ? 0.5 : 0.95;
+  // rebote contenido: en desktop la pelota queda dentro del alto de FULBITO,
+  // en mobile bajo y suave para no llegar al texto de arriba.
+  const BOUNCE = isMobile ? 0.5 : 0.55;
 
-  // canvas: chico/centrado en mobile (solo rebote); grande extendido
-  // hacia abajo-derecha en desktop (rebote + mini-gol).
-  const CW = isMobile ? 110 : 340;
-  const CH = isMobile ? 150 : 250;
+  // canvas: chico/centrado en mobile (solo rebote); grande y ALTO en desktop
+  // para que el tiro baje hasta el arquito en el espacio libre del hero.
+  const CW = isMobile ? 110 : 400;
+  const CH = isMobile ? 150 : 760;
   // offset del canvas respecto del anchor de 72px (px)
   const offLeft = isMobile ? (72 - CW) / 2 : -8;
   // mobile: la pelota va DEBAJO de FULBITO, así que centramos el canvas
@@ -81,13 +82,13 @@ export function initBounceBall(stage) {
   const R = (70 / CH) * halfH;
 
   // posición de reposo (fracción del canvas)
-  const restX = isMobile ? wx(0.5) : wx(0.135);
-  const restY = isMobile ? wy(0.70) : wy(0.27);
+  const restX = isMobile ? wx(0.5) : wx(0.11);
+  const restY = isMobile ? wy(0.70) : wy(0.10);
 
   /* ── Arquito (solo desktop) al espacio libre abajo-derecha ── */
   const goal = new Group();
-  const gw = halfW * 0.5, gh = gw * 0.78, gDepth = gh * 0.6;
-  const goalPos = new Vector3(wx(0.74), wy(0.74), -1.7);  // empujado al fondo
+  const gw = halfW * 0.985, gh = gw * 0.46, gDepth = gh * 0.8;  // arco grande, ancho > alto (rectangular real)
+  const goalPos = new Vector3(wx(0.61), wy(0.94), -1.7);  // a la altura de "Registrate vos...", empujado al fondo
   goal.position.copy(goalPos);
   goal.rotation.y = -0.34;
   scene.add(goal);
@@ -98,18 +99,34 @@ export function initBounceBall(stage) {
   const impact = new Vector3(gw / 2 - R * 0.6, gh - R * 0.6, 0);
 
   (function buildGoal() {
-    const r = Math.max(0.02, gw * 0.02);
-    const post = new CylinderGeometry(r, r, gh, 8);
-    const ml = new Mesh(post, frameMat); ml.position.set(-gw / 2, gh / 2, 0);
-    const mr = new Mesh(post, frameMat); mr.position.set(gw / 2, gh / 2, 0);
-    const bar = new Mesh(new CylinderGeometry(r, r, gw, 8), frameMat);
-    bar.rotation.z = Math.PI / 2; bar.position.set(0, gh, 0);
-    const back = new CylinderGeometry(r * 0.8, r * 0.8, gDepth, 6);
-    const gl = new Mesh(back, frameMat); gl.rotation.x = Math.PI / 2; gl.position.set(-gw / 2, r, -gDepth / 2);
-    const gr2 = new Mesh(back, frameMat); gr2.rotation.x = Math.PI / 2; gr2.position.set(gw / 2, r, -gDepth / 2);
-    goal.add(ml, mr, bar, gl, gr2);
+    const r = Math.max(0.02, gw * 0.018);
+    const up = new Vector3(0, 1, 0);
+    const hw = gw / 2;
+    // une dos puntos del marco con un caño (cilindro), con leve overlap en
+    // las uniones para que postes/travesaño/laterales queden bien pegados.
+    function barBetween(ax, ay, az, bx, by, bz) {
+      const a = new Vector3(ax, ay, az), b = new Vector3(bx, by, bz);
+      const dir = new Vector3().subVectors(b, a);
+      const len = dir.length();
+      const m = new Mesh(new CylinderGeometry(r, r, len + r * 1.6, 8), frameMat);
+      m.position.copy(a).addScaledVector(dir, 0.5);
+      m.quaternion.setFromUnitVectors(up, dir.normalize());
+      goal.add(m);
+    }
+    // frente: dos postes + travesaño
+    barBetween(-hw, 0, 0, -hw, gh, 0);
+    barBetween(hw, 0, 0, hw, gh, 0);
+    barBetween(-hw, gh, 0, hw, gh, 0);
+    // laterales superiores inclinados (del travesaño al piso del fondo)
+    barBetween(-hw, gh, 0, -hw, 0, -gDepth);
+    barBetween(hw, gh, 0, hw, 0, -gDepth);
+    // pisos laterales (base del poste hacia el fondo)
+    barBetween(-hw, 0, 0, -hw, 0, -gDepth);
+    barBetween(hw, 0, 0, hw, 0, -gDepth);
+    // barra del fondo, abajo
+    barBetween(-hw, 0, -gDepth, hw, 0, -gDepth);
 
-    const pts = [], COLS = 9, ROWS = 6;
+    const pts = [], COLS = 10, ROWS = 6;
     const zAt = (y) => -gDepth * (1 - y / gh) ** 0.85;
     for (let i = 0; i <= COLS; i++) {
       const x = -gw / 2 + (gw * i) / COLS;

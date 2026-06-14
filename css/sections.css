@@ -355,7 +355,7 @@
 .steps-showcase {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4xl);
+  gap: var(--space-lg);
 }
 
 .step-showcase {
@@ -1620,41 +1620,48 @@
    Acentos a mano: rótulos tiza + garabatos tácticos
    ============================================ */
 
-/* "este sos vos" → flechita manuscrita hacia la fusión */
+/* "este sos vos" abajo del círculo + flecha que sube apuntando al borde.
+   Aparecen recién cuando termina la animación de la fusión (.is-fused). */
 .fusion { position: relative; }
 .fusion-tag {
   position: absolute;
-  top: -10px;
-  left: max(6px, calc(50% - 162px));
-  display: flex;
-  align-items: flex-start;
-  gap: 0;
-  transform: rotate(-7deg);
-  pointer-events: none;
-  z-index: 4;
-}
-.fusion-tag__text {
+  top: 228px;
+  left: max(-74px, calc(50% - 194px));
   font-family: var(--font-chalk);
   font-weight: 700;
   font-size: clamp(1.25rem, 2.6vw, 1.7rem);
   line-height: 1;
   color: var(--color-oro);
   white-space: nowrap;
-  margin-top: 6px;
+  transform: rotate(-6deg);
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.55s ease;
 }
-.fusion-tag__arrow {
-  width: 50px;
-  height: 40px;
-  flex-shrink: 0;
+.fusion-arrow {
+  position: absolute;
+  top: 106px;
+  left: max(-60px, calc(50% - 195px));
+  width: 130px;
+  height: auto;
+  pointer-events: none;
   overflow: visible;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.55s ease 0.12s;
 }
-.fusion-tag__arrow path {
+.fusion-arrow path {
   stroke: var(--color-oro);
   stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
 }
+.fusion.is-fused .fusion-tag,
+.fusion.is-fused .fusion-arrow,
+.fusion--static .fusion-tag,
+.fusion--static .fusion-arrow { opacity: 1; }
 
 /* "¡qué crack!" debajo de la Card FUT */
 .fut-card-col {
@@ -1687,34 +1694,55 @@
   opacity: 0.85;
 }
 
+/* Flechas tácticas que conectan un celular con el otro entre pasos.
+   Se dibujan (stroke-dashoffset) al entrar en vista (.is-drawn vía JS). */
+.step-connector {
+  width: 100%;
+  margin: -28px 0;
+  pointer-events: none;
+}
+.step-connector svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.step-connector--rl svg { transform: scaleX(-1); }
+.step-connector path {
+  stroke: var(--color-cal);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  opacity: 0.30;
+}
+/* línea y punta se dibujan con stroke-dashoffset; la punta arranca
+   justo cuando la línea está terminando, para que se sienta continuo. */
+.step-connector__line,
+.step-connector__head {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.step-connector.is-drawn .step-connector__line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s ease;
+}
+.step-connector.is-drawn .step-connector__head {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.25s ease 0.9s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .step-connector__line,
+  .step-connector__head { stroke-dashoffset: 0; }
+}
+/* en mobile los pasos se apilan centrados: el cruce diagonal no aplica.
+   Como no hay conector, hace falta más aire entre pasos. */
+@media (max-width: 680px) {
+  .step-connector { display: none; }
+  .steps-showcase { gap: var(--space-4xl); }
+}
+
 /* Garabatos de pizarrón (cruces y círculos con flecha) — decorativos */
 .adn-section, .fut-section { position: relative; }
 .adn-section > .container,
 .fut-section > .container { position: relative; z-index: 1; }
-.tactics {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-.tactics__doodle { position: absolute; overflow: visible; }
-.tactics__doodle path,
-.tactics__doodle circle {
-  stroke: var(--color-cal);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-}
-.tactics__doodle--a { width: 56px; top: 14%; right: 7%;  opacity: 0.10; transform: rotate(8deg); }
-.tactics__doodle--b { width: 84px; bottom: 12%; left: 5%; opacity: 0.09; transform: rotate(-6deg); }
-.tactics__doodle--c { width: 88px; top: 18%; left: 4%;   opacity: 0.10; }
-.tactics__doodle--d { width: 52px; bottom: 16%; right: 6%; opacity: 0.10; transform: rotate(-10deg); }
-@media (max-width: 760px) {
-  /* en mobile los achicamos y los pegamos a los bordes para no chocar el contenido */
-  .tactics__doodle--a { width: 40px; top: 6%; right: 4%; }
-  .tactics__doodle--b { width: 56px; bottom: 8%; left: 3%; }
-  .tactics__doodle--c { width: 58px; top: 7%; left: 3%; }
-  .tactics__doodle--d { width: 38px; bottom: 9%; right: 4%; }
-}
