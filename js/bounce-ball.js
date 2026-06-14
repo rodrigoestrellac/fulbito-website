@@ -24,10 +24,12 @@ import { MeshoptDecoder } from '../vendor/jsm/libs/meshopt_decoder.module.js';
 import { RoomEnvironment } from '../vendor/jsm/environments/RoomEnvironment.js';
 
 const FOV = 30, CAM_Z = 4.4;
-const PERIOD = 1.2, BOUNCE = 0.95;
+const PERIOD = 1.2;
 
 export function initBounceBall(stage) {
   const isMobile = window.matchMedia('(max-width: 860px)').matches;
+  // rebote más bajo en mobile para que nunca llegue a FULBITO (que está justo arriba)
+  const BOUNCE = isMobile ? 0.5 : 0.95;
 
   // canvas: chico/centrado en mobile (solo rebote); grande extendido
   // hacia abajo-derecha en desktop (rebote + mini-gol).
@@ -80,7 +82,7 @@ export function initBounceBall(stage) {
 
   // posición de reposo (fracción del canvas)
   const restX = isMobile ? wx(0.5) : wx(0.135);
-  const restY = isMobile ? wy(0.62) : wy(0.27);
+  const restY = isMobile ? wy(0.70) : wy(0.27);
 
   /* ── Arquito (solo desktop) al espacio libre abajo-derecha ── */
   const goal = new Group();
@@ -150,8 +152,9 @@ export function initBounceBall(stage) {
       .addScaledVector(P2, 3 * u * t * t).addScaledVector(P3, t * t * t);
     return out;
   }
-  // escala extra del balón en vuelo (además de la perspectiva por z)
-  const END_SCALE = 0.62;
+  // escala extra del balón en vuelo (además de la perspectiva por z):
+  // bien chico al clavarse, proporcional al arco
+  const END_SCALE = 0.4;
 
   let loaded = false, running = false, rafId = 0;
   const t0 = performance.now();
