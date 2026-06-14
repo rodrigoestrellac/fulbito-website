@@ -362,7 +362,7 @@
   display: grid;
   grid-template-columns: 1fr 220px;
   gap: var(--space-3xl);
-  align-items: center;
+  align-items: start;
 }
 
 .step-showcase--reverse {
