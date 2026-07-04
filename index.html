@@ -25,7 +25,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2D5016">
+  <meta name="theme-color" content="#0D1B0F">
   <meta name="description"
     content="Armá equipos parejos para tu fútbol amateur en segundos. Pegá la lista de WhatsApp y compartí al grupo. Probalo sin registrarte con el Partido Rápido. Gratis.">
 
@@ -107,7 +107,7 @@
         <span class="logo__text">Fulbito</span>
       </a>
       <a href="https://fulbito.futbol" class="btn-primary site-header__cta" id="cta-header">
-        Probar Fulbito
+        Probar la app
       </a>
     </div>
   </header>
@@ -115,28 +115,25 @@
   <main id="main-content">
 
     <!-- ════════════════════════════════════════════════════
-         HERO
+         HERO — "El crack te recibe"
          ════════════════════════════════════════════════════ -->
     <section class="hero section" id="hero" aria-label="Presentación de Fulbito">
-      <div class="hero__bg" aria-hidden="true">
-        <span class="hero__floodlight hero__floodlight--l"></span>
-        <span class="hero__floodlight hero__floodlight--r"></span>
+      <div class="hero__pitch" aria-hidden="true">
+        <span class="hero__circle"></span>
+        <span class="hero__midline"><span class="hero__spot"></span></span>
       </div>
 
       <div class="container hero__inner">
         <div class="hero__content">
-          <div class="hero__brand-row">
-            <h1 class="hero__logo-text reveal">Fulbito</h1>
-            <div class="hero__ball-stage" id="hero-ball-stage" aria-hidden="true">
-              <img src="assets/icons/icon-512.png" alt="" class="hero__ball" width="72" height="72">
-            </div>
-          </div>
+          <span class="hero__badge reveal" style="--i:0">
+            <span class="hero__badge-dot" aria-hidden="true"></span>Gratis · Sin descargar nada
+          </span>
 
-          <p class="hero__headline line-reveal">
-            <span class="line-reveal__line"><span class="line-reveal__inner" style="--line:0">Armá los equipos</span></span>
-            <span class="line-reveal__line"><span class="line-reveal__inner" style="--line:1">de tu fulbito semanal</span></span>
-            <span class="line-reveal__line"><span class="line-reveal__inner hero__headline-accent" style="--line:2">en <span class="hero__ul">30 segundos<svg class="hero__scribble" viewBox="0 0 320 24" aria-hidden="true" preserveAspectRatio="none"><path d="M6 17 C 60 9, 150 8, 312 13 M 22 21 C 110 15, 210 14, 298 18" fill="none"/></svg></span></span></span>
-          </p>
+          <h1 class="hero__headline line-reveal">
+            <span class="line-reveal__line"><span class="line-reveal__inner" style="--line:0">Armá los</span></span>
+            <span class="line-reveal__line"><span class="line-reveal__inner" style="--line:1">equipos.</span></span>
+            <span class="line-reveal__line"><span class="line-reveal__inner hero__headline-accent" style="--line:2">En 30 seg.</span></span>
+          </h1>
 
           <p class="hero__subheadline reveal" style="--i:4">
             El arma secreta del que organiza el fulbito semanal. Pegá la lista de WhatsApp, el algoritmo hace la magia.
@@ -150,36 +147,91 @@
               ⚡ Probá sin cuenta
             </a>
           </div>
-
-          <div class="hero__pro reveal" style="--i:6">
-            <span class="hero__pro-text">✅ Gratis · Sin descargar nada</span>
-          </div>
-          <p class="hero__footnote reveal" style="--i:7">Registrate vos y compartí el link. Los pibes pueden sumarse al toque.</p>
         </div>
 
-        <!-- Hero visual — phone frame -->
-        <div class="hero__visual reveal reveal--flip">
-          <div class="hero__phone-wrap">
-            <div class="phone-frame phone-frame--hero" data-zoom>
-              <img src="assets/screenshots/screen_grupo.webp"
-                alt="Pantalla principal del grupo Fulbito Semanal: partidos, plantel y acciones rápidas"
-                class="phone-frame__screen"
-                loading="eager" fetchpriority="high">
+        <!-- Mascota del onboarding: hace jueguitos (pelota 3D + patada de pierna) -->
+        <div class="hero__visual reveal" style="--i:3">
+          <div class="mascota" id="mascota">
+            <span class="mascota__note" aria-hidden="true">él ya está listo</span>
+            <div class="mascota__wrap">
+              <img src="assets/mascota/fulbito-base.webp" alt="Fulbito, la mascota que te recibe"
+                class="mascota__base" width="784" height="1352" fetchpriority="low" decoding="async">
+              <img src="assets/mascota/fulbito-leg.webp" alt="" class="mascota__leg" aria-hidden="true" decoding="async">
+              <div class="mascota__ball" id="mascota-ball" aria-hidden="true">
+                <span class="mascota__ball-fallback"></span>
+              </div>
             </div>
+            <span class="mascota__shadow" aria-hidden="true"></span>
           </div>
         </div>
       </div>
 
-      <a href="#como-funciona" class="hero__cue" aria-label="Bajar a cómo funciona">
+      <a href="#partido-rapido" class="hero__cue" aria-label="Bajar a Partido Rápido">
         <span class="hero__cue-text">Scrolleá</span>
         <span class="hero__cue-arrow" aria-hidden="true">↓</span>
       </a>
     </section>
 
     <!-- ════════════════════════════════════════════════════
+         MARQUEE DE STICKERS — cinta infinita
+         ════════════════════════════════════════════════════ -->
+    <section class="section marquee-section" aria-label="Logros y stickers coleccionables">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="eyebrow">🏅 Más de 60 logros coleccionables</span>
+          <h2>Cada partido<br>deja huella</h2>
+        </div>
+      </div>
+      <div class="sticker-marquee reveal" aria-hidden="true">
+        <div class="sticker-marquee__track">
+          <div class="sticker-marquee__group">
+            <img src="assets/stickers/goleador.webp" alt="" loading="lazy">
+            <img src="assets/stickers/hat_trick.webp" alt="" loading="lazy">
+            <img src="assets/stickers/leyenda.webp" alt="" loading="lazy">
+            <img src="assets/stickers/killer.webp" alt="" loading="lazy">
+            <img src="assets/stickers/balon_oro.webp" alt="" loading="lazy">
+            <img src="assets/stickers/messi_mode.webp" alt="" loading="lazy">
+            <img src="assets/stickers/jogo-bonito.webp" alt="" loading="lazy">
+            <img src="assets/stickers/mvp_10.webp" alt="" loading="lazy">
+            <img src="assets/stickers/racha_ganadora_5.webp" alt="" loading="lazy">
+            <img src="assets/stickers/guardian_10.webp" alt="" loading="lazy">
+            <img src="assets/stickers/superclasico.webp" alt="" loading="lazy">
+            <img src="assets/stickers/padre_hijo_starwars.webp" alt="" loading="lazy">
+            <img src="assets/stickers/inquebrantable.webp" alt="" loading="lazy">
+            <img src="assets/stickers/companero_trinchera.webp" alt="" loading="lazy">
+            <img src="assets/stickers/veterano.webp" alt="" loading="lazy">
+            <img src="assets/stickers/debutante.webp" alt="" loading="lazy">
+            <img src="assets/stickers/fotografo.webp" alt="" loading="lazy">
+            <img src="assets/stickers/todoterreno_rdp7.webp" alt="" loading="lazy">
+          </div>
+          <div class="sticker-marquee__group" aria-hidden="true">
+            <img src="assets/stickers/goleador.webp" alt="" loading="lazy">
+            <img src="assets/stickers/hat_trick.webp" alt="" loading="lazy">
+            <img src="assets/stickers/leyenda.webp" alt="" loading="lazy">
+            <img src="assets/stickers/killer.webp" alt="" loading="lazy">
+            <img src="assets/stickers/balon_oro.webp" alt="" loading="lazy">
+            <img src="assets/stickers/messi_mode.webp" alt="" loading="lazy">
+            <img src="assets/stickers/jogo-bonito.webp" alt="" loading="lazy">
+            <img src="assets/stickers/mvp_10.webp" alt="" loading="lazy">
+            <img src="assets/stickers/racha_ganadora_5.webp" alt="" loading="lazy">
+            <img src="assets/stickers/guardian_10.webp" alt="" loading="lazy">
+            <img src="assets/stickers/superclasico.webp" alt="" loading="lazy">
+            <img src="assets/stickers/padre_hijo_starwars.webp" alt="" loading="lazy">
+            <img src="assets/stickers/inquebrantable.webp" alt="" loading="lazy">
+            <img src="assets/stickers/companero_trinchera.webp" alt="" loading="lazy">
+            <img src="assets/stickers/veterano.webp" alt="" loading="lazy">
+            <img src="assets/stickers/debutante.webp" alt="" loading="lazy">
+            <img src="assets/stickers/fotografo.webp" alt="" loading="lazy">
+            <img src="assets/stickers/todoterreno_rdp7.webp" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
          PARTIDO RÁPIDO — Gancho de fricción cero (sin cuenta)
          ════════════════════════════════════════════════════ -->
-    <section class="section quick-section" id="partido-rapido" aria-label="Partido Rápido: armá equipos sin registrarte">
+    <section class="section band quick-section" id="partido-rapido" aria-label="Partido Rápido: armá equipos sin registrarte">
       <div class="container">
         <div class="quick-card reveal">
           <img src="assets/stickers/a-jugar.webp" alt="" class="quick-card__sticker" aria-hidden="true" loading="lazy" width="120" height="120">
@@ -219,7 +271,7 @@
     </section>
 
     <!-- ════════════════════════════════════════════════════
-         CÓMO FUNCIONA — 4 pasos, un mockup por paso
+         CÓMO FUNCIONA — 4 pasos alternados
          ════════════════════════════════════════════════════ -->
     <section class="section" id="como-funciona" aria-label="Cómo funciona Fulbito">
       <div class="container">
@@ -243,22 +295,15 @@
               </p>
             </div>
             <div class="step-showcase__phone">
-              <div class="phone-3d" data-scroll-spin data-spin-deg="100">
+              <div class="phone-3d phone-3d--tl" data-scroll-spin data-spin-deg="140">
                 <span class="phone-3d__body" aria-hidden="true"></span>
                 <div class="phone-frame" data-zoom>
                   <img src="assets/screenshots/screen_crear_partido.webp"
                     alt="Crear partido: elegí fecha, horario y cancha"
-                    class="phone-frame__screen" loading="eager" fetchpriority="low" decoding="async">
+                    class="phone-frame__screen" loading="lazy" fetchpriority="low" decoding="async">
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="step-connector step-connector--rl" aria-hidden="true">
-            <svg viewBox="0 0 1000 250" fill="none" preserveAspectRatio="xMidYMid meet">
-              <path class="step-connector__line" pathLength="1" d="M120 30 C 300 250, 600 300, 795 300" />
-              <path class="step-connector__head" pathLength="1" d="M771 315 L 795 300 L 771 285" />
-            </svg>
           </div>
 
           <!-- Paso 2 -->
@@ -276,22 +321,15 @@
               </p>
             </div>
             <div class="step-showcase__phone">
-              <div class="phone-3d" data-scroll-spin data-spin-deg="100">
+              <div class="phone-3d phone-3d--tr" data-scroll-spin data-spin-deg="140">
                 <span class="phone-3d__body" aria-hidden="true"></span>
                 <div class="phone-frame" data-zoom>
                   <img src="assets/screenshots/screen_armar_partido.webp"
                     alt="Convocatoria: la lista de WhatsApp pegada y los jugadores detectados"
-                    class="phone-frame__screen" loading="eager" fetchpriority="low" decoding="async">
+                    class="phone-frame__screen" loading="lazy" fetchpriority="low" decoding="async">
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="step-connector step-connector--lr" aria-hidden="true">
-            <svg viewBox="0 0 1000 250" fill="none" preserveAspectRatio="xMidYMid meet">
-              <path class="step-connector__line" pathLength="1" d="M120 30 C 300 250, 600 300, 795 300" />
-              <path class="step-connector__head" pathLength="1" d="M771 315 L 795 300 L 771 285" />
-            </svg>
           </div>
 
           <!-- Paso 3 -->
@@ -306,22 +344,15 @@
               </p>
             </div>
             <div class="step-showcase__phone">
-              <div class="phone-3d" data-scroll-spin data-spin-deg="100">
+              <div class="phone-3d phone-3d--tl" data-scroll-spin data-spin-deg="140">
                 <span class="phone-3d__body" aria-hidden="true"></span>
                 <div class="phone-frame" data-zoom>
                   <img src="assets/screenshots/armar_equipos.webp"
                     alt="Armar equipos: Equipo A y B balanceados"
-                    class="phone-frame__screen" loading="eager" fetchpriority="low" decoding="async">
+                    class="phone-frame__screen" loading="lazy" fetchpriority="low" decoding="async">
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="step-connector step-connector--rl" aria-hidden="true">
-            <svg viewBox="0 0 1000 250" fill="none" preserveAspectRatio="xMidYMid meet">
-              <path class="step-connector__line" pathLength="1" d="M120 30 C 300 250, 600 300, 795 300" />
-              <path class="step-connector__head" pathLength="1" d="M771 315 L 795 300 L 771 285" />
-            </svg>
           </div>
 
           <!-- Paso 4 -->
@@ -336,135 +367,105 @@
               </p>
             </div>
             <div class="step-showcase__phone">
-              <div class="phone-3d" data-scroll-spin data-spin-deg="100">
+              <div class="phone-3d phone-3d--tr" data-scroll-spin data-spin-deg="140">
                 <span class="phone-3d__body" aria-hidden="true"></span>
                 <div class="phone-frame" data-zoom>
                   <img src="assets/screenshots/compartir_equipos.webp"
                     alt="Alineación lista para compartir al grupo"
-                    class="phone-frame__screen" loading="eager" fetchpriority="low" decoding="async">
+                    class="phone-frame__screen" loading="lazy" fetchpriority="low" decoding="async">
                 </div>
               </div>
             </div>
           </div>
 
         </div>
+
+        <div class="section-cta reveal">
+          <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg" id="cta-mid">
+            ⚽ Probalo con tu grupo
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- CTA intermedio -->
-    <div class="section-cta reveal">
-      <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg" id="cta-mid">
-        ⚽ Probalo con tu grupo
-      </a>
-    </div>
-
-    <hr class="divider">
-
     <!-- ════════════════════════════════════════════════════
-         FEATURES
+         FEATURES — 6 cards con tag de fase
          ════════════════════════════════════════════════════ -->
-    <section class="section features-section" id="features" aria-label="Características de Fulbito">
+    <section class="section band features-section" id="features" aria-label="Características de Fulbito">
       <div class="container">
         <div class="section-title reveal">
           <h2>Todo lo que pasa<br>alrededor del partido</h2>
         </div>
 
-        <!-- PRE -->
-        <div class="features-group">
-          <div class="field-line-label reveal">
-            <span class="field-line-label__text">📋 Pre-Partido</span>
+        <div class="features-grid reveal-stagger">
+          <div class="feature-card reveal">
+            <span class="feature-card__tag feature-card__tag--pre">Pre-partido</span>
+            <div class="feature-card__icon">
+              <img src="assets/stickers/resultados_5.webp" alt="" width="128" height="128" loading="lazy">
+            </div>
+            <h3 class="feature-card__title">Convocatoria inteligente</h3>
+            <p class="feature-card__desc">
+              Pegá la lista del grupo y Fulbito reconoce quién es quién. Sin tipear uno por uno.
+            </p>
           </div>
-          <div class="features-grid reveal-stagger">
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/resultados_5.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">Convocatoria inteligente</h3>
-              <p class="feature-card__desc">
-                Pegá la lista del grupo y Fulbito reconoce quién es quién. Sin tipear uno por uno.
-              </p>
-            </div>
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/charla-tecnica.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">Equipos balanceados</h3>
-              <p class="feature-card__desc">
-                Con el crack asociado y la autoevaluación privada, el algoritmo balancea por posición, nivel y
-                estilo de juego. <br> Además, aprende con cada partido.
-              </p>
-            </div>
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/a-jugar.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">Editá los equipos</h3>
-              <p class="feature-card__desc">
-                ¿No te convence el armado? Siempre podés mover jugadores a mano antes de jugar.
-              </p>
-            </div>
-          </div>
-        </div>
 
-        <!-- POST -->
-        <div class="features-group">
-          <div class="field-line-label reveal">
-            <span class="field-line-label__text">🎙️ Post-Partido</span>
+          <div class="feature-card reveal">
+            <span class="feature-card__tag feature-card__tag--pre">Pre-partido</span>
+            <div class="feature-card__icon">
+              <img src="assets/stickers/charla-tecnica.webp" alt="" width="128" height="128" loading="lazy">
+            </div>
+            <h3 class="feature-card__title">Equipos balanceados</h3>
+            <p class="feature-card__desc">
+              Con el crack asociado y la autoevaluación privada, el algoritmo balancea por posición, nivel y estilo de juego. Además, aprende con cada partido.
+            </p>
           </div>
-          <div class="features-grid reveal-stagger">
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/win_streak_3.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">Resultado y goles</h3>
-              <p class="feature-card__desc">
-                Cargá el resultado y quién hizo los goles. Todo queda en el historial del grupo.
-              </p>
-            </div>
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/mvp_1.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">Votaciones</h3>
-              <p class="feature-card__desc">
-                MVP 👑, Caudillo 🛡️ y Rústico 🪵(opcional). Que el grupo vote quién fue el crack, quién fue el caudillo
-                y quién fue el más rústico del partido.
-              </p>
-            </div>
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/padre_hijo_starwars.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">Rankings, paternidades y estadísticas</h3>
-              <p class="feature-card__desc">
-                Quién ganó más, quién tiene de hijo a quién, quién es el archirival de quién. Todo el historial en un
-                solo lugar.
-              </p>
-            </div>
-          </div>
-        </div>
 
-        <!-- FIN DE TEMPORADA -->
-        <div class="features-group">
-          <div class="field-line-label reveal">
-            <span class="field-line-label__text">🏆 Fin de Temporada</span>
-          </div>
-          <div class="features-grid reveal-stagger">
-            <div class="feature-card reveal">
-              <div class="feature-card__icon">
-                <img src="assets/stickers/leyenda.webp" alt="" width="56" height="56" loading="lazy">
-              </div>
-              <h3 class="feature-card__title">Fulbito Wrapped</h3>
-              <p class="feature-card__desc">
-                Cada 6 meses, el resumen de la temporada de tu grupo: Campeón, Balón de Oro, Pichichi, Director de Orquesta, Caudillo y 11 Ideal del semestre. El recap definitivo del fulbito, en formato historia.
-              </p>
+          <div class="feature-card reveal">
+            <span class="feature-card__tag feature-card__tag--post">Post-partido</span>
+            <div class="feature-card__icon">
+              <img src="assets/stickers/win_streak_3.webp" alt="" width="128" height="128" loading="lazy">
             </div>
+            <h3 class="feature-card__title">Resultado y goles</h3>
+            <p class="feature-card__desc">
+              Cargá el resultado y quién hizo los goles. Todo queda en el historial del grupo.
+            </p>
+          </div>
+
+          <div class="feature-card reveal">
+            <span class="feature-card__tag feature-card__tag--post">Post-partido</span>
+            <div class="feature-card__icon">
+              <img src="assets/stickers/mvp_1.webp" alt="" width="128" height="128" loading="lazy">
+            </div>
+            <h3 class="feature-card__title">Votaciones</h3>
+            <p class="feature-card__desc">
+              MVP 👑, Caudillo 🛡️ y Rústico 🪵 (opcional). Que el grupo vote quién fue el crack, el caudillo y el más rústico del partido.
+            </p>
+          </div>
+
+          <div class="feature-card reveal">
+            <span class="feature-card__tag feature-card__tag--post">Post-partido</span>
+            <div class="feature-card__icon">
+              <img src="assets/stickers/padre_hijo_starwars.webp" alt="" width="128" height="128" loading="lazy">
+            </div>
+            <h3 class="feature-card__title">Rankings y paternidades</h3>
+            <p class="feature-card__desc">
+              Quién ganó más, quién tiene de hijo a quién, quién es el archirival de quién. Todo el historial en un solo lugar.
+            </p>
+          </div>
+
+          <div class="feature-card reveal">
+            <span class="feature-card__tag feature-card__tag--fin">Fin de temporada</span>
+            <div class="feature-card__icon">
+              <img src="assets/stickers/leyenda.webp" alt="" width="128" height="128" loading="lazy">
+            </div>
+            <h3 class="feature-card__title">Fulbito Wrapped</h3>
+            <p class="feature-card__desc">
+              Cada 6 meses, el resumen de la temporada: Campeón, Balón de Oro, Pichichi, Caudillo y 11 Ideal del semestre. En formato historia.
+            </p>
           </div>
         </div>
       </div>
     </section>
-
-    <hr class="divider">
 
     <!-- ════════════════════════════════════════════════════
          TU ADN + FUSIÓN CON TU CRACK
@@ -521,10 +522,8 @@
       </div>
     </section>
 
-    <hr class="divider">
-
     <!-- ════════════════════════════════════════════════════
-         CARD FUT DEL JUGADOR (CSS puro, tilt 3D)
+         CARD FUT DEL JUGADOR (estilo app, tilt 3D)
          ════════════════════════════════════════════════════ -->
     <section class="section fut-section" id="fut" aria-label="La Card del jugador">
       <div class="fut-section__bg" aria-hidden="true"></div>
@@ -572,8 +571,6 @@
       </div>
     </section>
 
-    <hr class="divider">
-
     <!-- ════════════════════════════════════════════════════
          RELATOR IA — 3 voces
          ════════════════════════════════════════════════════ -->
@@ -584,7 +581,6 @@
           <p>Una crónica narrada por IA con onda de relator de cancha. La escuchás, la mandás al grupo y reviven cada jugada.</p>
         </div>
 
-        <!-- Reproductor mock con waveform -->
         <div class="relator-player reveal" data-relato>
           <audio class="relator-player__audio" src="assets/audio/relato-demo.mp3" preload="none"></audio>
           <div class="relator-player__avatar">
@@ -594,10 +590,10 @@
             <span class="relator-player__title">Relato del partido · narrado por IA</span>
             <div class="relator-player__row">
               <div class="relator-wave" aria-hidden="true">
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
               </div>
               <button type="button" class="relator-player__play" data-relato-play aria-label="Reproducir relato">
                 <svg class="relator-player__ico relator-player__ico--play" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -607,7 +603,6 @@
           </div>
         </div>
 
-        <!-- 3 personalidades -->
         <div class="narrators reveal-stagger">
           <article class="narrator-card reveal">
             <span class="narrator-card__tag">Vieja escuela 🎙️</span>
@@ -629,167 +624,10 @@
       </div>
     </section>
 
-    <hr class="divider">
-
-    <!-- ════════════════════════════════════════════════════
-         LOGROS & STICKERS — muro animado
-         ════════════════════════════════════════════════════ -->
-    <section class="section logros-section" id="logros" aria-label="Logros y stickers coleccionables">
-      <div class="container">
-        <div class="section-title reveal">
-          <h2>Cada partido<br>deja huella</h2>
-          <p>Más de 60 logros coleccionables: goles, asistencias, rachas, MVPs, paternidades y leyendas del grupo.</p>
-        </div>
-      </div>
-
-      <div class="sticker-wall reveal" aria-hidden="true">
-        <div class="sticker-wall__row sticker-wall__row--l">
-          <div class="sticker-wall__group">
-            <img src="assets/stickers/goleador.webp" alt="" loading="lazy">
-            <img src="assets/stickers/hat_trick.webp" alt="" loading="lazy">
-            <img src="assets/stickers/leyenda.webp" alt="" loading="lazy">
-            <img src="assets/stickers/killer.webp" alt="" loading="lazy">
-            <img src="assets/stickers/balon_oro.webp" alt="" loading="lazy">
-            <img src="assets/stickers/messi_mode.webp" alt="" loading="lazy">
-            <img src="assets/stickers/jogo-bonito.webp" alt="" loading="lazy">
-            <img src="assets/stickers/mvp_10.webp" alt="" loading="lazy">
-            <img src="assets/stickers/racha_ganadora_5.webp" alt="" loading="lazy">
-            <img src="assets/stickers/guardian_10.webp" alt="" loading="lazy">
-          </div>
-          <div class="sticker-wall__group" aria-hidden="true">
-            <img src="assets/stickers/goleador.webp" alt="" loading="lazy">
-            <img src="assets/stickers/hat_trick.webp" alt="" loading="lazy">
-            <img src="assets/stickers/leyenda.webp" alt="" loading="lazy">
-            <img src="assets/stickers/killer.webp" alt="" loading="lazy">
-            <img src="assets/stickers/balon_oro.webp" alt="" loading="lazy">
-            <img src="assets/stickers/messi_mode.webp" alt="" loading="lazy">
-            <img src="assets/stickers/jogo-bonito.webp" alt="" loading="lazy">
-            <img src="assets/stickers/mvp_10.webp" alt="" loading="lazy">
-            <img src="assets/stickers/racha_ganadora_5.webp" alt="" loading="lazy">
-            <img src="assets/stickers/guardian_10.webp" alt="" loading="lazy">
-          </div>
-        </div>
-        <div class="sticker-wall__row sticker-wall__row--r">
-          <div class="sticker-wall__group">
-            <img src="assets/stickers/debutante.webp" alt="" loading="lazy">
-            <img src="assets/stickers/veterano.webp" alt="" loading="lazy">
-            <img src="assets/stickers/inquebrantable.webp" alt="" loading="lazy">
-            <img src="assets/stickers/superclasico.webp" alt="" loading="lazy">
-            <img src="assets/stickers/primer_gol.webp" alt="" loading="lazy">
-            <img src="assets/stickers/fotografo.webp" alt="" loading="lazy">
-            <img src="assets/stickers/padre_hijo_starwars.webp" alt="" loading="lazy">
-            <img src="assets/stickers/todoterreno_rdp7.webp" alt="" loading="lazy">
-            <img src="assets/stickers/companero_trinchera.webp" alt="" loading="lazy">
-            <img src="assets/stickers/habitue.webp" alt="" loading="lazy">
-          </div>
-          <div class="sticker-wall__group" aria-hidden="true">
-            <img src="assets/stickers/debutante.webp" alt="" loading="lazy">
-            <img src="assets/stickers/veterano.webp" alt="" loading="lazy">
-            <img src="assets/stickers/inquebrantable.webp" alt="" loading="lazy">
-            <img src="assets/stickers/superclasico.webp" alt="" loading="lazy">
-            <img src="assets/stickers/primer_gol.webp" alt="" loading="lazy">
-            <img src="assets/stickers/fotografo.webp" alt="" loading="lazy">
-            <img src="assets/stickers/padre_hijo_starwars.webp" alt="" loading="lazy">
-            <img src="assets/stickers/todoterreno_rdp7.webp" alt="" loading="lazy">
-            <img src="assets/stickers/companero_trinchera.webp" alt="" loading="lazy">
-            <img src="assets/stickers/habitue.webp" alt="" loading="lazy">
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="logros-pills reveal">
-          <span class="previa__pill">🥅 Goleador & Hat-trick</span>
-          <span class="previa__pill">🎯 Asistencias</span>
-          <span class="previa__pill">🔥 Rachas ganadoras</span>
-          <span class="previa__pill">👑 MVP del partido</span>
-          <span class="previa__pill">👴 Paternidades</span>
-          <span class="previa__pill">🛡️ Caudillo</span>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- ════════════════════════════════════════════════════
-         PUSH / RECORDATORIOS
-         ════════════════════════════════════════════════════ -->
-    <section class="section push-section" id="push" aria-label="Notificaciones y recordatorios">
-      <div class="container push-grid">
-        <div class="push-copy reveal reveal--left">
-          <span class="eyebrow">🔔 Nadie se queda afuera</span>
-          <h2 class="push-copy__title">El partido te<br>avisa solo</h2>
-          <p class="push-copy__desc">
-            Recordatorios del partido, aviso para votar antes de que cierre y el ping cuando ya está el relato.
-            Fulbito mantiene al grupo enganchado toda la semana.
-          </p>
-        </div>
-
-        <div class="push-visual reveal reveal--right">
-          <div class="push-stack">
-            <div class="push-notif" style="--i:0">
-              <span class="push-notif__icon">🏟️</span>
-              <div class="push-notif__body">
-                <span class="push-notif__title">Fulbito Jueves</span>
-                <span class="push-notif__text">Hoy se juega 21:00 en La Bombonerita. ¡Armá los equipos!</span>
-              </div>
-            </div>
-            <div class="push-notif" style="--i:1">
-              <span class="push-notif__icon">👑</span>
-              <div class="push-notif__body">
-                <span class="push-notif__title">Votá al MVP</span>
-                <span class="push-notif__text">La votación cierra a las 12. ¿Quién fue el crack de ayer?</span>
-              </div>
-            </div>
-            <div class="push-notif" style="--i:2">
-              <span class="push-notif__icon">🎙️</span>
-              <div class="push-notif__body">
-                <span class="push-notif__title">Ya está el relato</span>
-                <span class="push-notif__text">Escuchá la crónica de la Fecha 12 y pegala al grupo.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- ════════════════════════════════════════════════════
-         LA PREVIA — Identidad
-         ════════════════════════════════════════════════════ -->
-    <section class="section previa-section" id="la-previa" aria-label="La identidad de Fulbito">
-      <div class="container">
-        <div class="section-title reveal">
-          <h2>Es tu grupo de fútbol semanal, hecho app</h2>
-        </div>
-
-        <div class="previa__image-wrap reveal parallax parallax--soft">
-          <img src="assets/images/potrero.webp"
-            alt="Ilustración: dos pibes eligiendo su equipo de cracks en un potrero"
-            class="previa__image" loading="lazy">
-        </div>
-
-        <div class="previa__pills reveal">
-          <span class="previa__pill">Sin peleas por los equipos</span>
-          <span class="previa__pill">Sin moneda al aire</span>
-          <span class="previa__pill">Sin "yo elijo a Messi"</span>
-          <span class="previa__pill">Sin planillas de Excel</span>
-          <span class="previa__pill">Sin discutir quién quedó en qué equipo</span>
-        </div>
-
-        <p class="previa__closing reveal">
-          <em>El arma secreta del que organiza el fulbito de la semana</em>
-        </p>
-      </div>
-    </section>
-
-    <hr class="divider">
-
     <!-- ════════════════════════════════════════════════════
          SOCIAL PROOF — Origen real
          ════════════════════════════════════════════════════ -->
-    <section class="section social-proof-section" id="social-proof" aria-label="Quiénes ya usan Fulbito">
+    <section class="section band social-proof-section" id="social-proof" aria-label="Quiénes ya usan Fulbito">
       <div class="container">
         <div class="section-title reveal">
           <span class="eyebrow-chalk">palabra de vestuario</span>
@@ -851,8 +689,6 @@
         </p>
       </div>
     </section>
-
-    <hr class="divider">
 
     <!-- ════════════════════════════════════════════════════
          FAQ
@@ -976,8 +812,6 @@
       </div>
     </section>
 
-    <hr class="divider">
-
     <!-- ════════════════════════════════════════════════════
          TUTORIALES — Guías rápidas
          ════════════════════════════════════════════════════ -->
@@ -1044,16 +878,25 @@
     </section>
 
     <!-- ════════════════════════════════════════════════════
-         CTA FINAL
+         CTA FINAL — El crack te despide
          ════════════════════════════════════════════════════ -->
     <section class="section cta-final" id="cta-final" aria-label="Empezá a usar Fulbito">
       <div class="cta-final__bg" aria-hidden="true"></div>
-      <div class="container reveal">
-        <h2>¿Listo para armar<br>los equipos?</h2>
-        <p class="cta-final__sub">Sin tarjeta. Sin vueltas.</p>
-        <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg" id="cta-bottom">
-          ⚽ Sumate — es gratis
-        </a>
+      <div class="container cta-final__inner reveal">
+        <div class="cta-final__mascot">
+          <img src="assets/mascota/mascota_fulbito.webp" alt="Fulbito, la mascota, te espera para el próximo partido"
+            width="392" height="676" loading="lazy" decoding="async">
+        </div>
+        <h2>El próximo partido<br>lo armás en <span class="cta-final__hl">30 seg.</span></h2>
+        <p class="cta-final__sub">Sin tarjeta. Sin vueltas. Sin discutir quién quedó en qué equipo.</p>
+        <div class="cta-final__actions">
+          <a href="https://fulbito.futbol" class="btn-primary btn-primary--lg" id="cta-bottom">
+            ⚽ Armá tu primer partido
+          </a>
+          <a href="https://fulbito.futbol/?quick=1" class="btn-secondary" id="cta-quick-bottom">
+            ⚡ Probá sin cuenta
+          </a>
+        </div>
         <span class="cta-final__badge">✅ Registrate gratis · Sin vueltas</span>
       </div>
     </section>
@@ -1069,15 +912,15 @@
         <img src="assets/icons/fulbito-icon-80.png" alt="" class="logo__icon" width="40" height="40">
         <span class="logo__text">Fulbito</span>
       </a>
-      <p class="site-footer__tagline">El arma secreta del que organiza el fulbito semanal.</p>
+      <p class="site-footer__tagline">Hecho por pibes que juegan los jueves.</p>
       <nav class="site-footer__links" aria-label="Links del footer">
-        <a href="https://fulbito.futbol" class="site-footer__link">Ir a la app</a>
+        <a href="https://www.instagram.com/fulbito.app/" target="_blank" rel="noopener" class="site-footer__link">@fulbito.app</a>
         <span class="site-footer__sep" aria-hidden="true">·</span>
-        <a href="terminos.html" class="site-footer__link">Términos</a>
+        <a href="https://fulbito.futbol" class="site-footer__link">Ir a la app</a>
         <span class="site-footer__sep" aria-hidden="true">·</span>
         <a href="privacidad.html" class="site-footer__link">Privacidad</a>
         <span class="site-footer__sep" aria-hidden="true">·</span>
-        <a href="mailto:fulbitosemanal.app@gmail.com" class="site-footer__link">Contacto</a>
+        <a href="terminos.html" class="site-footer__link">Términos</a>
       </nav>
       <p class="site-footer__made">Hecho con ♥️⚽ en Mendoza · © 2026 Fulbito</p>
     </div>
@@ -1092,24 +935,41 @@
   <!-- JS -->
   <script src="js/main.js" defer></script>
 
-  <!-- Pelota 3D del hero (experimental). Carga diferida: solo si hay
-       WebGL; si no, queda el icono 2D con su bounce CSS. -->
+  <!-- Mascota 3D del hero (pelota Teamgeist + patada de pierna). Carga diferida
+       DESPUÉS del LCP: solo si hay WebGL y no hay reduced-motion. Si no, queda
+       la mascota estática con la pelota fallback en CSS. -->
   <script type="importmap">
     { "imports": { "three": "./vendor/three/three.module.min.js" } }
   </script>
   <script type="module">
-    const stage = document.getElementById('hero-ball-stage');
-    let gl = null;
-    try { const c = document.createElement('canvas'); gl = c.getContext('webgl2') || c.getContext('webgl'); } catch (_) {}
-    if (stage && gl) {
-      import('./js/bounce-ball.js')
-        .then((m) => m.initBounceBall(stage))
-        .catch((err) => {
-          console.warn('[fulbito] pelota 3D no disponible:', err);
-          stage.classList.add('is-2d'); // fallback: icono 2D con bounce CSS
-        });
-    } else if (stage) {
-      stage.classList.add('is-2d');     // sin WebGL: icono 2D
+    const holder = document.getElementById('mascota-ball');
+    const legImg = document.querySelector('.mascota__leg');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // El chequeo de WebGL se hace DENTRO de start() (post-load), no en el instante
+    // de evaluar el script: en un arranque en frío la GPU puede no estar lista todavía
+    // y un chequeo temprano daría false y dejaría la pelota 3D deshabilitada para siempre.
+    const hasWebGL = () => {
+      try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
+      catch (_) { return false; }
+    };
+    if (holder && !reduce) {
+      const start = () => {
+        if (!hasWebGL()) return; // sin WebGL: queda la mascota con la pelota fallback CSS
+        import('./js/onboarding-ball.js').then(async (m) => {
+          // La pierna patea: la pantorrilla rota desde la rodilla siguiendo el contacto.
+          const onFrame = (hN, contact) => {
+            if (legImg) legImg.style.transform = 'rotate(' + (32 * contact).toFixed(2) + 'deg)';
+          };
+          const inst = await m.mountOnboardingBall(holder, { onFrame });
+          holder.classList.add('is-3d'); // oculta el fallback CSS + frena la patada CSS
+          // Un "olé" cuando el mouse pasa por la mascota.
+          const mascot = document.getElementById('mascota');
+          if (mascot) mascot.addEventListener('pointerenter', () => { try { inst.kick(); } catch (_) {} });
+        }).catch((err) => { if (window.console) console.warn('[fulbito] mascota 3D no disponible:', err); });
+      };
+      if (document.readyState === 'complete') start();
+      else if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 2200 });
+      else window.addEventListener('load', () => setTimeout(start, 350));
     }
   </script>
 

@@ -63,8 +63,8 @@
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);     /* desaceleración tipo "settle" */
   --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);  /* overshoot sutil */
   --ease-in-out-cine: cubic-bezier(0.65, 0, 0.35, 1);
-  --reveal-dur: 0.8s;
-  --reveal-shift: 36px;
+  --reveal-dur: 0.7s;
+  --reveal-shift: 26px;
 
   /* ── Z-index ── */
   --z-base: 1;

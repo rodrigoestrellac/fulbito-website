@@ -113,32 +113,50 @@
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid transparent;
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: var(--space-lg);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 128px;
-  grid-template-rows: auto auto;
+  grid-template-columns: minmax(0, 1fr) 116px;
+  grid-template-rows: auto auto auto;
   column-gap: var(--space-md);
   row-gap: var(--space-sm);
-  min-height: calc(128px + 2 * var(--space-lg));
+  min-height: calc(116px + 2 * var(--space-lg));
   align-content: center;
   transition:
     border-color var(--transition-fast),
     transform var(--transition-normal);
 }
 .feature-card:hover {
-  border-color: rgba(180, 185, 190, 0.12);
+  border-color: rgba(201, 169, 78, 0.4);
   transform: translateY(-4px);
 }
+/* Tag de fase (Pre-partido / Post-partido / Fin de temporada) */
+.feature-card__tag {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  align-self: end;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid currentColor;
+}
+.feature-card__tag--pre { color: var(--color-cesped-light); }
+.feature-card__tag--post { color: var(--color-oro); }
+.feature-card__tag--fin { color: #d98cc8; }
 .feature-card__icon {
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
   align-self: center;
-  width: 128px;
-  height: 128px;
-  font-size: 4.5rem;
+  width: 116px;
+  height: 116px;
+  font-size: 4rem;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -181,8 +199,8 @@
 }
 .feature-card__title {
   grid-column: 1;
-  grid-row: 1;
-  align-self: end;
+  grid-row: 2;
+  align-self: center;
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
@@ -193,7 +211,7 @@
 }
 .feature-card__desc {
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 3;
   align-self: start;
   font-family: var(--font-body);
   font-size: var(--text-sm);
@@ -491,19 +509,29 @@
   transform-style: preserve-3d;
   will-change: transform;
 }
+/* La perspectiva la da el wrapper (.step-showcase__phone). Acá solo rotamos:
+   frente (+8) sobre un cuerpo oscuro (-8) → un canto fino y limpio al girar. */
 .phone-3d .phone-frame {
   width: 220px;
   max-width: 72vw;
-  transform: translateZ(11px); /* cara frontal hacia adelante */
+  transform: translateZ(8px); /* cara frontal hacia adelante */
 }
+/* Ladeo estático sutil (±2°). El giro 3D al scroll lo aplica el JS al .phone-3d,
+   así que este roll 2D vive en el frame interno y compone con la rotateY.
+   IMPORTANTE: frame y body llevan el MISMO roll → quedan alineados y el canto
+   asoma parejo por el lateral (no un rim asimétrico arriba). */
+.phone-3d--tl .phone-frame { transform: translateZ(8px) rotate(-2deg); }
+.phone-3d--tr .phone-frame { transform: translateZ(8px) rotate(2deg); }
 .phone-3d__body {
   position: absolute;
   inset: 0;
   border-radius: 40px;
-  background: linear-gradient(110deg, #313640 0%, #161a1f 45%, #05070b 100%);
+  background: linear-gradient(110deg, #2a2f38 0%, #14181d 45%, #05070b 100%);
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  transform: translateZ(-11px); /* cuerpo/back hacia atrás → 22px de grosor */
+  transform: translateZ(-8px); /* 16px de grosor: canto fino y realista */
 }
+.phone-3d--tl .phone-3d__body { transform: translateZ(-8px) rotate(-2deg); }
+.phone-3d--tr .phone-3d__body { transform: translateZ(-8px) rotate(2deg); }
 
 /* ============================================
    PRO BADGE

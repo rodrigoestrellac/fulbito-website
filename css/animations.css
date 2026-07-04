@@ -20,7 +20,7 @@
     opacity var(--reveal-dur) var(--ease-out-soft),
     transform var(--reveal-dur) var(--ease-out-soft),
     filter var(--reveal-dur) var(--ease-out-soft);
-  transition-delay: calc(var(--i, 0) * 90ms);
+  transition-delay: calc(var(--i, 0) * 80ms);
   will-change: opacity, transform;
 }
 
@@ -80,9 +80,9 @@
   transform: translateY(110%);
   opacity: 0;
   transition:
-    transform 0.9s var(--ease-out-soft),
-    opacity 0.9s var(--ease-out-soft);
-  transition-delay: calc(var(--line, 0) * 110ms);
+    transform 0.8s var(--ease-out-soft),
+    opacity 0.8s var(--ease-out-soft);
+  transition-delay: calc(var(--line, 0) * 80ms);
 }
 .js-anim .line-reveal.is-inview .line-reveal__inner {
   transform: translateY(0);
@@ -173,6 +173,43 @@
   @keyframes wave {
     0%, 100% { transform: scaleY(0.25); }
     50%      { transform: scaleY(1); }
+  }
+
+  /* ── Mascota del hero (portado del onboarding de la app) ── */
+  /* Flotación suave de la mascota */
+  @keyframes onbFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  /* Pelota CSS fallback rebotando sobre el pie (mientras carga el 3D / sin WebGL) */
+  @keyframes onbCssBall {
+    0%, 100% { transform: translateX(-50%) translateY(0) scale(1.05, .9); }
+    14%      { transform: translateX(-50%) translateY(-14px) scale(.97, 1.04); }
+    50%      { transform: translateX(-50%) translateY(-96px) scale(1); }
+    86%      { transform: translateX(-50%) translateY(-14px) scale(.97, 1.04); }
+  }
+  /* La pierna patea cuando la pelota fallback toca abajo (0%/100% del ciclo) */
+  @keyframes onbLegKick {
+    0%   { transform: rotate(30deg); }
+    12%  { transform: rotate(8deg); }
+    50%  { transform: rotate(0deg); }
+    88%  { transform: rotate(8deg); }
+    100% { transform: rotate(30deg); }
+  }
+
+  /* Flip automático de la fusión: dos orbes → fusión → vuelve */
+  @keyframes fusionFlip {
+    0%   { transform: rotateY(0deg); }
+    42%  { transform: rotateY(0deg); }
+    50%  { transform: rotateY(180deg); }
+    92%  { transform: rotateY(180deg); }
+    100% { transform: rotateY(360deg); }
+  }
+
+  /* Mascota del CTA final flotando */
+  @keyframes mascotFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-12px); }
   }
 
   /* Halo dorado pulsante */

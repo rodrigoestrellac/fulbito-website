@@ -20,47 +20,27 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--color-cal);
-  /* Potrero de noche: base oscura pareja con luz de estadio entrando
-     de arriba-derecha y un brillo de césped abajo-izquierda. */
-  background:
-    radial-gradient(120% 80% at 82% 0%, rgba(74, 122, 46, 0.22) 0%, transparent 55%),
-    radial-gradient(100% 70% at 8% 100%, rgba(45, 80, 22, 0.18) 0%, transparent 60%),
-    #0A140B;
-  background-attachment: fixed;
+  /* Un solo lienzo continuo: noche → césped, de arriba abajo. Todas las
+     secciones flotan sobre este mismo gradiente (sin cortes ni dividers). */
+  background: linear-gradient(180deg, #0D1B0F 0%, #2D5016 100%) fixed;
   min-height: 100vh;
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Césped stripes — textura CSS liviana */
+/* Franjas de césped horizontales — textura CSS liviana, bandas ~130px */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background: repeating-linear-gradient(
     0deg,
-    transparent,
-    transparent 80px,
-    rgba(255,255,255,0.008) 80px,
-    rgba(255,255,255,0.008) 160px
+    rgba(240, 237, 228, 0.022) 0,
+    rgba(240, 237, 228, 0.022) 130px,
+    rgba(0, 0, 0, 0.06) 130px,
+    rgba(0, 0, 0, 0.06) 260px
   );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Semicírculo central decorativo */
-body::after {
-  content: '';
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 500px;
-  height: 500px;
-  border: 2px solid var(--color-cal);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.02;
   pointer-events: none;
   z-index: 0;
 }
@@ -146,6 +126,14 @@ ul, ol { list-style: none; }
   .section {
     padding: var(--space-3xl) 0;
   }
+}
+
+/* Ritmo entre secciones: bandas alternadas más oscuras con borde dorado sutil,
+   en vez de <hr> divisores. Se marca con la clase .band sobre .section. */
+.section.band {
+  background: rgba(13, 27, 15, 0.35);
+  border-top: 1px solid rgba(201, 169, 78, 0.1);
+  border-bottom: 1px solid rgba(201, 169, 78, 0.1);
 }
 
 /* ── Screen reader only ── */

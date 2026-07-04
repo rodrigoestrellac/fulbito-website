@@ -269,7 +269,12 @@
         const spin = parseFloat(el.getAttribute('data-spin-deg')) || SPIN;
         const dir = parseFloat(el.getAttribute('data-spin-dir')) || 1; // dirección alternada
         const deg = (0.5 - p) * spin * dir; // entra girado → de frente al centro → gira al salir
-        el.style.transform = 'perspective(1100px) rotateY(' + deg.toFixed(1) + 'deg)';
+        // Los teléfonos (.phone-3d) reciben la perspectiva del wrapper
+        // (.step-showcase__phone) → sus capas en Z se ven con profundidad real.
+        // El resto (ej. la Card FUT) necesita la perspectiva en su propio transform.
+        el.style.transform = el.classList.contains('phone-3d')
+          ? 'rotateY(' + deg.toFixed(1) + 'deg)'
+          : 'perspective(1100px) rotateY(' + deg.toFixed(1) + 'deg)';
       });
     }
     window.addEventListener('scroll', () => {
@@ -635,7 +640,8 @@
     safe(initRelatoPlayer);
     safe(initShowcase);
     safe(initPlatformCTA);
-    safe(initHeroFade);
+    // initHeroFade queda desactivado a propósito: atenuaba .hero__content al
+    // scrollear y dejaba los CTAs semitransparentes. Los botones van 100% visibles.
   }
 
   if (document.readyState === 'loading') {
