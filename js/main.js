@@ -258,11 +258,7 @@
     function update() {
       ticking = false;
       const vh = window.innerHeight;
-      // En mobile los teléfonos van aplanados (evita el bug 3D de iOS Safari): no
-      // les aplicamos giro. El CSS ya los deja en 2D, esto ahorra trabajo por frame.
-      const smallScreen = window.matchMedia('(max-width: 680px)').matches;
       els.forEach(el => {
-        if (smallScreen && el.classList.contains('phone-3d')) return;
         const rect = el.getBoundingClientRect();
         if (rect.bottom < -120 || rect.top > vh + 120) return;
         const center = rect.top + rect.height / 2;
@@ -273,12 +269,7 @@
         const spin = parseFloat(el.getAttribute('data-spin-deg')) || SPIN;
         const dir = parseFloat(el.getAttribute('data-spin-dir')) || 1; // dirección alternada
         const deg = (0.5 - p) * spin * dir; // entra girado → de frente al centro → gira al salir
-        // Los teléfonos (.phone-3d) reciben la perspectiva del wrapper
-        // (.step-showcase__phone) → sus capas en Z se ven con profundidad real.
-        // El resto (ej. la Card FUT) necesita la perspectiva en su propio transform.
-        el.style.transform = el.classList.contains('phone-3d')
-          ? 'rotateY(' + deg.toFixed(1) + 'deg)'
-          : 'perspective(1100px) rotateY(' + deg.toFixed(1) + 'deg)';
+        el.style.transform = 'perspective(1100px) rotateY(' + deg.toFixed(1) + 'deg)';
       });
     }
     window.addEventListener('scroll', () => {

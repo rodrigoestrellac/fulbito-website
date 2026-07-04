@@ -505,7 +505,6 @@
 .step-showcase__phone {
   display: flex;
   justify-content: center;
-  perspective: 1200px;
 }
 
 @media (max-width: 680px) {

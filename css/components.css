@@ -509,45 +509,18 @@
   transform-style: preserve-3d;
   will-change: transform;
 }
-/* La perspectiva la da el wrapper (.step-showcase__phone). Acá solo rotamos:
-   frente (+8) sobre un cuerpo oscuro (-8) → un canto fino y limpio al girar. */
 .phone-3d .phone-frame {
   width: 220px;
   max-width: 72vw;
-  transform: translateZ(8px); /* cara frontal hacia adelante */
+  transform: translateZ(11px); /* cara frontal hacia adelante */
 }
-/* Ladeo estático sutil (±2°). El giro 3D al scroll lo aplica el JS al .phone-3d,
-   así que este roll 2D vive en el frame interno y compone con la rotateY.
-   IMPORTANTE: frame y body llevan el MISMO roll → quedan alineados y el canto
-   asoma parejo por el lateral (no un rim asimétrico arriba). */
-.phone-3d--tl .phone-frame { transform: translateZ(8px) rotate(-2deg); }
-.phone-3d--tr .phone-frame { transform: translateZ(8px) rotate(2deg); }
 .phone-3d__body {
   position: absolute;
   inset: 0;
   border-radius: 40px;
-  background: linear-gradient(110deg, #2a2f38 0%, #14181d 45%, #05070b 100%);
+  background: linear-gradient(110deg, #313640 0%, #161a1f 45%, #05070b 100%);
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-  transform: translateZ(-8px); /* 16px de grosor: canto fino y realista */
-}
-.phone-3d--tl .phone-3d__body { transform: translateZ(-8px) rotate(-2deg); }
-.phone-3d--tr .phone-3d__body { transform: translateZ(-8px) rotate(2deg); }
-
-/* En mobile aplanamos el teléfono: iOS Safari tiene un bug conocido que deja en
-   blanco el contenido de un elemento con overflow:hidden + border-radius cuando
-   está dentro de un contexto preserve-3d con capas en translateZ (justo el caso
-   del marco). Sin el apilado 3D, el screenshot renderiza en todos lados. */
-@media (max-width: 680px) {
-  .step-showcase__phone { perspective: none; }
-  .phone-3d {
-    transform: none !important;
-    transform-style: flat;
-    will-change: auto;
-  }
-  .phone-3d .phone-frame,
-  .phone-3d--tl .phone-frame,
-  .phone-3d--tr .phone-frame { transform: none !important; }
-  .phone-3d__body { display: none; }
+  transform: translateZ(-11px); /* cuerpo/back hacia atrás → 22px de grosor */
 }
 
 /* ============================================
