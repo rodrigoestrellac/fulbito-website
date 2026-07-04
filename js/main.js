@@ -258,7 +258,11 @@
     function update() {
       ticking = false;
       const vh = window.innerHeight;
+      // En mobile los teléfonos van aplanados (evita el bug 3D de iOS Safari): no
+      // les aplicamos giro. El CSS ya los deja en 2D, esto ahorra trabajo por frame.
+      const smallScreen = window.matchMedia('(max-width: 680px)').matches;
       els.forEach(el => {
+        if (smallScreen && el.classList.contains('phone-3d')) return;
         const rect = el.getBoundingClientRect();
         if (rect.bottom < -120 || rect.top > vh + 120) return;
         const center = rect.top + rect.height / 2;

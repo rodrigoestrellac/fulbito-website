@@ -533,6 +533,23 @@
 .phone-3d--tl .phone-3d__body { transform: translateZ(-8px) rotate(-2deg); }
 .phone-3d--tr .phone-3d__body { transform: translateZ(-8px) rotate(2deg); }
 
+/* En mobile aplanamos el teléfono: iOS Safari tiene un bug conocido que deja en
+   blanco el contenido de un elemento con overflow:hidden + border-radius cuando
+   está dentro de un contexto preserve-3d con capas en translateZ (justo el caso
+   del marco). Sin el apilado 3D, el screenshot renderiza en todos lados. */
+@media (max-width: 680px) {
+  .step-showcase__phone { perspective: none; }
+  .phone-3d {
+    transform: none !important;
+    transform-style: flat;
+    will-change: auto;
+  }
+  .phone-3d .phone-frame,
+  .phone-3d--tl .phone-frame,
+  .phone-3d--tr .phone-frame { transform: none !important; }
+  .phone-3d__body { display: none; }
+}
+
 /* ============================================
    PRO BADGE
    ============================================ */
